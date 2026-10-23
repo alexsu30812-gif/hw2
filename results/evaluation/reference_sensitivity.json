@@ -1,0 +1,118 @@
+{
+  "primary_reference_unchanged": true,
+  "basic_a_selection_rule_unchanged": true,
+  "primary_included": 45,
+  "primary_excluded": 0,
+  "all_included": 891,
+  "all_excluded": 5,
+  "primary_song_ids_subset_of_all": true,
+  "metrics": {
+    "H4": {
+      "primary45_mean": 2.639773700017973,
+      "all_mean": 2.6407313287595158,
+      "primary_minus_all": -0.0009576287415429263,
+      "standardized_primary_minus_all": -0.00803178018082421,
+      "all_mean_inside_primary45_mean_ci95": true,
+      "descriptive_maximum_cdf_distance": 0.07070707070707072
+    },
+    "GS": {
+      "primary45_mean": 0.9708308831765232,
+      "all_mean": 0.970596721725544,
+      "primary_minus_all": 0.00023416145097920893,
+      "standardized_primary_minus_all": 0.015409728433087425,
+      "all_mean_inside_primary45_mean_ci95": true,
+      "descriptive_maximum_cdf_distance": 0.07833894500561167
+    },
+    "notes_per_bar": {
+      "primary45_mean": 22.95277777777778,
+      "all_mean": 22.490179573512908,
+      "primary_minus_all": 0.4625982042648715,
+      "standardized_primary_minus_all": 0.08226077925018478,
+      "all_mean_inside_primary45_mean_ci95": true,
+      "descriptive_maximum_cdf_distance": 0.07833894500561167
+    }
+  },
+  "full_exclusions": [
+    {
+      "song_name": "097",
+      "reason": "shorter than32bars",
+      "n_bars": 14
+    },
+    {
+      "song_name": "320",
+      "reason": "shorter than32bars",
+      "n_bars": 28
+    },
+    {
+      "song_name": "325",
+      "reason": "shorter than32bars",
+      "n_bars": 29
+    },
+    {
+      "song_name": "441",
+      "reason": "shorter than32bars",
+      "n_bars": 28
+    },
+    {
+      "song_name": "753",
+      "reason": "shorter than32bars",
+      "n_bars": 22
+    }
+  ],
+  "method": "Same deterministic center-nearest eligible32bar crop per song and identical canonical16subdivision/128position adapter. All896 official songs were considered; short or unrepresentable songs are listed individually.",
+  "limitation": "The45song set is contained in the full set; these comparisons are descriptive and are not independent hypothesis tests. Agreement on H4/GS/density does not establish representative musical style or perceived quality.",
+  "assessment": "Primary45 minus all-reference mean shifts are H4=-0.008 full-set standard deviations, GS=+0.015 full-set standard deviations, notes_per_bar=+0.082 full-set standard deviations. The all-reference mean falls inside the primary45 whole-piece bootstrap interval for 3/3 descriptors. The subset closely matches the full eligible set under these measured descriptors; this supports its descriptive use here, without establishing representative musical style or perceived quality.",
+  "selected_configuration": "t12",
+  "selected_configuration_reference_gaps": {
+    "primary45": {
+      "selection_metric_distance": {
+        "standardized_absolute_gaps": {
+          "H4": 1.1820155104909522,
+          "GS": 0.049063484441955636
+        },
+        "mean_gap": 0.615539497466454,
+        "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+      },
+      "generated_minus_reference": {
+        "H4": 0.14481551633697398,
+        "GS": -0.0006648675515231739,
+        "notes_per_bar": -1.9074652777777779
+      }
+    },
+    "all_eligible": {
+      "selection_metric_distance": {
+        "standardized_absolute_gaps": {
+          "H4": 1.2065583250797063,
+          "GS": 0.02834396531154844
+        },
+        "mean_gap": 0.6174511451956274,
+        "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+      },
+      "generated_minus_reference": {
+        "H4": 0.14385788759543106,
+        "GS": -0.00043070610054396496,
+        "notes_per_bar": -1.4448670735129063
+      }
+    }
+  },
+  "hypothetical_configuration_scores": {
+    "primary45": {
+      "t08": 1.1165959273491732,
+      "t10": 1.1532001464042339,
+      "t12": 0.615539497466454,
+      "k16": 0.759325884265139,
+      "k32": 0.6882295882716101
+    },
+    "all_eligible": {
+      "t08": 1.025538995059971,
+      "t10": 1.0795631148714393,
+      "t12": 0.6174511451956274,
+      "k16": 0.7283837940037701,
+      "k32": 0.6541800231587845
+    }
+  },
+  "minimum_score_configuration": {
+    "primary45": "t12",
+    "all_eligible": "t12"
+  }
+}

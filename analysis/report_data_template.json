@@ -1,0 +1,84 @@
+{
+  "_schema_notes": {
+    "purpose": "Schema template only, not experiment results. Null scores remain PENDING. Populate from actual saved evaluations; do not make up entries to satisfy counts.",
+    "paths": "All paths are relative to hw2/. Output files listed under samples/results are checked when packaging.",
+    "metric": "A metric can be a finite scalar or an object with mean, std, optional ci95, and n; never report synthetic probes as music-model results.",
+    "configurations": "At least three distinct basic_a.configurations; each needs id, parameters, n=20, metrics H4/GS, and 20 actual samples. Each sample has output_midi, output_wav (selected set), bars=32, seed. Optional submission_samples chooses exactly twenty from a larger evaluated run.",
+    "basic_b": "Exactly nine results, three configurations per prompt ID 001/002/003. Fields: prompt_id, configuration_id, bars=32, prompt_bars=8, new_bars=24, output_midi, output_wav, is_best. Exactly one best per prompt. selection_reason/analysis must distinguish measured diagnostics from actual listening impressions.",
+    "bonus": "If attempted=true, exactly ten IDs001..010 with bars=16 and finite CA/OA_P/OA_V/OA_D/OA_IOI. Never read prompt PIANO GT during inference.",
+    "additional_experiments": "Each item has name, method, headers, rows (max6 for a single slide), analysis, discussion, limitations; split larger tables into multiple items. Only include performed comparisons. No hypothetical results.",
+    "checkpoints": "Each reproducibility.checkpoints item is {path, sha256, trained_from_scratch:true}; tokenizer_files lists only vocabulary/configuration text. Checkpoint provenance must come from the actual training log.",
+    "status": "Use complete only when measured work is complete. Substantive missing checks remain DRAFT. An explicit user-selected GitHub host retains a separate unverified hosting warning; it is not represented as TA-approved cloud-drive equivalence."
+  },
+  "status": "draft_no_music_model_results_yet",
+  "student": {
+    "student_id": "r14942154"
+  },
+  "artifact_url": "https://github.com/alexsu30812-gif/hw2",
+  "cloud_drive_url": "",
+  "cloud_drive_requirement_unverified": true,
+  "research_questions": [
+    "How does sampling temperature change musical diversity, rhythmic consistency, density and repetition?",
+    "Do later checkpoints improve generation quality as well as next-token prediction?",
+    "How does available context affect continuation structure at a controlled training budget?",
+    "Can melody-conditioned generation preserve the complete supplied melody and produce useful accompaniment?"
+  ],
+  "data": {
+    "training_songs": 896,
+    "source": "Official course POP909/training only; three basic prompts and ten bonus prompts are excluded from training.",
+    "diagnostic_split": "PENDING: record actual song-level split and seed, followed by any all-896-song final fit.",
+    "final_fit": "PENDING: confirm every official training song participates; final all-song fit has no held-out validation estimate.",
+    "beat_grid": "Supplied beat/downbeat annotations define bars; MIDI time-signature metadata is not treated as authoritative.",
+    "training_data_audit_source": "analysis/data_audit.json"
+  },
+  "tokenizer": {},
+  "model": {
+    "random_initialization": null
+  },
+  "training": {
+    "history": []
+  },
+  "basic_a": {
+    "real_baseline": {
+      "name": "POP909 reference under matching representation and bar grid",
+      "n": null,
+      "H4": null,
+      "GS": null
+    },
+    "baseline_protocol": "PENDING: record actual window selection and shared quantization settings.",
+    "configurations": [],
+    "selected_configuration": null,
+    "selection": {},
+    "diagnostics": {}
+  },
+  "basic_b": {
+    "same_checkpoint_as_basic_a": null,
+    "prompt_preservation_verified": null,
+    "method": "PENDING: actual prefix-conditioning, stopping and exact-note preservation checks.",
+    "results": [],
+    "prompt_analysis": {}
+  },
+  "bonus": {
+    "attempted": false,
+    "melody_preservation_verified": null,
+    "results": []
+  },
+  "additional_experiments": [],
+  "failures": [],
+  "limitations": [],
+  "reproducibility": {
+    "checkpoints": [],
+    "tokenizer_files": [],
+    "source_artifacts": [],
+    "inference_output_directory_configurable": true,
+    "submission_inventory": "20 basic-a MIDI/WAV pairs; all 9 basic-b pairs; 10 bonus pairs if complete."
+  },
+  "ai_disclosure": "Codex assisted with code, experiment execution, aggregation, analysis and English drafting. Numerical results must be derived from saved actual experiment outputs. Unperformed comparisons and listening tests are not claimed.",
+  "references": [
+    "Bo-Rui Chen. Course Homework 2: Symbolic Music Generation, 2026. Task requirements pp.11-18,22-28; submission pp.29-32; grading p.33; AI permission p.34; rules p.35.",
+    "Z. Wang, K. Chen, J. Jiang, Y. Zhang, M. Xu, S. Dai, X. Gu and G. Xia. POP909: A Pop-Song Dataset for Music Arrangement Generation. ISMIR, 2020. https://arxiv.org/abs/2008.07142",
+    "Y.-S. Huang and Y.-H. Yang. Pop Music Transformer: Beat-based Modeling and Generation of Expressive Pop Piano Compositions. ACM Multimedia, 2020. https://arxiv.org/abs/2002.00212",
+    "Y. Ren, J. He, X. Tan, T. Qin, Z. Zhao and T.-Y. Liu. PopMAG: Pop Music Accompaniment Generation. ACM Multimedia, 2020.",
+    "Course HW2_scripts/tokenization.py, eval_basic.py and eval_bonus.py; upstream MusDr side_utils.py: https://github.com/slSeanWU/MusDr/blob/master/musdr/side_utils.py"
+  ]
+}

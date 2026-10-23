@@ -1,0 +1,60 @@
+{
+  "count": 3,
+  "expected_count": 3,
+  "complete": true,
+  "failures": 0,
+  "files": [
+    {
+      "sample_rate": 22050,
+      "channels": 2,
+      "frames": 2688056,
+      "duration_seconds": 121.90730158730159,
+      "peak": 0.250091552734375,
+      "rms": 0.025945413828872166,
+      "clipped_fraction": 0.0,
+      "midi": "results/basic_b/t12/001.mid",
+      "wav": "results/basic_b/t12/001.wav",
+      "backend": "native",
+      "sound_source": "macOS CoreAudio gs_instruments.dls, General MIDI acoustic grand piano",
+      "midi_sha256": "c1516bd0ab6065ed9420e47aa5637245e28c12da2ce3be92e6338b366e63b92d",
+      "wav_sha256": "4112c49429f2c937285c5622e0a2926f4b7532c870b26af17352e0fcffdacdd3",
+      "midi_duration_seconds": 119.90727979999987,
+      "release_tail_seconds": 2.000021787301719
+    },
+    {
+      "sample_rate": 22050,
+      "channels": 2,
+      "frames": 1612108,
+      "duration_seconds": 73.11147392290249,
+      "peak": 0.2625732421875,
+      "rms": 0.026453611908886773,
+      "clipped_fraction": 0.0,
+      "midi": "results/basic_b/t12/002.mid",
+      "wav": "results/basic_b/t12/002.wav",
+      "backend": "native",
+      "sound_source": "macOS CoreAudio gs_instruments.dls, General MIDI acoustic grand piano",
+      "midi_sha256": "c1014b94ccc4d7832fb4e696099df90b28de6af2541c661d391b9c761b390a63",
+      "wav_sha256": "6db4ae3ecad3a8470faf03bd1eff2040df38f993a7dc907e4965dc64fadeb3cf",
+      "midi_duration_seconds": 71.11149070208289,
+      "release_tail_seconds": 1.9999832208196011
+    },
+    {
+      "sample_rate": 22050,
+      "channels": 2,
+      "frames": 2498357,
+      "duration_seconds": 113.30417233560091,
+      "peak": 0.15496826171875,
+      "rms": 0.014874283660575745,
+      "clipped_fraction": 0.0,
+      "midi": "results/basic_b/t12/003.mid",
+      "wav": "results/basic_b/t12/003.wav",
+      "backend": "native",
+      "sound_source": "macOS CoreAudio gs_instruments.dls, General MIDI acoustic grand piano",
+      "midi_sha256": "3938eb076069694d29748f57642294456e4e5109b0eb56e784f6f60e8a8f75ea",
+      "wav_sha256": "60dd32de15c93477aa8419f7cac45a71d0e24c99d1d918e0c52cf4b91e536d6c",
+      "midi_duration_seconds": 111.3041920000003,
+      "release_tail_seconds": 1.9999803356006112
+    }
+  ],
+  "midi_bytes_unchanged": true
+}

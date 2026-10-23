@@ -1,0 +1,121 @@
+{
+  "source_paths": [
+    "results/token_diagnostics_0500.json",
+    "results/token_diagnostics_2000.json"
+  ],
+  "source_sha256": [
+    "13527c25b4e555ec9b3437d204030596ac0ab23416c0170f8ab9be98049a434a",
+    "1e2ddcfa59dcaa118a7c766027550436cbb39741565538694a31dda92b31480b"
+  ],
+  "same_windows_sha256": "d1714d75fb9f256d9d809b8402bdb7eee7cc34c613d2fd8bcfb22eff4ae41678",
+  "all45_validation_songs_held_out": true,
+  "overall_step500": {
+    "targets": 77926,
+    "cross_entropy_nats": 2.366658418157563,
+    "perplexity": 10.661705730270043,
+    "accuracy": 0.2654056412493904,
+    "predicted_type_accuracy": 0.9830480199163308,
+    "type_conditioned_cross_entropy_nats": 2.3264303309311107,
+    "type_conditioned_accuracy": 0.27559479506198187
+  },
+  "overall_step2000": {
+    "targets": 77926,
+    "cross_entropy_nats": 1.971204981003996,
+    "perplexity": 7.179322225229107,
+    "accuracy": 0.3551189590123964,
+    "predicted_type_accuracy": 0.9902471575597361,
+    "type_conditioned_cross_entropy_nats": 1.9474387317218964,
+    "type_conditioned_accuracy": 0.36274157534070783
+  },
+  "by_target_type": [
+    {
+      "target_type": "Bar",
+      "targets": 910,
+      "CE_step500": 1.4425547693456922,
+      "CE_step2000": 0.894225318349161,
+      "accuracy_step500": 0.5395604395604395,
+      "accuracy_step2000": 0.6945054945054945,
+      "accuracy_change_percentage_points": 15.494505494505495,
+      "predicted_family_accuracy_step500": 0.5395604395604395,
+      "predicted_family_accuracy_step2000": 0.6945054945054945
+    },
+    {
+      "target_type": "Meter",
+      "targets": 910,
+      "CE_step500": 0.259671319222876,
+      "CE_step2000": 0.18305966342789132,
+      "accuracy_step500": 0.9461538461538461,
+      "accuracy_step2000": 0.967032967032967,
+      "accuracy_change_percentage_points": 2.0879120879120916,
+      "predicted_family_accuracy_step500": 0.9989010989010989,
+      "predicted_family_accuracy_step2000": 1.0
+    },
+    {
+      "target_type": "Tempo",
+      "targets": 910,
+      "CE_step500": 3.847911625642043,
+      "CE_step2000": 0.5430600266054191,
+      "accuracy_step500": 0.041758241758241756,
+      "accuracy_step2000": 0.8769230769230769,
+      "accuracy_change_percentage_points": 83.51648351648352,
+      "predicted_family_accuracy_step500": 0.9934065934065934,
+      "predicted_family_accuracy_step2000": 1.0
+    },
+    {
+      "target_type": "Pos",
+      "targets": 18809,
+      "CE_step500": 1.3611944266622427,
+      "CE_step2000": 0.8407290916469352,
+      "accuracy_step500": 0.5212398319953214,
+      "accuracy_step2000": 0.6717528842575363,
+      "accuracy_change_percentage_points": 15.05130522622149,
+      "predicted_family_accuracy_step500": 0.9532138869690042,
+      "predicted_family_accuracy_step2000": 0.9752246265085863
+    },
+    {
+      "target_type": "Pitch",
+      "targets": 18799,
+      "CE_step500": 3.271543680210622,
+      "CE_step2000": 2.6542905561578003,
+      "accuracy_step500": 0.08713229427097186,
+      "accuracy_step2000": 0.19304218309484547,
+      "accuracy_change_percentage_points": 10.59098888238736,
+      "predicted_family_accuracy_step500": 1.0,
+      "predicted_family_accuracy_step2000": 1.0
+    },
+    {
+      "target_type": "Vel",
+      "targets": 18793,
+      "CE_step500": 2.3231731816077255,
+      "CE_step2000": 2.201027421820813,
+      "accuracy_step500": 0.20768371202043315,
+      "accuracy_step2000": 0.24450593306018198,
+      "accuracy_change_percentage_points": 3.6822221039748833,
+      "predicted_family_accuracy_step500": 1.0,
+      "predicted_family_accuracy_step2000": 0.9998935773958388
+    },
+    {
+      "target_type": "Dur",
+      "targets": 18781,
+      "CE_step500": 2.583189447484936,
+      "CE_step2000": 2.3948512913513524,
+      "accuracy_step500": 0.2101592034502955,
+      "accuracy_step2000": 0.2398168361642085,
+      "accuracy_change_percentage_points": 2.9657632713913,
+      "predicted_family_accuracy_step500": 0.9999467546988978,
+      "predicted_family_accuracy_step2000": 1.0
+    },
+    {
+      "target_type": "<EOS>",
+      "targets": 14,
+      "CE_step500": 6.776310205459595,
+      "CE_step2000": 5.765235781669617,
+      "accuracy_step500": 0.0,
+      "accuracy_step2000": 0.0,
+      "accuracy_change_percentage_points": 0.0,
+      "predicted_family_accuracy_step500": 0.0,
+      "predicted_family_accuracy_step2000": 0.0
+    }
+  ],
+  "interpretation": "Token-family prediction is already high at step500. Step2000 improves note-content prediction, but full-vocabulary pitch accuracy remains far below family accuracy. These teacher-forced diagnostics do not measure free-running musical quality."
+}

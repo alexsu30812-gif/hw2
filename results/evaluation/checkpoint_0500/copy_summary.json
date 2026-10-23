@@ -1,0 +1,17 @@
+{
+  "n_pieces": 20,
+  "duplicate_full_piece_count": 0,
+  "mean_match_fractions": {
+    "exact_1bar_match_fraction": 0.0328125,
+    "exact_1bar_nonempty_match_fraction": 0.0,
+    "exact_2bar_match_fraction": 0.004838709677419355,
+    "exact_2bar_nonempty_match_fraction": 0.0,
+    "exact_4bar_match_fraction": 0.0,
+    "exact_4bar_nonempty_match_fraction": 0.0,
+    "exact_8bar_match_fraction": 0.0,
+    "exact_8bar_nonempty_match_fraction": 0.0
+  },
+  "definition": "Exact contiguous bars with same position8/pitch/duration8 multisets; tempo, velocity and track names ignored. Raw match fractions include silent windows; nonempty fractions exclude entirely silent windows from numerator and denominator.",
+  "reference": "All851 pre-refit optimization training songs, all bars;45 validation songs excluded",
+  "limitation": "This conservative exact-match test does not detect approximate or transposed copying; zero matches does not establish originality or quality"
+}

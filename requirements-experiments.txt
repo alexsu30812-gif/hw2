@@ -1,0 +1,7 @@
+# Training, evaluation, plots and PDF regeneration; inference requirements first.
+-r requirements.txt
+scipy==1.14.1
+pandas==2.3.3
+tqdm==4.67.1
+reportlab==4.4.4
+matplotlib==3.10.7

@@ -1,0 +1,27 @@
+{
+  "branches": [
+    {
+      "context": 2048,
+      "checkpoint": "/Users/suboydemacbookpo/Desktop/\u6df1\u5ea6\u5b78\u7fd2\u65bc\u97f3\u6a02\u5206\u6790\u53ca\u751f\u6210 /hw2/artifacts/models/context_2048/last.pt",
+      "validation_loss": 1.7063666595233018,
+      "processed_tokens": 4006540,
+      "parent_sha256": "12546c8c0d50d3b20c1db5687b7806f78e13f89e49719c8bc0e6e1b5e41f44d2"
+    },
+    {
+      "context": 4096,
+      "checkpoint": "/Users/suboydemacbookpo/Desktop/\u6df1\u5ea6\u5b78\u7fd2\u65bc\u97f3\u6a02\u5206\u6790\u53ca\u751f\u6210 /hw2/artifacts/models/context_4096/last.pt",
+      "validation_loss": 1.740839534499692,
+      "processed_tokens": 4003086,
+      "parent_sha256": "12546c8c0d50d3b20c1db5687b7806f78e13f89e49719c8bc0e6e1b5e41f44d2"
+    }
+  ],
+  "selected": {
+    "context": 2048,
+    "checkpoint": "/Users/suboydemacbookpo/Desktop/\u6df1\u5ea6\u5b78\u7fd2\u65bc\u97f3\u6a02\u5206\u6790\u53ca\u751f\u6210 /hw2/artifacts/models/context_2048/last.pt",
+    "validation_loss": 1.7063666595233018,
+    "processed_tokens": 4006540,
+    "parent_sha256": "12546c8c0d50d3b20c1db5687b7806f78e13f89e49719c8bc0e6e1b5e41f44d2"
+  },
+  "comparison_budget_note": "Compare each last checkpoint at4m nonpadding targets, with at most one optimizer-step overshoot. Intermediate best checkpoints are not used for the equal-budget comparison.",
+  "not_course_grade": true
+}

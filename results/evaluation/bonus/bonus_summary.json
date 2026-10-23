@@ -1,0 +1,241 @@
+{
+  "tag": "bonus",
+  "expected_pieces": 10,
+  "evaluated_pieces": 10,
+  "skipped_pieces": 0,
+  "total_bars": 160,
+  "pooled": {
+    "CA": 0.1125,
+    "CA-ceiling": 0.7625,
+    "DP (Pitch-class OA)": 0.8552106208486407,
+    "DV (Velocity OA)": 0.6131011920934041,
+    "DD (Duration OA)": 0.7358276393486696,
+    "DIOI (Inter-Onset OA)": 0.5687461351214067
+  },
+  "summary": {
+    "n_bars": {
+      "mean": 16.0,
+      "std": 0.0,
+      "median": 16.0,
+      "min": 16.0,
+      "max": 16.0,
+      "mean_ci95": [
+        16.0,
+        16.0
+      ]
+    },
+    "CA": {
+      "mean": 0.1125,
+      "std": 0.07095577652469334,
+      "median": 0.125,
+      "min": 0.0,
+      "max": 0.25,
+      "mean_ci95": [
+        0.075,
+        0.15625
+      ]
+    },
+    "CA-ceiling": {
+      "mean": 0.7625,
+      "std": 0.19498931594662652,
+      "median": 0.8125,
+      "min": 0.375,
+      "max": 1.0,
+      "mean_ci95": [
+        0.6435937500000001,
+        0.86875
+      ]
+    },
+    "DP (Pitch-class OA)": {
+      "mean": 0.8552106208486407,
+      "std": 0.01163904874723249,
+      "median": 0.8574436732055698,
+      "min": 0.8356274546653473,
+      "max": 0.8774814099744228,
+      "mean_ci95": [
+        0.8484730893452569,
+        0.862350060973968
+      ]
+    },
+    "DV (Velocity OA)": {
+      "mean": 0.6131011920934041,
+      "std": 0.16560605195975625,
+      "median": 0.6623951010888803,
+      "min": 0.1864184219444376,
+      "max": 0.771933435849495,
+      "mean_ci95": [
+        0.5015365906131407,
+        0.6938175136706092
+      ]
+    },
+    "DD (Duration OA)": {
+      "mean": 0.7358276393486696,
+      "std": 0.08269479523232698,
+      "median": 0.7425458565309218,
+      "min": 0.5609271006054095,
+      "max": 0.8511814125239017,
+      "mean_ci95": [
+        0.6839645758810319,
+        0.7841894293305748
+      ]
+    },
+    "DIOI (Inter-Onset OA)": {
+      "mean": 0.5687461351214067,
+      "std": 0.1569719146920991,
+      "median": 0.5854131705343864,
+      "min": 0.29872579734629273,
+      "max": 0.8253358261391881,
+      "mean_ci95": [
+        0.4786238698681967,
+        0.6596312858093373
+      ]
+    }
+  },
+  "melody_identity": {
+    "001": {
+      "notes": 75,
+      "max_timing_difference_seconds": 0.00021025142045871803,
+      "tolerance_seconds": 0.003
+    },
+    "002": {
+      "notes": 71,
+      "max_timing_difference_seconds": 0.0002777161931781791,
+      "tolerance_seconds": 0.003
+    },
+    "003": {
+      "notes": 82,
+      "max_timing_difference_seconds": 3.4909090906865003e-05,
+      "tolerance_seconds": 0.003
+    },
+    "004": {
+      "notes": 78,
+      "max_timing_difference_seconds": 0.0004450147727368403,
+      "tolerance_seconds": 0.003
+    },
+    "005": {
+      "notes": 81,
+      "max_timing_difference_seconds": 0.0004054968750040189,
+      "tolerance_seconds": 0.003
+    },
+    "006": {
+      "notes": 47,
+      "max_timing_difference_seconds": 0.00022694564394143413,
+      "tolerance_seconds": 0.003
+    },
+    "007": {
+      "notes": 85,
+      "max_timing_difference_seconds": 0.0005387272727279679,
+      "tolerance_seconds": 0.003
+    },
+    "008": {
+      "notes": 117,
+      "max_timing_difference_seconds": 0.0004285000000052719,
+      "tolerance_seconds": 0.003
+    },
+    "009": {
+      "notes": 80,
+      "max_timing_difference_seconds": 0.0003561036931785111,
+      "tolerance_seconds": 0.003
+    },
+    "010": {
+      "notes": 62,
+      "max_timing_difference_seconds": 3.4909090906865003e-05,
+      "tolerance_seconds": 0.003
+    }
+  },
+  "annotation_clocks": {
+    "001": {
+      "n_bars": 16,
+      "max_beat_time_error_seconds": 7.105427357601002e-15,
+      "midi_duration_seconds": 38.91887999999997,
+      "annotation_duration_seconds": 38.91888,
+      "quarter_note_semantics": "one annotation beat, n/4 meter"
+    },
+    "002": {
+      "n_bars": 16,
+      "max_beat_time_error_seconds": 7.105427357601002e-15,
+      "midi_duration_seconds": 34.286748068749944,
+      "annotation_duration_seconds": 34.285632,
+      "quarter_note_semantics": "one annotation beat, n/4 meter"
+    },
+    "003": {
+      "n_bars": 16,
+      "max_beat_time_error_seconds": 3.552713678800501e-15,
+      "midi_duration_seconds": 34.90962418124999,
+      "annotation_duration_seconds": 34.909056,
+      "quarter_note_semantics": "one annotation beat, n/4 meter"
+    },
+    "004": {
+      "n_bars": 16,
+      "max_beat_time_error_seconds": 7.105427357601002e-15,
+      "midi_duration_seconds": 54.85798085625008,
+      "annotation_duration_seconds": 54.857088,
+      "quarter_note_semantics": "one annotation beat, n/4 meter"
+    },
+    "005": {
+      "n_bars": 16,
+      "max_beat_time_error_seconds": 7.105427357601002e-15,
+      "midi_duration_seconds": 49.870016000000135,
+      "annotation_duration_seconds": 49.870016,
+      "quarter_note_semantics": "one annotation beat, n/4 meter"
+    },
+    "006": {
+      "n_bars": 16,
+      "max_beat_time_error_seconds": 1.00000000458067e-06,
+      "midi_duration_seconds": 27.937725000000043,
+      "annotation_duration_seconds": 27.937726,
+      "quarter_note_semantics": "one annotation beat, n/4 meter"
+    },
+    "007": {
+      "n_bars": 16,
+      "max_beat_time_error_seconds": 7.105427357601002e-15,
+      "midi_duration_seconds": 64.13896158541691,
+      "annotation_duration_seconds": 64.137884,
+      "quarter_note_semantics": "one annotation beat, n/4 meter"
+    },
+    "008": {
+      "n_bars": 16,
+      "max_beat_time_error_seconds": 1.0000000116860974e-06,
+      "midi_duration_seconds": 52.66547716354167,
+      "annotation_duration_seconds": 52.664622,
+      "quarter_note_semantics": "one annotation beat, n/4 meter"
+    },
+    "009": {
+      "n_bars": 16,
+      "max_beat_time_error_seconds": 1.4210854715202004e-14,
+      "midi_duration_seconds": 44.13863839062501,
+      "annotation_duration_seconds": 44.13792,
+      "quarter_note_semantics": "one annotation beat, n/4 meter"
+    },
+    "010": {
+      "n_bars": 16,
+      "max_beat_time_error_seconds": 3.552713678800501e-15,
+      "midi_duration_seconds": 34.90962418125009,
+      "annotation_duration_seconds": 34.909056,
+      "quarter_note_semantics": "one annotation beat, n/4 meter"
+    }
+  },
+  "source_sha256": "eaa07eaa9eb89fee8e4d0ef3dc0a0ac7bd3223ba7910f8e18dfa32463916ca6a",
+  "wrapper_sha256": "c2ea07979a4a4a10f837536cb071eafa2e71882859858824f0ac808007f1c298",
+  "generation_provenance": {
+    "task": "accompaniment",
+    "checkpoint": "artifacts/models/roles_final.pt",
+    "checkpoint_sha256": "0b8c14b123c35cbbeaa7ec41db7e68331ac218139e58456b69009684f79ba5b6",
+    "configuration": {
+      "temperature": 1.0,
+      "top_k": 0,
+      "top_p": 0.95,
+      "seed": 20261022,
+      "device": "cpu",
+      "bars": 16,
+      "conditioning": "normal"
+    },
+    "conditioning_policy": "Original melody.mid and beat_midi.txt only; GT piano and chords never loaded by generator",
+    "all_official_training_songs_used": true,
+    "checkpoint_seen_training_songs": 896,
+    "conditioning": "normal",
+    "submission_eligible": true,
+    "interpretation_limitations": null,
+    "manifest_sha256": "c19bbc8d977e721e7b8fc53f40f23dd232fce1a5d3f0c0e058048f8a0b9244c9"
+  }
+}

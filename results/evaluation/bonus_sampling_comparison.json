@@ -1,0 +1,222 @@
+{
+  "selected_configuration": "t10",
+  "selected_temperature": 1.0,
+  "conditions": {
+    "t08": {
+      "temperature": 0.8,
+      "n_prompts": 10,
+      "mean_metrics": {
+        "CA": 0.1,
+        "OA_P": 0.8557469079004985,
+        "OA_V": 0.455922242402361,
+        "OA_D": 0.5947610200821625,
+        "OA_IOI": 0.5150928782243349,
+        "composite": 0.5043046097218714
+      },
+      "composite_mean_ci95": [
+        0.4435223442000977,
+        0.5619941487907031
+      ],
+      "source_manifest_sha256": "d2fcf13131224cab2ced6e1f3341d305be683777012f8cdd55ca33eddfddb9ac"
+    },
+    "t10": {
+      "temperature": 1.0,
+      "n_prompts": 10,
+      "mean_metrics": {
+        "CA": 0.1125,
+        "OA_P": 0.8552106208486407,
+        "OA_V": 0.6131011920934041,
+        "OA_D": 0.7358276393486696,
+        "OA_IOI": 0.5687461351214067,
+        "composite": 0.5770771174824241
+      },
+      "composite_mean_ci95": [
+        0.5389135868263776,
+        0.613456257103721
+      ],
+      "source_manifest_sha256": "c19bbc8d977e721e7b8fc53f40f23dd232fce1a5d3f0c0e058048f8a0b9244c9"
+    },
+    "t12": {
+      "temperature": 1.2,
+      "n_prompts": 10,
+      "mean_metrics": {
+        "CA": 0.14375,
+        "OA_P": 0.8601708203672928,
+        "OA_V": 0.5810510064731524,
+        "OA_D": 0.6724049250324711,
+        "OA_IOI": 0.6055185929406367,
+        "composite": 0.5725790689627106
+      },
+      "composite_mean_ci95": [
+        0.541058469137999,
+        0.602544818106663
+      ],
+      "source_manifest_sha256": "141740fb31b3aa26dc2fc381c903b851129e9180e95d059cfb1d69bfd330462d"
+    }
+  },
+  "selection_rule": "Maximize equal-weight mean(CA,OA_P,OA_V,OA_D,OA_IOI); lexical configuration ID breaks exact ties.",
+  "n_prompts": 10,
+  "skipped_prompts": 0,
+  "selection_uses_same_reported_prompts": true,
+  "independent_test": false,
+  "runner_up_configuration": "t12",
+  "selected_minus_runner_up_composite": {
+    "mean_second_minus_first": 0.0044980485197135935,
+    "paired_mean_ci95": [
+      -0.021637572667368172,
+      0.029505180471363343
+    ],
+    "n_pairs": 10
+  },
+  "paired_differences_vs_t10": {
+    "t08": {
+      "metrics": {
+        "CA": {
+          "mean_second_minus_first": -0.0125,
+          "paired_mean_ci95": [
+            -0.08125,
+            0.0625
+          ],
+          "n_pairs": 10
+        },
+        "OA_P": {
+          "mean_second_minus_first": 0.0005362870518579088,
+          "paired_mean_ci95": [
+            -0.010492305074924841,
+            0.014725550206318893
+          ],
+          "n_pairs": 10
+        },
+        "OA_V": {
+          "mean_second_minus_first": -0.15717894969104312,
+          "paired_mean_ci95": [
+            -0.2816793166246249,
+            -0.04784060856366976
+          ],
+          "n_pairs": 10
+        },
+        "OA_D": {
+          "mean_second_minus_first": -0.14106661926650702,
+          "paired_mean_ci95": [
+            -0.25015475499283657,
+            -0.044436807000686085
+          ],
+          "n_pairs": 10
+        },
+        "OA_IOI": {
+          "mean_second_minus_first": -0.05365325689707171,
+          "paired_mean_ci95": [
+            -0.14520850225598486,
+            0.03318886054824904
+          ],
+          "n_pairs": 10
+        },
+        "composite": {
+          "mean_second_minus_first": -0.07277250776055275,
+          "paired_mean_ci95": [
+            -0.11348384726939766,
+            -0.03348988574100331
+          ],
+          "n_pairs": 10
+        }
+      },
+      "method": "5000 whole-piece paired bootstrap resamples with fixed seed6221",
+      "caution": "Same seeds reduce sampling variability but do not imply note-level correspondence across configurations; this is not an official grading score"
+    },
+    "t12": {
+      "metrics": {
+        "CA": {
+          "mean_second_minus_first": 0.03125,
+          "paired_mean_ci95": [
+            -0.0375,
+            0.1
+          ],
+          "n_pairs": 10
+        },
+        "OA_P": {
+          "mean_second_minus_first": 0.004960199518652253,
+          "paired_mean_ci95": [
+            -0.009295578217511195,
+            0.01972021035769172
+          ],
+          "n_pairs": 10
+        },
+        "OA_V": {
+          "mean_second_minus_first": -0.03205018562025176,
+          "paired_mean_ci95": [
+            -0.06854596188953425,
+            0.0026415860632080564
+          ],
+          "n_pairs": 10
+        },
+        "OA_D": {
+          "mean_second_minus_first": -0.06342271431619853,
+          "paired_mean_ci95": [
+            -0.1351702836123217,
+            -0.00789529844088552
+          ],
+          "n_pairs": 10
+        },
+        "OA_IOI": {
+          "mean_second_minus_first": 0.03677245781922997,
+          "paired_mean_ci95": [
+            -0.041509653330963577,
+            0.10571813178578289
+          ],
+          "n_pairs": 10
+        },
+        "composite": {
+          "mean_second_minus_first": -0.0044980485197135935,
+          "paired_mean_ci95": [
+            -0.029505180471363364,
+            0.02163757266736815
+          ],
+          "n_pairs": 10
+        }
+      },
+      "method": "5000 whole-piece paired bootstrap resamples with fixed seed6221",
+      "caution": "Same seeds reduce sampling variability but do not imply note-level correspondence across configurations; this is not an official grading score"
+    }
+  },
+  "bootstrap": "5000 paired whole-prompt draws with seed6221; percentile95 intervals.",
+  "table_headers": [
+    "T",
+    "CA",
+    "OA_P",
+    "OA_V",
+    "OA_D",
+    "OA_IOI",
+    "Mean"
+  ],
+  "table_rows": [
+    [
+      0.8,
+      0.1,
+      0.8557469079004985,
+      0.455922242402361,
+      0.5947610200821625,
+      0.5150928782243349,
+      0.5043046097218714
+    ],
+    [
+      1.0,
+      0.1125,
+      0.8552106208486407,
+      0.6131011920934041,
+      0.7358276393486696,
+      0.5687461351214067,
+      0.5770771174824241
+    ],
+    [
+      1.2,
+      0.14375,
+      0.8601708203672928,
+      0.5810510064731524,
+      0.6724049250324711,
+      0.6055185929406367,
+      0.5725790689627106
+    ]
+  ],
+  "replacement_performed_by_this_analysis": false,
+  "limitation": "Temperature selection uses the same10 provided prompts and evaluation ground truth; this is in-sample tuning without an independent test. A larger composite or individual metric does not establish better music or listener preference. The fixed T1 conditioning-ablation baseline is preserved separately."
+}

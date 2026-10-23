@@ -1,0 +1,172 @@
+[
+  {
+    "before": {
+      "notes_per_bar": 13.5,
+      "pitch_mean": 59.18518518518518,
+      "velocity_mean": 80.66666666666667,
+      "duration_beats_mean": 1.0,
+      "pitch_classes": [
+        0,
+        2,
+        3,
+        5,
+        7,
+        9,
+        10
+      ]
+    },
+    "after": {
+      "notes_per_bar": 24.5,
+      "pitch_mean": 62.91836734693877,
+      "velocity_mean": 99.95918367346938,
+      "duration_beats_mean": 0.6811224489795918,
+      "pitch_classes": [
+        0,
+        2,
+        5,
+        7,
+        9,
+        10
+      ]
+    },
+    "pitch_class_jaccard": 0.8571428571428571,
+    "pitch_mean_jump": 3.7331821617535894,
+    "note_density_ratio": 1.8148148148148149,
+    "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+    "boundary_selection_score": 1.049939088442906,
+    "song_name": "001",
+    "configuration_id": "t10",
+    "generated24bar_diagnostics": {
+      "n_bars": 24,
+      "n_notes": 962,
+      "notes_per_bar": 40.083333333333336,
+      "empty_bar_fraction": 0.0,
+      "unique_bar_fraction": 1.0,
+      "longest_identical_bar_run": 1,
+      "pitch_min": 29,
+      "pitch_max": 108,
+      "pitch_std": 18.38542731891466,
+      "velocity_mean": 106.43659043659044,
+      "velocity_std": 17.348351908656998,
+      "mean_duration_beats": 0.3805873180873181,
+      "GS_active": 0.8823596014492754,
+      "H4_valid_windows": 21,
+      "H4_total_windows": 21,
+      "H4_skipped_empty_windows": 0
+    }
+  },
+  {
+    "before": {
+      "notes_per_bar": 23.0,
+      "pitch_mean": 64.17391304347827,
+      "velocity_mean": 85.30434782608695,
+      "duration_beats_mean": 0.8342391304347826,
+      "pitch_classes": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ]
+    },
+    "after": {
+      "notes_per_bar": 35.0,
+      "pitch_mean": 66.2,
+      "velocity_mean": 85.77142857142857,
+      "duration_beats_mean": 0.5196428571428572,
+      "pitch_classes": [
+        0,
+        1,
+        3,
+        5,
+        7,
+        8,
+        10
+      ]
+    },
+    "pitch_class_jaccard": 0.875,
+    "pitch_mean_jump": 2.0260869565217376,
+    "note_density_ratio": 1.5217391304347827,
+    "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+    "boundary_selection_score": 0.7136944252704088,
+    "song_name": "002",
+    "configuration_id": "t10",
+    "generated24bar_diagnostics": {
+      "n_bars": 24,
+      "n_notes": 852,
+      "notes_per_bar": 35.5,
+      "empty_bar_fraction": 0.0,
+      "unique_bar_fraction": 1.0,
+      "longest_identical_bar_run": 1,
+      "pitch_min": 31,
+      "pitch_max": 103,
+      "pitch_std": 15.769804895965953,
+      "velocity_mean": 84.10328638497653,
+      "velocity_std": 5.311749620921014,
+      "mean_duration_beats": 0.38761737089201875,
+      "GS_active": 0.9407835144927537,
+      "H4_valid_windows": 21,
+      "H4_total_windows": 21,
+      "H4_skipped_empty_windows": 0
+    }
+  },
+  {
+    "before": {
+      "notes_per_bar": 26.5,
+      "pitch_mean": 62.41509433962264,
+      "velocity_mean": 75.9622641509434,
+      "duration_beats_mean": 0.5165094339622641,
+      "pitch_classes": [
+        1,
+        2,
+        4,
+        6,
+        8,
+        9,
+        11
+      ]
+    },
+    "after": {
+      "notes_per_bar": 29.5,
+      "pitch_mean": 63.355932203389834,
+      "velocity_mean": 76.44067796610169,
+      "duration_beats_mean": 0.4533898305084746,
+      "pitch_classes": [
+        1,
+        2,
+        4,
+        6,
+        9,
+        11
+      ]
+    },
+    "pitch_class_jaccard": 0.8571428571428571,
+    "pitch_mean_jump": 0.940837863767193,
+    "note_density_ratio": 1.1132075471698113,
+    "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+    "boundary_selection_score": 0.32850582852467325,
+    "song_name": "003",
+    "configuration_id": "t10",
+    "generated24bar_diagnostics": {
+      "n_bars": 24,
+      "n_notes": 751,
+      "notes_per_bar": 31.291666666666668,
+      "empty_bar_fraction": 0.0,
+      "unique_bar_fraction": 1.0,
+      "longest_identical_bar_run": 1,
+      "pitch_min": 35,
+      "pitch_max": 95,
+      "pitch_std": 11.929759683278172,
+      "velocity_mean": 75.62450066577897,
+      "velocity_std": 4.482561147871495,
+      "mean_duration_beats": 0.47786284953395475,
+      "GS_active": 0.9585597826086957,
+      "H4_valid_windows": 21,
+      "H4_total_windows": 21,
+      "H4_skipped_empty_windows": 0
+    }
+  }
+]

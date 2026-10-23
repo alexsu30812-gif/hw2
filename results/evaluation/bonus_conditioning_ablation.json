@@ -1,0 +1,142 @@
+{
+  "n_pairs": 10,
+  "expected_pairs": 10,
+  "skipped_pairs": 0,
+  "difference_direction": "normal minus empty-melody",
+  "metrics": {
+    "CA": {
+      "official_name": "CA",
+      "normal_mean": 0.1125,
+      "empty_mean": 0.0375,
+      "mean_second_minus_first": 0.075,
+      "paired_mean_ci95": [
+        0.025,
+        0.13125
+      ],
+      "n_pairs": 10
+    },
+    "OA_P": {
+      "official_name": "DP (Pitch-class OA)",
+      "normal_mean": 0.8552106208486407,
+      "empty_mean": 0.8503728696647646,
+      "mean_second_minus_first": 0.004837751183876082,
+      "paired_mean_ci95": [
+        -0.0033940432210458013,
+        0.012828768974005991
+      ],
+      "n_pairs": 10
+    },
+    "OA_V": {
+      "official_name": "DV (Velocity OA)",
+      "normal_mean": 0.6131011920934041,
+      "empty_mean": 0.3779364237956388,
+      "mean_second_minus_first": 0.23516476829776528,
+      "paired_mean_ci95": [
+        0.13592515275852476,
+        0.33823493271828775
+      ],
+      "n_pairs": 10
+    },
+    "OA_D": {
+      "official_name": "DD (Duration OA)",
+      "normal_mean": 0.7358276393486696,
+      "empty_mean": 0.600178960712227,
+      "mean_second_minus_first": 0.13564867863644253,
+      "paired_mean_ci95": [
+        0.03426649178694196,
+        0.2615194023902419
+      ],
+      "n_pairs": 10
+    },
+    "OA_IOI": {
+      "official_name": "DIOI (Inter-Onset OA)",
+      "normal_mean": 0.5687461351214067,
+      "empty_mean": 0.49331276700184457,
+      "mean_second_minus_first": 0.07543336811956212,
+      "paired_mean_ci95": [
+        -0.09757053355814663,
+        0.25735295413571013
+      ],
+      "n_pairs": 10
+    }
+  },
+  "method": "5000 whole-piece paired bootstrap resamples with fixed seed6221",
+  "checkpoint_sha256": "0b8c14b123c35cbbeaa7ec41db7e68331ac218139e58456b69009684f79ba5b6",
+  "configuration": {
+    "temperature": 1.0,
+    "top_k": 0,
+    "top_p": 0.95,
+    "seed": 20261022,
+    "device": "cpu",
+    "bars": 16,
+    "conditioning": "normal"
+  },
+  "normal_reference": "Frozen original T1 normal-melody generation, retained independently of any later formal bonus selection.",
+  "normal_manifest_sha256": "c19bbc8d977e721e7b8fc53f40f23dd232fce1a5d3f0c0e058048f8a0b9244c9",
+  "ablation_manifest_sha256": "c288ed419fa6205f882a8e67a5822d7113b1ed00fd421fa1249b8edb5d194347",
+  "melody_and_beat_inputs_identical": true,
+  "original_output_melody_preservation_checked": true,
+  "submission_eligible": false,
+  "table_headers": [
+    "Metric",
+    "Normal",
+    "Empty melody",
+    "Normal-empty",
+    "95% low",
+    "95% high"
+  ],
+  "table_rows": [
+    [
+      "CA",
+      0.1125,
+      0.0375,
+      0.075,
+      0.025,
+      0.13125
+    ],
+    [
+      "OA_P",
+      0.8552106208486407,
+      0.8503728696647646,
+      0.004837751183876082,
+      -0.0033940432210458013,
+      0.012828768974005991
+    ],
+    [
+      "OA_V",
+      0.6131011920934041,
+      0.3779364237956388,
+      0.23516476829776528,
+      0.13592515275852476,
+      0.33823493271828775
+    ],
+    [
+      "OA_D",
+      0.7358276393486696,
+      0.600178960712227,
+      0.13564867863644253,
+      0.03426649178694196,
+      0.2615194023902419
+    ],
+    [
+      "OA_IOI",
+      0.5687461351214067,
+      0.49331276700184457,
+      0.07543336811956212,
+      -0.09757053355814663,
+      0.25735295413571013
+    ]
+  ],
+  "interpretation": "Across these ten paired prompts, normal-minus-empty intervals lie above zero for CA, OA_V, OA_D, below zero for no metrics, and include zero for OA_P, OA_IOI. The five percentile intervals are unadjusted; they describe this intervention and do not establish a causal improvement in musical quality.",
+  "limitations": "Removing all MELODY notes is an out-of-distribution intervention and changes context length and later sampled histories. It cannot isolate a causal effect on musical quality. Both outputs restore exactly the original melody; the empty variant is evaluation-only and is excluded from the formal submission.",
+  "interval_excludes_zero_positive": [
+    "CA",
+    "OA_V",
+    "OA_D"
+  ],
+  "interval_excludes_zero_negative": [],
+  "interval_includes_zero": [
+    "OA_P",
+    "OA_IOI"
+  ]
+}

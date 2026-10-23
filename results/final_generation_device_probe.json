@@ -1,0 +1,17 @@
+{
+  "after_training_exclusive_device_probe": true,
+  "selected": "cpu",
+  "measurements": [
+    {
+      "device": "cpu",
+      "cached_step_seconds": 0.0009552605508361012,
+      "max_absolute_logit_difference_vs_cpu": 0.0
+    },
+    {
+      "device": "mps",
+      "cached_step_seconds": 0.004301185400254326,
+      "max_absolute_logit_difference_vs_cpu": 3.337860107421875e-06
+    }
+  ],
+  "limitation": "Small latency and numerical comparison only; sampling across devices can diverge despite close logits."
+}

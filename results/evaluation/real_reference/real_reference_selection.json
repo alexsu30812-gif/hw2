@@ -1,0 +1,325 @@
+{
+  "rule": "One center-nearest32bar crop per pre-refit validation song, ties choose earlier; no metric-based selection",
+  "split": "val",
+  "included": 45,
+  "excluded": [],
+  "selection": [
+    {
+      "song_name": "007",
+      "start_bar": 44,
+      "n_bars": 32,
+      "source_bars": 121,
+      "split": "val"
+    },
+    {
+      "song_name": "008",
+      "start_bar": 19,
+      "n_bars": 32,
+      "source_bars": 71,
+      "split": "val"
+    },
+    {
+      "song_name": "014",
+      "start_bar": 32,
+      "n_bars": 32,
+      "source_bars": 97,
+      "split": "val"
+    },
+    {
+      "song_name": "026",
+      "start_bar": 17,
+      "n_bars": 32,
+      "source_bars": 66,
+      "split": "val"
+    },
+    {
+      "song_name": "091",
+      "start_bar": 15,
+      "n_bars": 32,
+      "source_bars": 63,
+      "split": "val"
+    },
+    {
+      "song_name": "093",
+      "start_bar": 17,
+      "n_bars": 32,
+      "source_bars": 67,
+      "split": "val"
+    },
+    {
+      "song_name": "122",
+      "start_bar": 17,
+      "n_bars": 32,
+      "source_bars": 66,
+      "split": "val"
+    },
+    {
+      "song_name": "125",
+      "start_bar": 33,
+      "n_bars": 32,
+      "source_bars": 99,
+      "split": "val"
+    },
+    {
+      "song_name": "131",
+      "start_bar": 29,
+      "n_bars": 32,
+      "source_bars": 91,
+      "split": "val"
+    },
+    {
+      "song_name": "141",
+      "start_bar": 19,
+      "n_bars": 32,
+      "source_bars": 70,
+      "split": "val"
+    },
+    {
+      "song_name": "144",
+      "start_bar": 17,
+      "n_bars": 32,
+      "source_bars": 66,
+      "split": "val"
+    },
+    {
+      "song_name": "153",
+      "start_bar": 37,
+      "n_bars": 32,
+      "source_bars": 107,
+      "split": "val"
+    },
+    {
+      "song_name": "196",
+      "start_bar": 39,
+      "n_bars": 32,
+      "source_bars": 110,
+      "split": "val"
+    },
+    {
+      "song_name": "220",
+      "start_bar": 26,
+      "n_bars": 32,
+      "source_bars": 85,
+      "split": "val"
+    },
+    {
+      "song_name": "268",
+      "start_bar": 24,
+      "n_bars": 32,
+      "source_bars": 81,
+      "split": "val"
+    },
+    {
+      "song_name": "286",
+      "start_bar": 26,
+      "n_bars": 32,
+      "source_bars": 85,
+      "split": "val"
+    },
+    {
+      "song_name": "296",
+      "start_bar": 20,
+      "n_bars": 32,
+      "source_bars": 73,
+      "split": "val"
+    },
+    {
+      "song_name": "298",
+      "start_bar": 8,
+      "n_bars": 32,
+      "source_bars": 49,
+      "split": "val"
+    },
+    {
+      "song_name": "317",
+      "start_bar": 14,
+      "n_bars": 32,
+      "source_bars": 61,
+      "split": "val"
+    },
+    {
+      "song_name": "335",
+      "start_bar": 30,
+      "n_bars": 32,
+      "source_bars": 93,
+      "split": "val"
+    },
+    {
+      "song_name": "336",
+      "start_bar": 45,
+      "n_bars": 32,
+      "source_bars": 122,
+      "split": "val"
+    },
+    {
+      "song_name": "369",
+      "start_bar": 20,
+      "n_bars": 32,
+      "source_bars": 73,
+      "split": "val"
+    },
+    {
+      "song_name": "392",
+      "start_bar": 17,
+      "n_bars": 32,
+      "source_bars": 67,
+      "split": "val"
+    },
+    {
+      "song_name": "397",
+      "start_bar": 13,
+      "n_bars": 32,
+      "source_bars": 59,
+      "split": "val"
+    },
+    {
+      "song_name": "402",
+      "start_bar": 24,
+      "n_bars": 32,
+      "source_bars": 81,
+      "split": "val"
+    },
+    {
+      "song_name": "403",
+      "start_bar": 24,
+      "n_bars": 32,
+      "source_bars": 80,
+      "split": "val"
+    },
+    {
+      "song_name": "424",
+      "start_bar": 28,
+      "n_bars": 32,
+      "source_bars": 88,
+      "split": "val"
+    },
+    {
+      "song_name": "446",
+      "start_bar": 25,
+      "n_bars": 32,
+      "source_bars": 83,
+      "split": "val"
+    },
+    {
+      "song_name": "451",
+      "start_bar": 34,
+      "n_bars": 32,
+      "source_bars": 101,
+      "split": "val"
+    },
+    {
+      "song_name": "476",
+      "start_bar": 9,
+      "n_bars": 32,
+      "source_bars": 51,
+      "split": "val"
+    },
+    {
+      "song_name": "488",
+      "start_bar": 26,
+      "n_bars": 32,
+      "source_bars": 85,
+      "split": "val"
+    },
+    {
+      "song_name": "489",
+      "start_bar": 21,
+      "n_bars": 32,
+      "source_bars": 74,
+      "split": "val"
+    },
+    {
+      "song_name": "507",
+      "start_bar": 21,
+      "n_bars": 32,
+      "source_bars": 75,
+      "split": "val"
+    },
+    {
+      "song_name": "523",
+      "start_bar": 39,
+      "n_bars": 32,
+      "source_bars": 110,
+      "split": "val"
+    },
+    {
+      "song_name": "537",
+      "start_bar": 45,
+      "n_bars": 32,
+      "source_bars": 123,
+      "split": "val"
+    },
+    {
+      "song_name": "557",
+      "start_bar": 44,
+      "n_bars": 32,
+      "source_bars": 121,
+      "split": "val"
+    },
+    {
+      "song_name": "561",
+      "start_bar": 24,
+      "n_bars": 32,
+      "source_bars": 80,
+      "split": "val"
+    },
+    {
+      "song_name": "632",
+      "start_bar": 46,
+      "n_bars": 32,
+      "source_bars": 125,
+      "split": "val"
+    },
+    {
+      "song_name": "673",
+      "start_bar": 22,
+      "n_bars": 32,
+      "source_bars": 77,
+      "split": "val"
+    },
+    {
+      "song_name": "675",
+      "start_bar": 35,
+      "n_bars": 32,
+      "source_bars": 102,
+      "split": "val"
+    },
+    {
+      "song_name": "722",
+      "start_bar": 21,
+      "n_bars": 32,
+      "source_bars": 74,
+      "split": "val"
+    },
+    {
+      "song_name": "723",
+      "start_bar": 20,
+      "n_bars": 32,
+      "source_bars": 72,
+      "split": "val"
+    },
+    {
+      "song_name": "759",
+      "start_bar": 9,
+      "n_bars": 32,
+      "source_bars": 50,
+      "split": "val"
+    },
+    {
+      "song_name": "807",
+      "start_bar": 9,
+      "n_bars": 32,
+      "source_bars": 50,
+      "split": "val"
+    },
+    {
+      "song_name": "882",
+      "start_bar": 41,
+      "n_bars": 32,
+      "source_bars": 115,
+      "split": "val"
+    }
+  ],
+  "reference_scope": "Pre-refit validation split, held out from the diagnostic model only. The final model is refit on all896 official training songs, including these songs, so this is a descriptive real-data reference and is not independent of that final model.",
+  "rare_meter_policy": "12beat bars cannot fit official128position16subdivision grid; choose nearest eligible crop"
+}

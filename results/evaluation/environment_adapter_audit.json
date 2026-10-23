@@ -1,0 +1,20 @@
+{
+  "python": "3.10.11",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "scipy": "1.14.1",
+  "pretty_midi": "0.2.11",
+  "scipy_stats_import_ok": true,
+  "scipy_wheel_sha256": "d0d2821003174de06b69e58cef2316a6622b60ee613121199cb2852a873f8cf3",
+  "scipy_wheel_sha256_verified": true,
+  "environment_scope": "hw2/.venv only; no package mutation needed in this continuation",
+  "canonical_empty_final_bar_check": {
+    "analytic_H4": 0.0,
+    "observed_H4": 0.0,
+    "analytic_GS": 0.99951171875,
+    "observed_GS": 0.99951171875,
+    "n_bars": 32
+  },
+  "reference_scope": "Pre-refit validation split, held out from the diagnostic model only. The final model is refit on all896 official training songs, including these songs, so this is a descriptive real-data reference and is not independent of that final model."
+}

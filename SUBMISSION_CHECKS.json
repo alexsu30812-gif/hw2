@@ -1,0 +1,854 @@
+{
+  "sample_counts": {
+    "basic_a": 20,
+    "basic_b": 9,
+    "bonus": 10
+  },
+  "midi_wav_pairs": [
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_001.mid",
+      "wav": "results/basic_a/t12/sample_001.wav",
+      "midi_info": {
+        "notes": 776,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.28106689453125,
+        "rms": 0.03444266691579802
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_002.mid",
+      "wav": "results/basic_a/t12/sample_002.wav",
+      "midi_info": {
+        "notes": 759,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.29736328125,
+        "rms": 0.02854839751539309
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_003.mid",
+      "wav": "results/basic_a/t12/sample_003.wav",
+      "midi_info": {
+        "notes": 560,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.18157958984375,
+        "rms": 0.021987210931555232
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_004.mid",
+      "wav": "results/basic_a/t12/sample_004.wav",
+      "midi_info": {
+        "notes": 884,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.19970703125,
+        "rms": 0.01821004958240526
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_005.mid",
+      "wav": "results/basic_a/t12/sample_005.wav",
+      "midi_info": {
+        "notes": 546,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.230438232421875,
+        "rms": 0.0277958934474462
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_006.mid",
+      "wav": "results/basic_a/t12/sample_006.wav",
+      "midi_info": {
+        "notes": 716,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.322845458984375,
+        "rms": 0.03423727579116253
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_007.mid",
+      "wav": "results/basic_a/t12/sample_007.wav",
+      "midi_info": {
+        "notes": 847,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.2353515625,
+        "rms": 0.024472581747808822
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_008.mid",
+      "wav": "results/basic_a/t12/sample_008.wav",
+      "midi_info": {
+        "notes": 463,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.22979736328125,
+        "rms": 0.028409063731834716
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_009.mid",
+      "wav": "results/basic_a/t12/sample_009.wav",
+      "midi_info": {
+        "notes": 470,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.18109130859375,
+        "rms": 0.02212225758318358
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_010.mid",
+      "wav": "results/basic_a/t12/sample_010.wav",
+      "midi_info": {
+        "notes": 431,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.178253173828125,
+        "rms": 0.016594167901950493
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_011.mid",
+      "wav": "results/basic_a/t12/sample_011.wav",
+      "midi_info": {
+        "notes": 405,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.155181884765625,
+        "rms": 0.01707511169399063
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_012.mid",
+      "wav": "results/basic_a/t12/sample_012.wav",
+      "midi_info": {
+        "notes": 977,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.1727294921875,
+        "rms": 0.01880048529120144
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_013.mid",
+      "wav": "results/basic_a/t12/sample_013.wav",
+      "midi_info": {
+        "notes": 675,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.21875,
+        "rms": 0.019204028719428678
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_014.mid",
+      "wav": "results/basic_a/t12/sample_014.wav",
+      "midi_info": {
+        "notes": 707,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.203704833984375,
+        "rms": 0.02215040043805589
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_015.mid",
+      "wav": "results/basic_a/t12/sample_015.wav",
+      "midi_info": {
+        "notes": 654,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.204559326171875,
+        "rms": 0.022887136870806683
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_016.mid",
+      "wav": "results/basic_a/t12/sample_016.wav",
+      "midi_info": {
+        "notes": 728,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.194000244140625,
+        "rms": 0.02289258077323318
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_017.mid",
+      "wav": "results/basic_a/t12/sample_017.wav",
+      "midi_info": {
+        "notes": 786,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.1688232421875,
+        "rms": 0.020336034994130312
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_018.mid",
+      "wav": "results/basic_a/t12/sample_018.wav",
+      "midi_info": {
+        "notes": 796,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.210235595703125,
+        "rms": 0.02615204179408696
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_019.mid",
+      "wav": "results/basic_a/t12/sample_019.wav",
+      "midi_info": {
+        "notes": 750,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.313934326171875,
+        "rms": 0.03637963150166847
+      }
+    },
+    {
+      "task": "basic_a",
+      "midi": "results/basic_a/t12/sample_020.mid",
+      "wav": "results/basic_a/t12/sample_020.wav",
+      "midi_info": {
+        "notes": 539,
+        "seconds": 64.0,
+        "track_names": [
+          "ANNOTATION_CLOCK",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.0,
+        "peak": 0.205291748046875,
+        "rms": 0.019714686835997842
+      }
+    },
+    {
+      "task": "basic_b",
+      "midi": "results/basic_b/t08/001.mid",
+      "wav": "results/basic_b/t08/001.wav",
+      "midi_info": {
+        "notes": 931,
+        "seconds": 119.9072797999993,
+        "track_names": [
+          "BRIDGE",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 121.90730158730159,
+        "peak": 0.37823486328125,
+        "rms": 0.03828380310052899
+      }
+    },
+    {
+      "task": "basic_b",
+      "midi": "results/basic_b/t08/002.mid",
+      "wav": "results/basic_b/t08/002.wav",
+      "midi_info": {
+        "notes": 1068,
+        "seconds": 71.11149070208329,
+        "track_names": [
+          "BRIDGE",
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 73.11147392290249,
+        "peak": 0.22344970703125,
+        "rms": 0.02839067430544878
+      }
+    },
+    {
+      "task": "basic_b",
+      "midi": "results/basic_b/t08/003.mid",
+      "wav": "results/basic_b/t08/003.wav",
+      "midi_info": {
+        "notes": 999,
+        "seconds": 111.30509779583313,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 113.30507936507937,
+        "peak": 0.1451416015625,
+        "rms": 0.018895373815062066
+      }
+    },
+    {
+      "task": "basic_b",
+      "midi": "results/basic_b/t10/001.mid",
+      "wav": "results/basic_b/t10/001.wav",
+      "midi_info": {
+        "notes": 1086,
+        "seconds": 119.90727979999943,
+        "track_names": [
+          "BRIDGE",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 121.90730158730159,
+        "peak": 0.353240966796875,
+        "rms": 0.03370465445998721
+      }
+    },
+    {
+      "task": "basic_b",
+      "midi": "results/basic_b/t10/002.mid",
+      "wav": "results/basic_b/t10/002.wav",
+      "midi_info": {
+        "notes": 1029,
+        "seconds": 71.11091199999939,
+        "track_names": [
+          "BRIDGE",
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 73.11092970521543,
+        "peak": 0.2264404296875,
+        "rms": 0.026263463348191695
+      }
+    },
+    {
+      "task": "basic_b",
+      "midi": "results/basic_b/t10/003.mid",
+      "wav": "results/basic_b/t10/003.wav",
+      "midi_info": {
+        "notes": 933,
+        "seconds": 111.30419200000027,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 113.30417233560091,
+        "peak": 0.145416259765625,
+        "rms": 0.017923907310447976
+      }
+    },
+    {
+      "task": "basic_b",
+      "midi": "results/basic_b/t12/001.mid",
+      "wav": "results/basic_b/t12/001.wav",
+      "midi_info": {
+        "notes": 773,
+        "seconds": 119.90727979999987,
+        "track_names": [
+          "BRIDGE",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 121.90730158730159,
+        "peak": 0.250091552734375,
+        "rms": 0.025945413828872166
+      }
+    },
+    {
+      "task": "basic_b",
+      "midi": "results/basic_b/t12/002.mid",
+      "wav": "results/basic_b/t12/002.wav",
+      "midi_info": {
+        "notes": 683,
+        "seconds": 71.11149070208289,
+        "track_names": [
+          "BRIDGE",
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 73.11147392290249,
+        "peak": 0.2625732421875,
+        "rms": 0.026453611908886773
+      }
+    },
+    {
+      "task": "basic_b",
+      "midi": "results/basic_b/t12/003.mid",
+      "wav": "results/basic_b/t12/003.wav",
+      "midi_info": {
+        "notes": 743,
+        "seconds": 111.3041920000003,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 113.30417233560091,
+        "peak": 0.15496826171875,
+        "rms": 0.014874283660575745
+      }
+    },
+    {
+      "task": "bonus",
+      "midi": "results/bonus/001.mid",
+      "wav": "results/bonus/001.wav",
+      "midi_info": {
+        "notes": 293,
+        "seconds": 38.91887999999997,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 40.91886621315193,
+        "peak": 0.128509521484375,
+        "rms": 0.019048842258908818
+      }
+    },
+    {
+      "task": "bonus",
+      "midi": "results/bonus/002.mid",
+      "wav": "results/bonus/002.wav",
+      "midi_info": {
+        "notes": 264,
+        "seconds": 34.286748068749944,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 36.28675736961451,
+        "peak": 0.214019775390625,
+        "rms": 0.02905239713162526
+      }
+    },
+    {
+      "task": "bonus",
+      "midi": "results/bonus/003.mid",
+      "wav": "results/bonus/003.wav",
+      "midi_info": {
+        "notes": 247,
+        "seconds": 34.90962418124999,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 36.909614512471656,
+        "peak": 0.19329833984375,
+        "rms": 0.019205721740789224
+      }
+    },
+    {
+      "task": "bonus",
+      "midi": "results/bonus/004.mid",
+      "wav": "results/bonus/004.wav",
+      "midi_info": {
+        "notes": 341,
+        "seconds": 54.85798085625008,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 56.85795918367347,
+        "peak": 0.209259033203125,
+        "rms": 0.02611154401809236
+      }
+    },
+    {
+      "task": "bonus",
+      "midi": "results/bonus/005.mid",
+      "wav": "results/bonus/005.wav",
+      "midi_info": {
+        "notes": 337,
+        "seconds": 49.870016000000135,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 51.87002267573696,
+        "peak": 0.271026611328125,
+        "rms": 0.03096264264834705
+      }
+    },
+    {
+      "task": "bonus",
+      "midi": "results/bonus/006.mid",
+      "wav": "results/bonus/006.wav",
+      "midi_info": {
+        "notes": 385,
+        "seconds": 27.937725000000043,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 29.937732426303853,
+        "peak": 0.23626708984375,
+        "rms": 0.02734706320489307
+      }
+    },
+    {
+      "task": "bonus",
+      "midi": "results/bonus/007.mid",
+      "wav": "results/bonus/007.wav",
+      "midi_info": {
+        "notes": 319,
+        "seconds": 64.13896158541691,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 66.13895691609977,
+        "peak": 0.206146240234375,
+        "rms": 0.025829727179963995
+      }
+    },
+    {
+      "task": "bonus",
+      "midi": "results/bonus/008.mid",
+      "wav": "results/bonus/008.wav",
+      "midi_info": {
+        "notes": 400,
+        "seconds": 52.66547716354167,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 54.66548752834467,
+        "peak": 0.2406005859375,
+        "rms": 0.02201953995875343
+      }
+    },
+    {
+      "task": "bonus",
+      "midi": "results/bonus/009.mid",
+      "wav": "results/bonus/009.wav",
+      "midi_info": {
+        "notes": 246,
+        "seconds": 44.13863839062501,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 46.13863945578231,
+        "peak": 0.125732421875,
+        "rms": 0.0180631490174333
+      }
+    },
+    {
+      "task": "bonus",
+      "midi": "results/bonus/010.mid",
+      "wav": "results/bonus/010.wav",
+      "midi_info": {
+        "notes": 197,
+        "seconds": 34.90962418125009,
+        "track_names": [
+          "MELODY",
+          "PIANO"
+        ]
+      },
+      "wav_info": {
+        "sample_rate": 22050,
+        "channels": 2,
+        "bits": 16,
+        "seconds": 36.909614512471656,
+        "peak": 0.1182861328125,
+        "rms": 0.017466597500779737
+      }
+    }
+  ],
+  "report": {
+    "path": "/Users/suboydemacbookpo/Desktop/\u6df1\u5ea6\u5b78\u7fd2\u65bc\u97f3\u6a02\u5206\u6790\u53ca\u751f\u6210 /hw2/r14942154_report.pdf",
+    "pages": 23,
+    "aspect_ratio": "16:9",
+    "draft": false,
+    "draft_reasons": []
+  },
+  "public_cloud_drive_url": "",
+  "user_provided_artifact_url": "https://github.com/alexsu30812-gif/hw2",
+  "cloud_drive_requirement_unverified": true,
+  "user_selected_repository_hosting": true,
+  "hosting_warnings": [
+    "Public artifacts use the user-selected GitHub repository. GitHub substitution for the slides' cloud-drive wording is unverified; no TA acceptance is claimed."
+  ],
+  "ta_acceptance_of_github_substitution_verified": false,
+  "public_access_independently_verified": false,
+  "excluded": [
+    "training MIDI",
+    "preprocessed sequences",
+    "third-party model weights",
+    "caches"
+  ],
+  "package_is_draft": false
+}

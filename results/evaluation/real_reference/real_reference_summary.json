@@ -1,0 +1,231 @@
+{
+  "tag": "real_reference",
+  "expected_pieces": 45,
+  "evaluated_pieces": 45,
+  "skipped_pieces": 0,
+  "expected_bars": 32,
+  "adapter": "model Pos8 -> official Pos16 by x2; 128 positions; identical for real/generated; empty bars carry a position-only event (no pitch or onset) so the official trailing-Bar rule retains them",
+  "uncertainty": "2000 whole-piece bootstrap draws, fixed seed8173; not overlapping H4 windows",
+  "summary": {
+    "H1": {
+      "mean": 2.1428956277367353,
+      "std": 0.15197221932085864,
+      "median": 2.1241566833346406,
+      "min": 1.8092062578757528,
+      "max": 2.4362355014623986,
+      "mean_ci95": [
+        2.1008851752379116,
+        2.1852854612890127
+      ]
+    },
+    "H4": {
+      "mean": 2.639773700017973,
+      "std": 0.12251574962567505,
+      "median": 2.65753345662653,
+      "min": 2.2647419785854375,
+      "max": 2.8526016720629057,
+      "mean_ci95": [
+        2.6047257414073814,
+        2.672839153659424
+      ]
+    },
+    "GS": {
+      "mean": 0.9708308831765232,
+      "std": 0.013551168635601959,
+      "median": 0.9723884828629032,
+      "min": 0.9411384828629032,
+      "max": 0.9963142641129032,
+      "mean_ci95": [
+        0.9668248680415547,
+        0.9744963527665772
+      ]
+    },
+    "n_bars": {
+      "mean": 32.0,
+      "std": 0.0,
+      "median": 32.0,
+      "min": 32.0,
+      "max": 32.0,
+      "mean_ci95": [
+        32.0,
+        32.0
+      ]
+    },
+    "n_notes": {
+      "mean": 734.4888888888889,
+      "std": 197.854816172941,
+      "median": 727.0,
+      "min": 360.0,
+      "max": 1376.0,
+      "mean_ci95": [
+        680.5316666666666,
+        792.8105555555554
+      ]
+    },
+    "notes_per_bar": {
+      "mean": 22.95277777777778,
+      "std": 6.182963005404407,
+      "median": 22.71875,
+      "min": 11.25,
+      "max": 43.0,
+      "mean_ci95": [
+        21.231927083333332,
+        24.70142361111111
+      ]
+    },
+    "empty_bar_fraction": {
+      "mean": 0.0,
+      "std": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "mean_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "unique_bar_fraction": {
+      "mean": 0.9256944444444445,
+      "std": 0.08921037586299119,
+      "median": 0.96875,
+      "min": 0.65625,
+      "max": 1.0,
+      "mean_ci95": [
+        0.8993055555555556,
+        0.950017361111111
+      ]
+    },
+    "longest_identical_bar_run": {
+      "mean": 1.0,
+      "std": 0.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "mean_ci95": [
+        1.0,
+        1.0
+      ]
+    },
+    "pitch_min": {
+      "mean": 37.22222222222222,
+      "std": 2.7042801839179518,
+      "median": 37.0,
+      "min": 31.0,
+      "max": 43.0,
+      "mean_ci95": [
+        36.48888888888889,
+        38.0
+      ]
+    },
+    "pitch_max": {
+      "mean": 85.93333333333334,
+      "std": 6.202638734661828,
+      "median": 85.0,
+      "min": 74.0,
+      "max": 101.0,
+      "mean_ci95": [
+        84.24444444444444,
+        87.77777777777777
+      ]
+    },
+    "pitch_std": {
+      "mean": 10.185825725177416,
+      "std": 1.1249795751418614,
+      "median": 10.391203494262424,
+      "min": 6.984595171785955,
+      "max": 12.528571527097021,
+      "mean_ci95": [
+        9.848303239787858,
+        10.492017705434703
+      ]
+    },
+    "velocity_mean": {
+      "mean": 88.0082170098797,
+      "std": 11.141641119504843,
+      "median": 91.04910714285714,
+      "min": 55.07954545454545,
+      "max": 107.6826923076923,
+      "mean_ci95": [
+        84.83888209380045,
+        91.09662170277505
+      ]
+    },
+    "velocity_std": {
+      "mean": 12.75730308200114,
+      "std": 4.7521590442020205,
+      "median": 13.875108583678033,
+      "min": 5.344741039331847,
+      "max": 21.788219193254335,
+      "mean_ci95": [
+        11.40078707656847,
+        14.124482173919109
+      ]
+    },
+    "mean_duration_beats": {
+      "mean": 0.7500885668072215,
+      "std": 0.202775908585912,
+      "median": 0.7140804597701149,
+      "min": 0.4054221854304636,
+      "max": 1.3836805555555556,
+      "mean_ci95": [
+        0.69430407986186,
+        0.8117261582683893
+      ]
+    },
+    "GS_active": {
+      "mean": 0.8867938881421744,
+      "std": 0.05068038959340619,
+      "median": 0.889679939516129,
+      "min": 0.7644279233870968,
+      "max": 0.9852570564516129,
+      "mean_ci95": [
+        0.8722052578031662,
+        0.9018867607526883
+      ]
+    },
+    "H4_valid_windows": {
+      "mean": 29.0,
+      "std": 0.0,
+      "median": 29.0,
+      "min": 29.0,
+      "max": 29.0,
+      "mean_ci95": [
+        29.0,
+        29.0
+      ]
+    },
+    "H4_total_windows": {
+      "mean": 29.0,
+      "std": 0.0,
+      "median": 29.0,
+      "min": 29.0,
+      "max": 29.0,
+      "mean_ci95": [
+        29.0,
+        29.0
+      ]
+    },
+    "H4_skipped_empty_windows": {
+      "mean": 0.0,
+      "std": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "mean_ci95": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "source_sha256": {
+    "eval_basic.py": "dac6f82057bbb594fdee9fbd33dd3ca2eca4dc18b8faf40c90cca127325a4f91",
+    "side_utils.py": "5bb6f8d73d4c4fd068aa0aab6f68818dff34178d8ef192afaee3615c704208a6"
+  },
+  "reference_scope": "Pre-refit validation split, held out from the diagnostic model only. The final model is refit on all896 official training songs, including these songs, so this is a descriptive real-data reference and is not independent of that final model.",
+  "selection_file": "real_reference_selection.json",
+  "reference_source_sha256": {
+    "tokens_basic.npz": "4d325fe3a8af63f51fc7f7b0b9d6ed999a532b3334492fe83a23e8e1d68e1fc1",
+    "metadata_basic.json": "0d6e91f5e32a105a0553ce0127297ee87fbb469d98134076d2ad77666bcf5d70",
+    "vocabulary.json": "ccf07d57a04e6dfd34682c2990190539f44a2c83b5f643efa657518d0731ae16"
+  }
+}

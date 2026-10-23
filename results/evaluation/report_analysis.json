@@ -1,0 +1,1893 @@
+{
+  "selected_configuration": "t12",
+  "selection_reasoning": "Minimum equal-weight mean standardized absolute H4/GS gap to the45song pre-refit real-data reference; objective symbolic selection, no human listening.",
+  "configuration_comparisons": {
+    "t08": {
+      "standardized_absolute_gaps": {
+        "H4": 0.26606770813928576,
+        "GS": 1.9671241465590605
+      },
+      "mean_gap": 1.1165959273491732,
+      "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+    },
+    "t10": {
+      "standardized_absolute_gaps": {
+        "H4": 0.6993096517852878,
+        "GS": 1.6070906410231798
+      },
+      "mean_gap": 1.1532001464042339,
+      "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+    },
+    "t12": {
+      "standardized_absolute_gaps": {
+        "H4": 1.1820155104909522,
+        "GS": 0.049063484441955636
+      },
+      "mean_gap": 0.615539497466454,
+      "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+    },
+    "k16": {
+      "standardized_absolute_gaps": {
+        "H4": 0.7003221827344214,
+        "GS": 0.8183295857958567
+      },
+      "mean_gap": 0.759325884265139,
+      "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+    },
+    "k32": {
+      "standardized_absolute_gaps": {
+        "H4": 0.5412176052572822,
+        "GS": 0.835241571285938
+      },
+      "mean_gap": 0.6882295882716101,
+      "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+    }
+  },
+  "human_listening_performed": false,
+  "configuration_manifest_sha256": {
+    "t08": "0769e54530cd2f9cd561592878a9b4df70273ba98864a0c5b6e37b9e33b453ee",
+    "t10": "e42704d03b97fb4f9b912217a78703c29799b7a097f7000e9560bdf6f238ff2f",
+    "t12": "be621fb1dbb58a2200c5706187ad56c9b5abc49905c75847831c3630b350fc9f",
+    "k16": "72a5c5775bb755c424da05829b77e059e910ee3477497a6eb867990083f0ac25",
+    "k32": "39ffc1e22540c828a1631d38948d6cd814b2544a7cb2aea0a03b77dc085917af"
+  },
+  "reference_scope": "Pre-refit validation split, held out from the diagnostic model only. The final model is refit on all896 official training songs, including these songs, so this is a descriptive real-data reference and is not independent of that final model.",
+  "selection_on_reported_samples": true,
+  "basic_a_selection": {
+    "method": "Minimum equal-weight mean standardized absolute H4/GS gap to the45song pre-refit real-data reference; objective symbolic selection, no human listening.",
+    "scores": {
+      "t08": {
+        "standardized_absolute_gaps": {
+          "H4": 0.26606770813928576,
+          "GS": 1.9671241465590605
+        },
+        "mean_gap": 1.1165959273491732,
+        "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+      },
+      "t10": {
+        "standardized_absolute_gaps": {
+          "H4": 0.6993096517852878,
+          "GS": 1.6070906410231798
+        },
+        "mean_gap": 1.1532001464042339,
+        "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+      },
+      "t12": {
+        "standardized_absolute_gaps": {
+          "H4": 1.1820155104909522,
+          "GS": 0.049063484441955636
+        },
+        "mean_gap": 0.615539497466454,
+        "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+      },
+      "k16": {
+        "standardized_absolute_gaps": {
+          "H4": 0.7003221827344214,
+          "GS": 0.8183295857958567
+        },
+        "mean_gap": 0.759325884265139,
+        "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+      },
+      "k32": {
+        "standardized_absolute_gaps": {
+          "H4": 0.5412176052572822,
+          "GS": 0.835241571285938
+        },
+        "mean_gap": 0.6882295882716101,
+        "selection_rule": "Minimize mean absolute standardized gap to real H4/GS; inspect degeneration diagnostics separately"
+      }
+    }
+  },
+  "basic_b_best": {
+    "001": "t12",
+    "002": "t12",
+    "003": "t10"
+  },
+  "basic_b_reasons": {
+    "001": {
+      "t08": "Boundary score=1.0342; density ratio=1.926; pitch mean jump=4.54558404558405; pitch-class Jaccard=1.000.",
+      "t10": "Boundary score=1.0499; density ratio=1.815; pitch mean jump=3.7331821617535894; pitch-class Jaccard=0.857.",
+      "t12": "Boundary score=0.4552; density ratio=1.333; pitch mean jump=-0.2962962962962976; pitch-class Jaccard=0.857."
+    },
+    "002": {
+      "t08": "Boundary score=0.8008; density ratio=1.239; pitch mean jump=1.0366132723112145; pitch-class Jaccard=0.500.",
+      "t10": "Boundary score=0.7137; density ratio=1.522; pitch mean jump=2.0260869565217376; pitch-class Jaccard=0.875.",
+      "t12": "Boundary score=0.5566; density ratio=0.913; pitch mean jump=2.587991718426494; pitch-class Jaccard=0.750."
+    },
+    "003": {
+      "t08": "Boundary score=0.4288; density ratio=1.113; pitch mean jump=-2.1439078989446756; pitch-class Jaccard=0.857.",
+      "t10": "Boundary score=0.3285; density ratio=1.113; pitch mean jump=0.940837863767193; pitch-class Jaccard=0.857.",
+      "t12": "Boundary score=1.0464; density ratio=1.226; pitch mean jump=7.107982583454287; pitch-class Jaccard=0.750."
+    }
+  },
+  "basic_b_prompt_analysis": {
+    "001": "t12 minimizes the specified two-bar boundary score (0.4552); density ratio=1.333, pitch mean jump=-0.296 semitones, pitch-class Jaccard=0.857. This is a reproducible local continuity preference, with all original prefix notes verified. It is not a listener judgment or evidence of long-term musical development.",
+    "002": "t12 minimizes the specified two-bar boundary score (0.5566); density ratio=0.913, pitch mean jump=2.588 semitones, pitch-class Jaccard=0.750. This is a reproducible local continuity preference, with all original prefix notes verified. It is not a listener judgment or evidence of long-term musical development.",
+    "003": "t10 minimizes the specified two-bar boundary score (0.3285); density ratio=1.113, pitch mean jump=0.941 semitones, pitch-class Jaccard=0.857. This is a reproducible local continuity preference, with all original prefix notes verified. It is not a listener judgment or evidence of long-term musical development."
+  },
+  "prompt_analysis": [
+    {
+      "prompt_id": "001",
+      "best_configuration": "t12",
+      "analysis": "t12 minimizes the specified two-bar boundary score (0.4552); density ratio=1.333, pitch mean jump=-0.296 semitones, pitch-class Jaccard=0.857.",
+      "discussion": "This is a reproducible local continuity preference, with all original prefix notes verified. It is not a listener judgment or evidence of long-term musical development.",
+      "comparison": [
+        {
+          "before": {
+            "notes_per_bar": 13.5,
+            "pitch_mean": 59.18518518518518,
+            "velocity_mean": 80.66666666666667,
+            "duration_beats_mean": 1.0,
+            "pitch_classes": [
+              0,
+              2,
+              3,
+              5,
+              7,
+              9,
+              10
+            ]
+          },
+          "after": {
+            "notes_per_bar": 26.0,
+            "pitch_mean": 63.73076923076923,
+            "velocity_mean": 89.46153846153847,
+            "duration_beats_mean": 0.65625,
+            "pitch_classes": [
+              0,
+              2,
+              3,
+              5,
+              7,
+              9,
+              10
+            ]
+          },
+          "pitch_class_jaccard": 1.0,
+          "pitch_mean_jump": 4.54558404558405,
+          "note_density_ratio": 1.9259259259259258,
+          "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+          "boundary_selection_score": 1.0342055230424356,
+          "song_name": "001",
+          "configuration_id": "t08",
+          "generated24bar_diagnostics": {
+            "n_bars": 24,
+            "n_notes": 807,
+            "notes_per_bar": 33.625,
+            "empty_bar_fraction": 0.0,
+            "unique_bar_fraction": 1.0,
+            "longest_identical_bar_run": 1,
+            "pitch_min": 31,
+            "pitch_max": 100,
+            "pitch_std": 14.451046164613855,
+            "velocity_mean": 114.57992565055763,
+            "velocity_std": 16.866286397633964,
+            "mean_duration_beats": 0.5676889714993805,
+            "GS_active": 0.8890398550724637,
+            "H4_valid_windows": 21,
+            "H4_total_windows": 21,
+            "H4_skipped_empty_windows": 0
+          }
+        },
+        {
+          "before": {
+            "notes_per_bar": 13.5,
+            "pitch_mean": 59.18518518518518,
+            "velocity_mean": 80.66666666666667,
+            "duration_beats_mean": 1.0,
+            "pitch_classes": [
+              0,
+              2,
+              3,
+              5,
+              7,
+              9,
+              10
+            ]
+          },
+          "after": {
+            "notes_per_bar": 24.5,
+            "pitch_mean": 62.91836734693877,
+            "velocity_mean": 99.95918367346938,
+            "duration_beats_mean": 0.6811224489795918,
+            "pitch_classes": [
+              0,
+              2,
+              5,
+              7,
+              9,
+              10
+            ]
+          },
+          "pitch_class_jaccard": 0.8571428571428571,
+          "pitch_mean_jump": 3.7331821617535894,
+          "note_density_ratio": 1.8148148148148149,
+          "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+          "boundary_selection_score": 1.049939088442906,
+          "song_name": "001",
+          "configuration_id": "t10",
+          "generated24bar_diagnostics": {
+            "n_bars": 24,
+            "n_notes": 962,
+            "notes_per_bar": 40.083333333333336,
+            "empty_bar_fraction": 0.0,
+            "unique_bar_fraction": 1.0,
+            "longest_identical_bar_run": 1,
+            "pitch_min": 29,
+            "pitch_max": 108,
+            "pitch_std": 18.38542731891466,
+            "velocity_mean": 106.43659043659044,
+            "velocity_std": 17.348351908656998,
+            "mean_duration_beats": 0.3805873180873181,
+            "GS_active": 0.8823596014492754,
+            "H4_valid_windows": 21,
+            "H4_total_windows": 21,
+            "H4_skipped_empty_windows": 0
+          }
+        },
+        {
+          "before": {
+            "notes_per_bar": 13.5,
+            "pitch_mean": 59.18518518518518,
+            "velocity_mean": 80.66666666666667,
+            "duration_beats_mean": 1.0,
+            "pitch_classes": [
+              0,
+              2,
+              3,
+              5,
+              7,
+              9,
+              10
+            ]
+          },
+          "after": {
+            "notes_per_bar": 18.0,
+            "pitch_mean": 58.888888888888886,
+            "velocity_mean": 77.22222222222223,
+            "duration_beats_mean": 0.8298611111111112,
+            "pitch_classes": [
+              0,
+              2,
+              5,
+              7,
+              9,
+              10
+            ]
+          },
+          "pitch_class_jaccard": 0.8571428571428571,
+          "pitch_mean_jump": -0.2962962962962976,
+          "note_density_ratio": 1.3333333333333333,
+          "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+          "boundary_selection_score": 0.4552305733336152,
+          "song_name": "001",
+          "configuration_id": "t12",
+          "generated24bar_diagnostics": {
+            "n_bars": 24,
+            "n_notes": 649,
+            "notes_per_bar": 27.041666666666668,
+            "empty_bar_fraction": 0.0,
+            "unique_bar_fraction": 1.0,
+            "longest_identical_bar_run": 1,
+            "pitch_min": 31,
+            "pitch_max": 102,
+            "pitch_std": 15.552383080293902,
+            "velocity_mean": 94.79506933744221,
+            "velocity_std": 19.56025593013044,
+            "mean_duration_beats": 0.6633281972265023,
+            "GS_active": 0.8856431159420289,
+            "H4_valid_windows": 21,
+            "H4_total_windows": 21,
+            "H4_skipped_empty_windows": 0
+          }
+        }
+      ]
+    },
+    {
+      "prompt_id": "002",
+      "best_configuration": "t12",
+      "analysis": "t12 minimizes the specified two-bar boundary score (0.5566); density ratio=0.913, pitch mean jump=2.588 semitones, pitch-class Jaccard=0.750.",
+      "discussion": "This is a reproducible local continuity preference, with all original prefix notes verified. It is not a listener judgment or evidence of long-term musical development.",
+      "comparison": [
+        {
+          "before": {
+            "notes_per_bar": 23.0,
+            "pitch_mean": 64.17391304347827,
+            "velocity_mean": 85.30434782608695,
+            "duration_beats_mean": 0.8342391304347826,
+            "pitch_classes": [
+              0,
+              1,
+              3,
+              5,
+              6,
+              7,
+              8,
+              10
+            ]
+          },
+          "after": {
+            "notes_per_bar": 28.5,
+            "pitch_mean": 65.21052631578948,
+            "velocity_mean": 83.19298245614036,
+            "duration_beats_mean": 0.8377192982456141,
+            "pitch_classes": [
+              0,
+              3,
+              5,
+              8
+            ]
+          },
+          "pitch_class_jaccard": 0.5,
+          "pitch_mean_jump": 1.0366132723112145,
+          "note_density_ratio": 1.2391304347826086,
+          "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+          "boundary_selection_score": 0.800794310704723,
+          "song_name": "002",
+          "configuration_id": "t08",
+          "generated24bar_diagnostics": {
+            "n_bars": 24,
+            "n_notes": 891,
+            "notes_per_bar": 37.125,
+            "empty_bar_fraction": 0.0,
+            "unique_bar_fraction": 1.0,
+            "longest_identical_bar_run": 1,
+            "pitch_min": 34,
+            "pitch_max": 106,
+            "pitch_std": 17.038671958864757,
+            "velocity_mean": 85.6902356902357,
+            "velocity_std": 3.0429962364161627,
+            "mean_duration_beats": 0.5555555555555556,
+            "GS_active": 1.0,
+            "H4_valid_windows": 21,
+            "H4_total_windows": 21,
+            "H4_skipped_empty_windows": 0
+          }
+        },
+        {
+          "before": {
+            "notes_per_bar": 23.0,
+            "pitch_mean": 64.17391304347827,
+            "velocity_mean": 85.30434782608695,
+            "duration_beats_mean": 0.8342391304347826,
+            "pitch_classes": [
+              0,
+              1,
+              3,
+              5,
+              6,
+              7,
+              8,
+              10
+            ]
+          },
+          "after": {
+            "notes_per_bar": 35.0,
+            "pitch_mean": 66.2,
+            "velocity_mean": 85.77142857142857,
+            "duration_beats_mean": 0.5196428571428572,
+            "pitch_classes": [
+              0,
+              1,
+              3,
+              5,
+              7,
+              8,
+              10
+            ]
+          },
+          "pitch_class_jaccard": 0.875,
+          "pitch_mean_jump": 2.0260869565217376,
+          "note_density_ratio": 1.5217391304347827,
+          "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+          "boundary_selection_score": 0.7136944252704088,
+          "song_name": "002",
+          "configuration_id": "t10",
+          "generated24bar_diagnostics": {
+            "n_bars": 24,
+            "n_notes": 852,
+            "notes_per_bar": 35.5,
+            "empty_bar_fraction": 0.0,
+            "unique_bar_fraction": 1.0,
+            "longest_identical_bar_run": 1,
+            "pitch_min": 31,
+            "pitch_max": 103,
+            "pitch_std": 15.769804895965953,
+            "velocity_mean": 84.10328638497653,
+            "velocity_std": 5.311749620921014,
+            "mean_duration_beats": 0.38761737089201875,
+            "GS_active": 0.9407835144927537,
+            "H4_valid_windows": 21,
+            "H4_total_windows": 21,
+            "H4_skipped_empty_windows": 0
+          }
+        },
+        {
+          "before": {
+            "notes_per_bar": 23.0,
+            "pitch_mean": 64.17391304347827,
+            "velocity_mean": 85.30434782608695,
+            "duration_beats_mean": 0.8342391304347826,
+            "pitch_classes": [
+              0,
+              1,
+              3,
+              5,
+              6,
+              7,
+              8,
+              10
+            ]
+          },
+          "after": {
+            "notes_per_bar": 21.0,
+            "pitch_mean": 66.76190476190476,
+            "velocity_mean": 88.0,
+            "duration_beats_mean": 0.7083333333333334,
+            "pitch_classes": [
+              0,
+              3,
+              5,
+              7,
+              8,
+              10
+            ]
+          },
+          "pitch_class_jaccard": 0.75,
+          "pitch_mean_jump": 2.587991718426494,
+          "note_density_ratio": 0.9130434782608695,
+          "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+          "boundary_selection_score": 0.556637754741268,
+          "song_name": "002",
+          "configuration_id": "t12",
+          "generated24bar_diagnostics": {
+            "n_bars": 24,
+            "n_notes": 506,
+            "notes_per_bar": 21.083333333333332,
+            "empty_bar_fraction": 0.0,
+            "unique_bar_fraction": 1.0,
+            "longest_identical_bar_run": 1,
+            "pitch_min": 37,
+            "pitch_max": 103,
+            "pitch_std": 13.512068573146164,
+            "velocity_mean": 86.9802371541502,
+            "velocity_std": 17.307826965048452,
+            "mean_duration_beats": 0.8468379446640316,
+            "GS_active": 0.9330842391304348,
+            "H4_valid_windows": 21,
+            "H4_total_windows": 21,
+            "H4_skipped_empty_windows": 0
+          }
+        }
+      ]
+    },
+    {
+      "prompt_id": "003",
+      "best_configuration": "t10",
+      "analysis": "t10 minimizes the specified two-bar boundary score (0.3285); density ratio=1.113, pitch mean jump=0.941 semitones, pitch-class Jaccard=0.857.",
+      "discussion": "This is a reproducible local continuity preference, with all original prefix notes verified. It is not a listener judgment or evidence of long-term musical development.",
+      "comparison": [
+        {
+          "before": {
+            "notes_per_bar": 26.5,
+            "pitch_mean": 62.41509433962264,
+            "velocity_mean": 75.9622641509434,
+            "duration_beats_mean": 0.5165094339622641,
+            "pitch_classes": [
+              1,
+              2,
+              4,
+              6,
+              8,
+              9,
+              11
+            ]
+          },
+          "after": {
+            "notes_per_bar": 29.5,
+            "pitch_mean": 60.271186440677965,
+            "velocity_mean": 76.57627118644068,
+            "duration_beats_mean": 0.5127118644067796,
+            "pitch_classes": [
+              1,
+              2,
+              4,
+              6,
+              9,
+              11
+            ]
+          },
+          "pitch_class_jaccard": 0.8571428571428571,
+          "pitch_mean_jump": -2.1439078989446756,
+          "note_density_ratio": 1.1132075471698113,
+          "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+          "boundary_selection_score": 0.4287616647894635,
+          "song_name": "003",
+          "configuration_id": "t08",
+          "generated24bar_diagnostics": {
+            "n_bars": 24,
+            "n_notes": 817,
+            "notes_per_bar": 34.041666666666664,
+            "empty_bar_fraction": 0.0,
+            "unique_bar_fraction": 1.0,
+            "longest_identical_bar_run": 1,
+            "pitch_min": 35,
+            "pitch_max": 90,
+            "pitch_std": 10.7560808079009,
+            "velocity_mean": 77.31946144430844,
+            "velocity_std": 2.593094247429746,
+            "mean_duration_beats": 0.4981640146878825,
+            "GS_active": 0.9819972826086957,
+            "H4_valid_windows": 21,
+            "H4_total_windows": 21,
+            "H4_skipped_empty_windows": 0
+          }
+        },
+        {
+          "before": {
+            "notes_per_bar": 26.5,
+            "pitch_mean": 62.41509433962264,
+            "velocity_mean": 75.9622641509434,
+            "duration_beats_mean": 0.5165094339622641,
+            "pitch_classes": [
+              1,
+              2,
+              4,
+              6,
+              8,
+              9,
+              11
+            ]
+          },
+          "after": {
+            "notes_per_bar": 29.5,
+            "pitch_mean": 63.355932203389834,
+            "velocity_mean": 76.44067796610169,
+            "duration_beats_mean": 0.4533898305084746,
+            "pitch_classes": [
+              1,
+              2,
+              4,
+              6,
+              9,
+              11
+            ]
+          },
+          "pitch_class_jaccard": 0.8571428571428571,
+          "pitch_mean_jump": 0.940837863767193,
+          "note_density_ratio": 1.1132075471698113,
+          "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+          "boundary_selection_score": 0.32850582852467325,
+          "song_name": "003",
+          "configuration_id": "t10",
+          "generated24bar_diagnostics": {
+            "n_bars": 24,
+            "n_notes": 751,
+            "notes_per_bar": 31.291666666666668,
+            "empty_bar_fraction": 0.0,
+            "unique_bar_fraction": 1.0,
+            "longest_identical_bar_run": 1,
+            "pitch_min": 35,
+            "pitch_max": 95,
+            "pitch_std": 11.929759683278172,
+            "velocity_mean": 75.62450066577897,
+            "velocity_std": 4.482561147871495,
+            "mean_duration_beats": 0.47786284953395475,
+            "GS_active": 0.9585597826086957,
+            "H4_valid_windows": 21,
+            "H4_total_windows": 21,
+            "H4_skipped_empty_windows": 0
+          }
+        },
+        {
+          "before": {
+            "notes_per_bar": 26.5,
+            "pitch_mean": 62.41509433962264,
+            "velocity_mean": 75.9622641509434,
+            "duration_beats_mean": 0.5165094339622641,
+            "pitch_classes": [
+              1,
+              2,
+              4,
+              6,
+              8,
+              9,
+              11
+            ]
+          },
+          "after": {
+            "notes_per_bar": 32.5,
+            "pitch_mean": 69.52307692307693,
+            "velocity_mean": 74.98461538461538,
+            "duration_beats_mean": 0.4673076923076923,
+            "pitch_classes": [
+              1,
+              3,
+              4,
+              6,
+              8,
+              9,
+              11
+            ]
+          },
+          "pitch_class_jaccard": 0.75,
+          "pitch_mean_jump": 7.107982583454287,
+          "note_density_ratio": 1.2264150943396226,
+          "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+          "boundary_selection_score": 1.046427238298039,
+          "song_name": "003",
+          "configuration_id": "t12",
+          "generated24bar_diagnostics": {
+            "n_bars": 24,
+            "n_notes": 561,
+            "notes_per_bar": 23.375,
+            "empty_bar_fraction": 0.0,
+            "unique_bar_fraction": 1.0,
+            "longest_identical_bar_run": 1,
+            "pitch_min": 28,
+            "pitch_max": 107,
+            "pitch_std": 17.785976920662,
+            "velocity_mean": 75.54723707664884,
+            "velocity_std": 7.670695471409089,
+            "mean_duration_beats": 0.5581550802139037,
+            "GS_active": 0.5713315217391305,
+            "H4_valid_windows": 21,
+            "H4_total_windows": 21,
+            "H4_skipped_empty_windows": 0
+          }
+        }
+      ]
+    }
+  ],
+  "boundary_summaries": [
+    {
+      "before": {
+        "notes_per_bar": 13.5,
+        "pitch_mean": 59.18518518518518,
+        "velocity_mean": 80.66666666666667,
+        "duration_beats_mean": 1.0,
+        "pitch_classes": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          9,
+          10
+        ]
+      },
+      "after": {
+        "notes_per_bar": 26.0,
+        "pitch_mean": 63.73076923076923,
+        "velocity_mean": 89.46153846153847,
+        "duration_beats_mean": 0.65625,
+        "pitch_classes": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          9,
+          10
+        ]
+      },
+      "pitch_class_jaccard": 1.0,
+      "pitch_mean_jump": 4.54558404558405,
+      "note_density_ratio": 1.9259259259259258,
+      "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+      "boundary_selection_score": 1.0342055230424356,
+      "song_name": "001",
+      "configuration_id": "t08",
+      "generated24bar_diagnostics": {
+        "n_bars": 24,
+        "n_notes": 807,
+        "notes_per_bar": 33.625,
+        "empty_bar_fraction": 0.0,
+        "unique_bar_fraction": 1.0,
+        "longest_identical_bar_run": 1,
+        "pitch_min": 31,
+        "pitch_max": 100,
+        "pitch_std": 14.451046164613855,
+        "velocity_mean": 114.57992565055763,
+        "velocity_std": 16.866286397633964,
+        "mean_duration_beats": 0.5676889714993805,
+        "GS_active": 0.8890398550724637,
+        "H4_valid_windows": 21,
+        "H4_total_windows": 21,
+        "H4_skipped_empty_windows": 0
+      }
+    },
+    {
+      "before": {
+        "notes_per_bar": 23.0,
+        "pitch_mean": 64.17391304347827,
+        "velocity_mean": 85.30434782608695,
+        "duration_beats_mean": 0.8342391304347826,
+        "pitch_classes": [
+          0,
+          1,
+          3,
+          5,
+          6,
+          7,
+          8,
+          10
+        ]
+      },
+      "after": {
+        "notes_per_bar": 28.5,
+        "pitch_mean": 65.21052631578948,
+        "velocity_mean": 83.19298245614036,
+        "duration_beats_mean": 0.8377192982456141,
+        "pitch_classes": [
+          0,
+          3,
+          5,
+          8
+        ]
+      },
+      "pitch_class_jaccard": 0.5,
+      "pitch_mean_jump": 1.0366132723112145,
+      "note_density_ratio": 1.2391304347826086,
+      "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+      "boundary_selection_score": 0.800794310704723,
+      "song_name": "002",
+      "configuration_id": "t08",
+      "generated24bar_diagnostics": {
+        "n_bars": 24,
+        "n_notes": 891,
+        "notes_per_bar": 37.125,
+        "empty_bar_fraction": 0.0,
+        "unique_bar_fraction": 1.0,
+        "longest_identical_bar_run": 1,
+        "pitch_min": 34,
+        "pitch_max": 106,
+        "pitch_std": 17.038671958864757,
+        "velocity_mean": 85.6902356902357,
+        "velocity_std": 3.0429962364161627,
+        "mean_duration_beats": 0.5555555555555556,
+        "GS_active": 1.0,
+        "H4_valid_windows": 21,
+        "H4_total_windows": 21,
+        "H4_skipped_empty_windows": 0
+      }
+    },
+    {
+      "before": {
+        "notes_per_bar": 26.5,
+        "pitch_mean": 62.41509433962264,
+        "velocity_mean": 75.9622641509434,
+        "duration_beats_mean": 0.5165094339622641,
+        "pitch_classes": [
+          1,
+          2,
+          4,
+          6,
+          8,
+          9,
+          11
+        ]
+      },
+      "after": {
+        "notes_per_bar": 29.5,
+        "pitch_mean": 60.271186440677965,
+        "velocity_mean": 76.57627118644068,
+        "duration_beats_mean": 0.5127118644067796,
+        "pitch_classes": [
+          1,
+          2,
+          4,
+          6,
+          9,
+          11
+        ]
+      },
+      "pitch_class_jaccard": 0.8571428571428571,
+      "pitch_mean_jump": -2.1439078989446756,
+      "note_density_ratio": 1.1132075471698113,
+      "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+      "boundary_selection_score": 0.4287616647894635,
+      "song_name": "003",
+      "configuration_id": "t08",
+      "generated24bar_diagnostics": {
+        "n_bars": 24,
+        "n_notes": 817,
+        "notes_per_bar": 34.041666666666664,
+        "empty_bar_fraction": 0.0,
+        "unique_bar_fraction": 1.0,
+        "longest_identical_bar_run": 1,
+        "pitch_min": 35,
+        "pitch_max": 90,
+        "pitch_std": 10.7560808079009,
+        "velocity_mean": 77.31946144430844,
+        "velocity_std": 2.593094247429746,
+        "mean_duration_beats": 0.4981640146878825,
+        "GS_active": 0.9819972826086957,
+        "H4_valid_windows": 21,
+        "H4_total_windows": 21,
+        "H4_skipped_empty_windows": 0
+      }
+    },
+    {
+      "before": {
+        "notes_per_bar": 13.5,
+        "pitch_mean": 59.18518518518518,
+        "velocity_mean": 80.66666666666667,
+        "duration_beats_mean": 1.0,
+        "pitch_classes": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          9,
+          10
+        ]
+      },
+      "after": {
+        "notes_per_bar": 24.5,
+        "pitch_mean": 62.91836734693877,
+        "velocity_mean": 99.95918367346938,
+        "duration_beats_mean": 0.6811224489795918,
+        "pitch_classes": [
+          0,
+          2,
+          5,
+          7,
+          9,
+          10
+        ]
+      },
+      "pitch_class_jaccard": 0.8571428571428571,
+      "pitch_mean_jump": 3.7331821617535894,
+      "note_density_ratio": 1.8148148148148149,
+      "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+      "boundary_selection_score": 1.049939088442906,
+      "song_name": "001",
+      "configuration_id": "t10",
+      "generated24bar_diagnostics": {
+        "n_bars": 24,
+        "n_notes": 962,
+        "notes_per_bar": 40.083333333333336,
+        "empty_bar_fraction": 0.0,
+        "unique_bar_fraction": 1.0,
+        "longest_identical_bar_run": 1,
+        "pitch_min": 29,
+        "pitch_max": 108,
+        "pitch_std": 18.38542731891466,
+        "velocity_mean": 106.43659043659044,
+        "velocity_std": 17.348351908656998,
+        "mean_duration_beats": 0.3805873180873181,
+        "GS_active": 0.8823596014492754,
+        "H4_valid_windows": 21,
+        "H4_total_windows": 21,
+        "H4_skipped_empty_windows": 0
+      }
+    },
+    {
+      "before": {
+        "notes_per_bar": 23.0,
+        "pitch_mean": 64.17391304347827,
+        "velocity_mean": 85.30434782608695,
+        "duration_beats_mean": 0.8342391304347826,
+        "pitch_classes": [
+          0,
+          1,
+          3,
+          5,
+          6,
+          7,
+          8,
+          10
+        ]
+      },
+      "after": {
+        "notes_per_bar": 35.0,
+        "pitch_mean": 66.2,
+        "velocity_mean": 85.77142857142857,
+        "duration_beats_mean": 0.5196428571428572,
+        "pitch_classes": [
+          0,
+          1,
+          3,
+          5,
+          7,
+          8,
+          10
+        ]
+      },
+      "pitch_class_jaccard": 0.875,
+      "pitch_mean_jump": 2.0260869565217376,
+      "note_density_ratio": 1.5217391304347827,
+      "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+      "boundary_selection_score": 0.7136944252704088,
+      "song_name": "002",
+      "configuration_id": "t10",
+      "generated24bar_diagnostics": {
+        "n_bars": 24,
+        "n_notes": 852,
+        "notes_per_bar": 35.5,
+        "empty_bar_fraction": 0.0,
+        "unique_bar_fraction": 1.0,
+        "longest_identical_bar_run": 1,
+        "pitch_min": 31,
+        "pitch_max": 103,
+        "pitch_std": 15.769804895965953,
+        "velocity_mean": 84.10328638497653,
+        "velocity_std": 5.311749620921014,
+        "mean_duration_beats": 0.38761737089201875,
+        "GS_active": 0.9407835144927537,
+        "H4_valid_windows": 21,
+        "H4_total_windows": 21,
+        "H4_skipped_empty_windows": 0
+      }
+    },
+    {
+      "before": {
+        "notes_per_bar": 26.5,
+        "pitch_mean": 62.41509433962264,
+        "velocity_mean": 75.9622641509434,
+        "duration_beats_mean": 0.5165094339622641,
+        "pitch_classes": [
+          1,
+          2,
+          4,
+          6,
+          8,
+          9,
+          11
+        ]
+      },
+      "after": {
+        "notes_per_bar": 29.5,
+        "pitch_mean": 63.355932203389834,
+        "velocity_mean": 76.44067796610169,
+        "duration_beats_mean": 0.4533898305084746,
+        "pitch_classes": [
+          1,
+          2,
+          4,
+          6,
+          9,
+          11
+        ]
+      },
+      "pitch_class_jaccard": 0.8571428571428571,
+      "pitch_mean_jump": 0.940837863767193,
+      "note_density_ratio": 1.1132075471698113,
+      "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+      "boundary_selection_score": 0.32850582852467325,
+      "song_name": "003",
+      "configuration_id": "t10",
+      "generated24bar_diagnostics": {
+        "n_bars": 24,
+        "n_notes": 751,
+        "notes_per_bar": 31.291666666666668,
+        "empty_bar_fraction": 0.0,
+        "unique_bar_fraction": 1.0,
+        "longest_identical_bar_run": 1,
+        "pitch_min": 35,
+        "pitch_max": 95,
+        "pitch_std": 11.929759683278172,
+        "velocity_mean": 75.62450066577897,
+        "velocity_std": 4.482561147871495,
+        "mean_duration_beats": 0.47786284953395475,
+        "GS_active": 0.9585597826086957,
+        "H4_valid_windows": 21,
+        "H4_total_windows": 21,
+        "H4_skipped_empty_windows": 0
+      }
+    },
+    {
+      "before": {
+        "notes_per_bar": 13.5,
+        "pitch_mean": 59.18518518518518,
+        "velocity_mean": 80.66666666666667,
+        "duration_beats_mean": 1.0,
+        "pitch_classes": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          9,
+          10
+        ]
+      },
+      "after": {
+        "notes_per_bar": 18.0,
+        "pitch_mean": 58.888888888888886,
+        "velocity_mean": 77.22222222222223,
+        "duration_beats_mean": 0.8298611111111112,
+        "pitch_classes": [
+          0,
+          2,
+          5,
+          7,
+          9,
+          10
+        ]
+      },
+      "pitch_class_jaccard": 0.8571428571428571,
+      "pitch_mean_jump": -0.2962962962962976,
+      "note_density_ratio": 1.3333333333333333,
+      "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+      "boundary_selection_score": 0.4552305733336152,
+      "song_name": "001",
+      "configuration_id": "t12",
+      "generated24bar_diagnostics": {
+        "n_bars": 24,
+        "n_notes": 649,
+        "notes_per_bar": 27.041666666666668,
+        "empty_bar_fraction": 0.0,
+        "unique_bar_fraction": 1.0,
+        "longest_identical_bar_run": 1,
+        "pitch_min": 31,
+        "pitch_max": 102,
+        "pitch_std": 15.552383080293902,
+        "velocity_mean": 94.79506933744221,
+        "velocity_std": 19.56025593013044,
+        "mean_duration_beats": 0.6633281972265023,
+        "GS_active": 0.8856431159420289,
+        "H4_valid_windows": 21,
+        "H4_total_windows": 21,
+        "H4_skipped_empty_windows": 0
+      }
+    },
+    {
+      "before": {
+        "notes_per_bar": 23.0,
+        "pitch_mean": 64.17391304347827,
+        "velocity_mean": 85.30434782608695,
+        "duration_beats_mean": 0.8342391304347826,
+        "pitch_classes": [
+          0,
+          1,
+          3,
+          5,
+          6,
+          7,
+          8,
+          10
+        ]
+      },
+      "after": {
+        "notes_per_bar": 21.0,
+        "pitch_mean": 66.76190476190476,
+        "velocity_mean": 88.0,
+        "duration_beats_mean": 0.7083333333333334,
+        "pitch_classes": [
+          0,
+          3,
+          5,
+          7,
+          8,
+          10
+        ]
+      },
+      "pitch_class_jaccard": 0.75,
+      "pitch_mean_jump": 2.587991718426494,
+      "note_density_ratio": 0.9130434782608695,
+      "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+      "boundary_selection_score": 0.556637754741268,
+      "song_name": "002",
+      "configuration_id": "t12",
+      "generated24bar_diagnostics": {
+        "n_bars": 24,
+        "n_notes": 506,
+        "notes_per_bar": 21.083333333333332,
+        "empty_bar_fraction": 0.0,
+        "unique_bar_fraction": 1.0,
+        "longest_identical_bar_run": 1,
+        "pitch_min": 37,
+        "pitch_max": 103,
+        "pitch_std": 13.512068573146164,
+        "velocity_mean": 86.9802371541502,
+        "velocity_std": 17.307826965048452,
+        "mean_duration_beats": 0.8468379446640316,
+        "GS_active": 0.9330842391304348,
+        "H4_valid_windows": 21,
+        "H4_total_windows": 21,
+        "H4_skipped_empty_windows": 0
+      }
+    },
+    {
+      "before": {
+        "notes_per_bar": 26.5,
+        "pitch_mean": 62.41509433962264,
+        "velocity_mean": 75.9622641509434,
+        "duration_beats_mean": 0.5165094339622641,
+        "pitch_classes": [
+          1,
+          2,
+          4,
+          6,
+          8,
+          9,
+          11
+        ]
+      },
+      "after": {
+        "notes_per_bar": 32.5,
+        "pitch_mean": 69.52307692307693,
+        "velocity_mean": 74.98461538461538,
+        "duration_beats_mean": 0.4673076923076923,
+        "pitch_classes": [
+          1,
+          3,
+          4,
+          6,
+          8,
+          9,
+          11
+        ]
+      },
+      "pitch_class_jaccard": 0.75,
+      "pitch_mean_jump": 7.107982583454287,
+      "note_density_ratio": 1.2264150943396226,
+      "interpretation": "Descriptive boundary continuity only; abrupt musical changes can be valid",
+      "boundary_selection_score": 1.046427238298039,
+      "song_name": "003",
+      "configuration_id": "t12",
+      "generated24bar_diagnostics": {
+        "n_bars": 24,
+        "n_notes": 561,
+        "notes_per_bar": 23.375,
+        "empty_bar_fraction": 0.0,
+        "unique_bar_fraction": 1.0,
+        "longest_identical_bar_run": 1,
+        "pitch_min": 28,
+        "pitch_max": 107,
+        "pitch_std": 17.785976920662,
+        "velocity_mean": 75.54723707664884,
+        "velocity_std": 7.670695471409089,
+        "mean_duration_beats": 0.5581550802139037,
+        "GS_active": 0.5713315217391305,
+        "H4_valid_windows": 21,
+        "H4_total_windows": 21,
+        "H4_skipped_empty_windows": 0
+      }
+    }
+  ],
+  "additional_experiments": [
+    {
+      "name": "Sampling temperature and truncation",
+      "method": "Frozen final checkpoint,20 independent32bar samples per setting, identical seed schedule and canonical official metric adapter. Whole-piece bootstrap confidence intervals are stored with the primary metrics.",
+      "headers": [
+        "Set",
+        "n",
+        "H4",
+        "GS",
+        "GS_active",
+        "Notes/bar",
+        "Empty bars"
+      ],
+      "rows": [
+        [
+          "t08",
+          20,
+          2.607176215304103,
+          0.9974877142137096,
+          0.9899508568548387,
+          38.9515625,
+          0.0
+        ],
+        [
+          "t10",
+          20,
+          2.725450146226917,
+          0.992608839465726,
+          0.9704353578629032,
+          33.0796875,
+          0.0
+        ],
+        [
+          "t12",
+          20,
+          2.784589216354947,
+          0.970166015625,
+          0.8806640625,
+          21.0453125,
+          0.0
+        ],
+        [
+          "k16",
+          20,
+          2.7255741972151695,
+          0.9819202053931452,
+          0.9276808215725806,
+          26.05,
+          0.0
+        ],
+        [
+          "k32",
+          20,
+          2.7060813806366815,
+          0.9821493825604841,
+          0.9285975302419356,
+          23.859375,
+          0.0
+        ]
+      ],
+      "analysis": "The stated metric-distance rule selects t12, with standardized mean gap=0.6155. All settings retain their complete20piece output sets.",
+      "discussion": "Entropy describes pitch-class diversity; GS describes onset-pattern consistency. Density, rest and repetition diagnostics are needed to interpret them. Paired5000draw whole-piece bootstrap differences versus t10 are saved in paired_sampling_comparisons.json.",
+      "limitations": "The same reported sets are used for configuration selection. The real-data reference is not independent of the all896song final refit. No human listening study was performed.",
+      "evidence_files": [
+        "results/evaluation/basic_a/k16/copy_summary.json",
+        "results/evaluation/basic_a/k16/k16_summary.json",
+        "results/evaluation/basic_a/k32/copy_summary.json",
+        "results/evaluation/basic_a/k32/k32_summary.json",
+        "results/evaluation/basic_a/t08/copy_summary.json",
+        "results/evaluation/basic_a/t08/t08_summary.json",
+        "results/evaluation/basic_a/t10/copy_summary.json",
+        "results/evaluation/basic_a/t10/t10_summary.json",
+        "results/evaluation/basic_a/t12/copy_summary.json",
+        "results/evaluation/basic_a/t12/t12_summary.json",
+        "results/evaluation/basic_b/t08/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t08/t08_continuation24_summary.json",
+        "results/evaluation/basic_b/t08/t08_summary.json",
+        "results/evaluation/basic_b/t10/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t10/t10_continuation24_summary.json",
+        "results/evaluation/basic_b/t10/t10_summary.json",
+        "results/evaluation/basic_b/t12/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t12/t12_continuation24_summary.json",
+        "results/evaluation/basic_b/t12/t12_summary.json",
+        "results/evaluation/bonus/bonus_summary.json",
+        "results/evaluation/bonus_ablation_no_melody/bonus_ablation_no_melody_summary.json",
+        "results/evaluation/bonus_sampling/t08/t08_summary.json",
+        "results/evaluation/bonus_sampling/t12/t12_summary.json",
+        "results/evaluation/bonus_t10_reference/bonus_t10_reference_summary.json",
+        "results/evaluation/checkpoint_0500/checkpoint_0500_summary.json",
+        "results/evaluation/checkpoint_0500/copy_summary.json",
+        "results/evaluation/checkpoint_0500/official_cli_agreement.json",
+        "results/evaluation/checkpoint_2000/checkpoint_2000_summary.json",
+        "results/evaluation/checkpoint_2000/copy_summary.json",
+        "results/evaluation/environment_adapter_audit.json",
+        "results/evaluation/paired_sampling_comparisons.json",
+        "results/evaluation/real_reference/real_reference_summary.json",
+        "results/evaluation/real_reference_all/real_reference_summary.json"
+      ]
+    },
+    {
+      "name": "Checkpoint learning diagnostics",
+      "method": "Diagnostic checkpoints are evaluated on independently generated20piece32bar sets using the same seed schedule and canonical adapter.",
+      "headers": [
+        "Set",
+        "n",
+        "H4",
+        "GS",
+        "GS_active",
+        "Notes/bar",
+        "Empty bars"
+      ],
+      "rows": [
+        [
+          "checkpoint_0500",
+          20,
+          2.930327065279424,
+          0.9707354145665322,
+          0.8829416582661291,
+          11.559375,
+          0.0328125
+        ],
+        [
+          "checkpoint_2000",
+          20,
+          3.0406683060181314,
+          0.989794921875,
+          0.9591796875,
+          28.1640625,
+          0.0
+        ]
+      ],
+      "analysis": "Only completed20piece sets are included; partial generation manifests are excluded from this comparison.",
+      "discussion": "The500step model already has GS close to the real reference while generating roughly half its note density. Similar GS therefore does not establish realistic arrangement or musical quality.",
+      "limitations": "These are pre-refit diagnostic checkpoints, not the all896song final model. Different effective contexts can also influence generation, so checkpoint changes are not an isolated causal experiment.",
+      "evidence_files": [
+        "results/evaluation/basic_a/k16/copy_summary.json",
+        "results/evaluation/basic_a/k16/k16_summary.json",
+        "results/evaluation/basic_a/k32/copy_summary.json",
+        "results/evaluation/basic_a/k32/k32_summary.json",
+        "results/evaluation/basic_a/t08/copy_summary.json",
+        "results/evaluation/basic_a/t08/t08_summary.json",
+        "results/evaluation/basic_a/t10/copy_summary.json",
+        "results/evaluation/basic_a/t10/t10_summary.json",
+        "results/evaluation/basic_a/t12/copy_summary.json",
+        "results/evaluation/basic_a/t12/t12_summary.json",
+        "results/evaluation/basic_b/t08/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t08/t08_continuation24_summary.json",
+        "results/evaluation/basic_b/t08/t08_summary.json",
+        "results/evaluation/basic_b/t10/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t10/t10_continuation24_summary.json",
+        "results/evaluation/basic_b/t10/t10_summary.json",
+        "results/evaluation/basic_b/t12/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t12/t12_continuation24_summary.json",
+        "results/evaluation/basic_b/t12/t12_summary.json",
+        "results/evaluation/bonus/bonus_summary.json",
+        "results/evaluation/bonus_ablation_no_melody/bonus_ablation_no_melody_summary.json",
+        "results/evaluation/bonus_sampling/t08/t08_summary.json",
+        "results/evaluation/bonus_sampling/t12/t12_summary.json",
+        "results/evaluation/bonus_t10_reference/bonus_t10_reference_summary.json",
+        "results/evaluation/checkpoint_0500/checkpoint_0500_summary.json",
+        "results/evaluation/checkpoint_0500/copy_summary.json",
+        "results/evaluation/checkpoint_0500/official_cli_agreement.json",
+        "results/evaluation/checkpoint_2000/checkpoint_2000_summary.json",
+        "results/evaluation/checkpoint_2000/copy_summary.json",
+        "results/evaluation/environment_adapter_audit.json",
+        "results/evaluation/paired_sampling_comparisons.json",
+        "results/evaluation/real_reference/real_reference_summary.json",
+        "results/evaluation/real_reference_all/real_reference_summary.json"
+      ]
+    },
+    {
+      "name": "Official GS normalization sensitivity",
+      "method": "Keep the unchanged official128position GS and also report a separately named diagnostic using max(meter_a,meter_b)*8 active positions per bar pair.",
+      "headers": [
+        "Set",
+        "n",
+        "H4",
+        "GS",
+        "GS_active",
+        "Notes/bar",
+        "Empty bars"
+      ],
+      "rows": [
+        [
+          "Pre-refit real reference",
+          45,
+          2.639773700017973,
+          0.9708308831765232,
+          0.8867938881421744,
+          22.95277777777778,
+          0.0
+        ],
+        [
+          "t08",
+          20,
+          2.607176215304103,
+          0.9974877142137096,
+          0.9899508568548387,
+          38.9515625,
+          0.0
+        ],
+        [
+          "t10",
+          20,
+          2.725450146226917,
+          0.992608839465726,
+          0.9704353578629032,
+          33.0796875,
+          0.0
+        ],
+        [
+          "t12",
+          20,
+          2.784589216354947,
+          0.970166015625,
+          0.8806640625,
+          21.0453125,
+          0.0
+        ],
+        [
+          "k16",
+          20,
+          2.7255741972151695,
+          0.9819202053931452,
+          0.9276808215725806,
+          26.05,
+          0.0
+        ],
+        [
+          "k32",
+          20,
+          2.7060813806366815,
+          0.9821493825604841,
+          0.9285975302419356,
+          23.859375,
+          0.0
+        ]
+      ],
+      "analysis": "The canonical adapter maps the model8subdivisions/beat to16 by multiplying positions by2. Odd positions and positions outside the active meter remain zero; this raises official GS relative to the active-grid diagnostic.",
+      "discussion": "Both scores are shown without substituting the diagnostic for the required official metric. Real and generated sets use exactly the same adapter.",
+      "limitations": "GS ignores pitch, duration, note velocity and note multiplicity at one onset. It cannot certify melody, harmony or expressive phrasing.",
+      "evidence_files": [
+        "results/evaluation/basic_a/k16/copy_summary.json",
+        "results/evaluation/basic_a/k16/k16_summary.json",
+        "results/evaluation/basic_a/k32/copy_summary.json",
+        "results/evaluation/basic_a/k32/k32_summary.json",
+        "results/evaluation/basic_a/t08/copy_summary.json",
+        "results/evaluation/basic_a/t08/t08_summary.json",
+        "results/evaluation/basic_a/t10/copy_summary.json",
+        "results/evaluation/basic_a/t10/t10_summary.json",
+        "results/evaluation/basic_a/t12/copy_summary.json",
+        "results/evaluation/basic_a/t12/t12_summary.json",
+        "results/evaluation/basic_b/t08/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t08/t08_continuation24_summary.json",
+        "results/evaluation/basic_b/t08/t08_summary.json",
+        "results/evaluation/basic_b/t10/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t10/t10_continuation24_summary.json",
+        "results/evaluation/basic_b/t10/t10_summary.json",
+        "results/evaluation/basic_b/t12/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t12/t12_continuation24_summary.json",
+        "results/evaluation/basic_b/t12/t12_summary.json",
+        "results/evaluation/bonus/bonus_summary.json",
+        "results/evaluation/bonus_ablation_no_melody/bonus_ablation_no_melody_summary.json",
+        "results/evaluation/bonus_sampling/t08/t08_summary.json",
+        "results/evaluation/bonus_sampling/t12/t12_summary.json",
+        "results/evaluation/bonus_t10_reference/bonus_t10_reference_summary.json",
+        "results/evaluation/checkpoint_0500/checkpoint_0500_summary.json",
+        "results/evaluation/checkpoint_0500/copy_summary.json",
+        "results/evaluation/checkpoint_0500/official_cli_agreement.json",
+        "results/evaluation/checkpoint_2000/checkpoint_2000_summary.json",
+        "results/evaluation/checkpoint_2000/copy_summary.json",
+        "results/evaluation/environment_adapter_audit.json",
+        "results/evaluation/paired_sampling_comparisons.json",
+        "results/evaluation/real_reference/real_reference_summary.json",
+        "results/evaluation/real_reference_all/real_reference_summary.json"
+      ]
+    },
+    {
+      "name": "Exact local training matches",
+      "method": "Hash contiguous bars as position8/pitch/duration8 multisets, ignoring tempo, velocity and track names; compare every generated window to every bar of all896 final-refit training songs.",
+      "headers": [
+        "Configuration",
+        "Duplicate pieces",
+        "Nonempty1bar",
+        "Nonempty2bar",
+        "Nonempty4bar",
+        "Nonempty8bar"
+      ],
+      "rows": [
+        [
+          "t08",
+          0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          "t10",
+          0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          "t12",
+          0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          "k16",
+          0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          "k32",
+          0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "analysis": "Nonempty-window match fractions exclude fully silent windows. Raw silent-window matches remain available in each copy_per_piece.csv, avoiding an interpretation of shared silence as copied musical phrases.",
+      "discussion": "Every generated piece is retained in this check, with no metric-based removal.",
+      "limitations": "Zero exact matches does not establish originality: transposed, approximate, shifted, velocity-only or partial-note copying can escape this test.",
+      "evidence_files": [
+        "results/evaluation/basic_a/k16/copy_summary.json",
+        "results/evaluation/basic_a/k16/k16_summary.json",
+        "results/evaluation/basic_a/k32/copy_summary.json",
+        "results/evaluation/basic_a/k32/k32_summary.json",
+        "results/evaluation/basic_a/t08/copy_summary.json",
+        "results/evaluation/basic_a/t08/t08_summary.json",
+        "results/evaluation/basic_a/t10/copy_summary.json",
+        "results/evaluation/basic_a/t10/t10_summary.json",
+        "results/evaluation/basic_a/t12/copy_summary.json",
+        "results/evaluation/basic_a/t12/t12_summary.json",
+        "results/evaluation/basic_b/t08/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t08/t08_continuation24_summary.json",
+        "results/evaluation/basic_b/t08/t08_summary.json",
+        "results/evaluation/basic_b/t10/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t10/t10_continuation24_summary.json",
+        "results/evaluation/basic_b/t10/t10_summary.json",
+        "results/evaluation/basic_b/t12/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t12/t12_continuation24_summary.json",
+        "results/evaluation/basic_b/t12/t12_summary.json",
+        "results/evaluation/bonus/bonus_summary.json",
+        "results/evaluation/bonus_ablation_no_melody/bonus_ablation_no_melody_summary.json",
+        "results/evaluation/bonus_sampling/t08/t08_summary.json",
+        "results/evaluation/bonus_sampling/t12/t12_summary.json",
+        "results/evaluation/bonus_t10_reference/bonus_t10_reference_summary.json",
+        "results/evaluation/checkpoint_0500/checkpoint_0500_summary.json",
+        "results/evaluation/checkpoint_0500/copy_summary.json",
+        "results/evaluation/checkpoint_0500/official_cli_agreement.json",
+        "results/evaluation/checkpoint_2000/checkpoint_2000_summary.json",
+        "results/evaluation/checkpoint_2000/copy_summary.json",
+        "results/evaluation/environment_adapter_audit.json",
+        "results/evaluation/paired_sampling_comparisons.json",
+        "results/evaluation/real_reference/real_reference_summary.json",
+        "results/evaluation/real_reference_all/real_reference_summary.json"
+      ]
+    },
+    {
+      "name": "Continuation boundary continuity",
+      "method": "Compare two bars immediately before and after the8bar prompt boundary. Within each prompt minimize |log density ratio|+|pitch mean jump|/12+(1-pitch-class Jaccard).",
+      "headers": [
+        "Prompt",
+        "Selected setting",
+        "Score",
+        "Density ratio",
+        "Pitch mean jump",
+        "PC Jaccard"
+      ],
+      "rows": [
+        [
+          "003",
+          "t10",
+          0.32850582852467325,
+          1.1132075471698113,
+          0.940837863767193,
+          0.8571428571428571
+        ],
+        [
+          "001",
+          "t12",
+          0.4552305733336152,
+          1.3333333333333333,
+          -0.2962962962962976,
+          0.8571428571428571
+        ],
+        [
+          "002",
+          "t12",
+          0.556637754741268,
+          0.9130434782608695,
+          2.587991718426494,
+          0.75
+        ]
+      ],
+      "analysis": "Best settings under this fixed symbolic rule are 001:t12, 002:t12, 003:t10. Original8bar note pitch, velocity and timing identity are separately checked from the MIDI files.",
+      "discussion": "A low boundary score indicates a smaller local change in note density and pitch content; abrupt changes can still be musically valid.",
+      "limitations": "Two-bar statistics do not assess phrase completion, later24bar development or listener preference. Supplemental full32bar H4/GS includes the supplied prefix; continuation-only24bar metrics are saved separately.",
+      "evidence_files": [
+        "results/evaluation/basic_a/k16/copy_summary.json",
+        "results/evaluation/basic_a/k16/k16_summary.json",
+        "results/evaluation/basic_a/k32/copy_summary.json",
+        "results/evaluation/basic_a/k32/k32_summary.json",
+        "results/evaluation/basic_a/t08/copy_summary.json",
+        "results/evaluation/basic_a/t08/t08_summary.json",
+        "results/evaluation/basic_a/t10/copy_summary.json",
+        "results/evaluation/basic_a/t10/t10_summary.json",
+        "results/evaluation/basic_a/t12/copy_summary.json",
+        "results/evaluation/basic_a/t12/t12_summary.json",
+        "results/evaluation/basic_b/t08/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t08/t08_continuation24_summary.json",
+        "results/evaluation/basic_b/t08/t08_summary.json",
+        "results/evaluation/basic_b/t10/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t10/t10_continuation24_summary.json",
+        "results/evaluation/basic_b/t10/t10_summary.json",
+        "results/evaluation/basic_b/t12/boundary_diagnostics.json",
+        "results/evaluation/basic_b/t12/t12_continuation24_summary.json",
+        "results/evaluation/basic_b/t12/t12_summary.json",
+        "results/evaluation/bonus/bonus_summary.json",
+        "results/evaluation/bonus_ablation_no_melody/bonus_ablation_no_melody_summary.json",
+        "results/evaluation/bonus_sampling/t08/t08_summary.json",
+        "results/evaluation/bonus_sampling/t12/t12_summary.json",
+        "results/evaluation/bonus_t10_reference/bonus_t10_reference_summary.json",
+        "results/evaluation/checkpoint_0500/checkpoint_0500_summary.json",
+        "results/evaluation/checkpoint_0500/copy_summary.json",
+        "results/evaluation/checkpoint_0500/official_cli_agreement.json",
+        "results/evaluation/checkpoint_2000/checkpoint_2000_summary.json",
+        "results/evaluation/checkpoint_2000/copy_summary.json",
+        "results/evaluation/environment_adapter_audit.json",
+        "results/evaluation/paired_sampling_comparisons.json",
+        "results/evaluation/real_reference/real_reference_summary.json",
+        "results/evaluation/real_reference_all/real_reference_summary.json"
+      ]
+    },
+    {
+      "name": "Context length at a matched token budget",
+      "method": "Continue two branches from the same saved parent checkpoint. Compare their last checkpoints after approximately four million non-padding targets; the budget can overshoot by at most one optimizer step. Intermediate best checkpoints are excluded.",
+      "headers": [
+        "Context tokens",
+        "Processed targets",
+        "Validation NLL"
+      ],
+      "rows": [
+        [
+          2048,
+          4006540,
+          1.7063666595233018
+        ],
+        [
+          4096,
+          4003086,
+          1.740839534499692
+        ]
+      ],
+      "analysis": "The saved comparison selects context 2048 with validation cross-entropy 1.7064 nats. The 2,048-token branch scores 1.7064, compared with 1.7408 for 4,096 tokens.",
+      "discussion": "A longer context did not improve this continuation experiment under its measured budget. The selected branch is followed by the all-song refit.",
+      "limitations": "There is one branch per setting. Different sequence lengths change training windows and validation windows, and the token budgets are approximate. This does not establish that shorter context is generally better or isolate musical quality.",
+      "evidence_files": [
+        "results/context_comparison.json",
+        "artifacts/models/context_2048/history.json",
+        "artifacts/models/context_4096/history.json"
+      ]
+    },
+    {
+      "name": "Next-token errors by musical event family",
+      "method": "Evaluate both diagnostic checkpoints on the same 48 deterministic windows from all 45 pre-refit validation songs: 77,926 non-padding targets. Use full-vocabulary next-token scores, without grammar or sampling masks.",
+      "headers": [
+        "Family",
+        "Targets",
+        "NLL 500",
+        "NLL 2000",
+        "Accuracy 500",
+        "Accuracy 2000"
+      ],
+      "rows": [
+        [
+          "Pos",
+          18809,
+          1.3611944266622427,
+          0.8407290916469352,
+          0.5212398319953214,
+          0.6717528842575363
+        ],
+        [
+          "Pitch",
+          18799,
+          3.271543680210622,
+          2.6542905561578003,
+          0.08713229427097186,
+          0.19304218309484547
+        ],
+        [
+          "Vel",
+          18793,
+          2.3231731816077255,
+          2.201027421820813,
+          0.20768371202043315,
+          0.24450593306018198
+        ],
+        [
+          "Dur",
+          18781,
+          2.583189447484936,
+          2.3948512913513524,
+          0.2101592034502955,
+          0.2398168361642085
+        ],
+        [
+          "Tempo",
+          910,
+          3.847911625642043,
+          0.5430600266054191,
+          0.041758241758241756,
+          0.8769230769230769
+        ],
+        [
+          "Meter",
+          910,
+          0.259671319222876,
+          0.18305966342789132,
+          0.9461538461538461,
+          0.967032967032967
+        ]
+      ],
+      "analysis": "Overall cross-entropy decreases from 2.3667 to 1.9712 nats; full-vocabulary top-1 accuracy rises from 26.54% to 35.51%. Pitch remains difficult (2.6543 nats), compared with position (0.8407).",
+      "discussion": "The matched window hash and target counts prevent a changing evaluation sample from explaining the checkpoint difference. Six event families are shown; the saved source also retains Bar and EOS statistics.",
+      "limitations": "These are pre-refit teacher-forced diagnostics. Better token prediction does not establish better long-form music. Type-conditioned scores in the source know the target family and must not be treated as unconstrained prediction accuracy.",
+      "evidence_files": [
+        "results/token_diagnostics_0500.json",
+        "results/token_diagnostics_2000.json"
+      ]
+    },
+    {
+      "name": "Bonus melody-conditioning ablation",
+      "method": "Same roles checkpoint,10 identical prompts and seed schedule,T1/top-p.95. Remove MELODY note quartets while keeping bar/meter/tempo/track headers; restore the complete original melody in both exports. Evaluate the unchanged official CA/OA and bootstrap paired whole prompts5000times.",
+      "headers": [
+        "Metric",
+        "Normal",
+        "Empty melody",
+        "Normal-empty",
+        "95% low",
+        "95% high"
+      ],
+      "rows": [
+        [
+          "CA",
+          0.1125,
+          0.0375,
+          0.075,
+          0.025,
+          0.13125
+        ],
+        [
+          "OA_P",
+          0.8552106208486407,
+          0.8503728696647646,
+          0.004837751183876082,
+          -0.0033940432210458013,
+          0.012828768974005991
+        ],
+        [
+          "OA_V",
+          0.6131011920934041,
+          0.3779364237956388,
+          0.23516476829776528,
+          0.13592515275852476,
+          0.33823493271828775
+        ],
+        [
+          "OA_D",
+          0.7358276393486696,
+          0.600178960712227,
+          0.13564867863644253,
+          0.03426649178694196,
+          0.2615194023902419
+        ],
+        [
+          "OA_IOI",
+          0.5687461351214067,
+          0.49331276700184457,
+          0.07543336811956212,
+          -0.09757053355814663,
+          0.25735295413571013
+        ]
+      ],
+      "analysis": "Across these ten paired prompts, normal-minus-empty intervals lie above zero for CA, OA_V, OA_D, below zero for no metrics, and include zero for OA_P, OA_IOI. The five percentile intervals are unadjusted; they describe this intervention and do not establish a causal improvement in musical quality.",
+      "discussion": "Positive normal-minus-empty differences favor the normal condition on that metric; negative differences favor the empty condition. Confidence intervals and all10 paired prompt rows are retained.",
+      "limitations": "Removing all MELODY notes is an out-of-distribution intervention and changes context length and later sampled histories. It cannot isolate a causal effect on musical quality. Both outputs restore exactly the original melody; the empty variant is evaluation-only and is excluded from the formal submission.",
+      "evidence_files": [
+        "results/evaluation/bonus_conditioning_ablation.json",
+        "results/evaluation/bonus_conditioning_ablation_per_prompt.csv",
+        "results/evaluation/bonus_t10_reference/bonus_t10_reference_summary.json",
+        "results/evaluation/bonus_t10_reference/bonus_t10_reference_per_piece.csv",
+        "results/evaluation/bonus_ablation_no_melody/bonus_ablation_no_melody_summary.json",
+        "results/evaluation/bonus_ablation_no_melody/bonus_ablation_no_melody_per_piece.csv"
+      ]
+    },
+    {
+      "name": "Bonus sampling temperature selection",
+      "method": "Hold the roles checkpoint, ten melody prompts, seed schedule and top-p .95 fixed; compare normal-conditioning temperatures .8, 1.0 and 1.2. Select the largest equal-weight average of the five official CA/OA metrics.",
+      "headers": [
+        "T",
+        "CA",
+        "OA_P",
+        "OA_V",
+        "OA_D",
+        "OA_IOI",
+        "Mean"
+      ],
+      "rows": [
+        [
+          0.8,
+          0.1,
+          0.8557469079004985,
+          0.455922242402361,
+          0.5947610200821625,
+          0.5150928782243349,
+          0.5043046097218714
+        ],
+        [
+          1.0,
+          0.1125,
+          0.8552106208486407,
+          0.6131011920934041,
+          0.7358276393486696,
+          0.5687461351214067,
+          0.5770771174824241
+        ],
+        [
+          1.2,
+          0.14375,
+          0.8601708203672928,
+          0.5810510064731524,
+          0.6724049250324711,
+          0.6055185929406367,
+          0.5725790689627106
+        ]
+      ],
+      "analysis": "The predefined composite selects t10 (T=1.0), mean=0.5771. Its difference from runner-up t12 is +0.0045, paired 95% interval [-0.0216, +0.0295]. The fixed T1 baseline is retained for the conditioning ablation.",
+      "discussion": "All ten prompts remain in each condition. Paired prompt-bootstrap differences from T1 and all per-prompt composite values are saved with the evidence.",
+      "limitations": "Temperature selection uses the same10 provided prompts and evaluation ground truth; this is in-sample tuning without an independent test. A larger composite or individual metric does not establish better music or listener preference. The fixed T1 conditioning-ablation baseline is preserved separately.",
+      "evidence_files": [
+        "results/evaluation/bonus_sampling_comparison.json",
+        "results/evaluation/bonus_sampling_comparison_per_prompt.csv",
+        "results/evaluation/bonus_sampling/t08/t08_summary.json",
+        "results/evaluation/bonus_sampling/t08/t08_per_piece.csv",
+        "results/evaluation/bonus_sampling/t12/t12_summary.json",
+        "results/evaluation/bonus_sampling/t12/t12_per_piece.csv",
+        "results/evaluation/bonus_t10_reference/bonus_t10_reference_summary.json",
+        "results/evaluation/bonus_t10_reference/bonus_t10_reference_per_piece.csv"
+      ]
+    },
+    {
+      "name": "Real-data reference sensitivity",
+      "method": "Same deterministic center-nearest eligible32bar crop per song and identical canonical16subdivision/128position adapter. All896 official songs were considered; short or unrepresentable songs are listed individually.",
+      "headers": [
+        "Reference",
+        "Included",
+        "Excluded",
+        "H4",
+        "GS",
+        "Notes/bar"
+      ],
+      "rows": [
+        [
+          "Primary45",
+          45,
+          0,
+          2.639773700017973,
+          0.9708308831765232,
+          22.95277777777778
+        ],
+        [
+          "All eligible",
+          891,
+          5,
+          2.6407313287595158,
+          0.970596721725544,
+          22.490179573512908
+        ]
+      ],
+      "analysis": "Primary45 minus all-reference mean shifts are H4=-0.008 full-set standard deviations, GS=+0.015 full-set standard deviations, notes_per_bar=+0.082 full-set standard deviations. The all-reference mean falls inside the primary45 whole-piece bootstrap interval for 3/3 descriptors. The subset closely matches the full eligible set under these measured descriptors; this supports its descriptive use here, without establishing representative musical style or perceived quality.",
+      "discussion": "Selected t12 minus primary45: H4=+0.1448, GS=-0.0007, notes_per_bar=-1.9075. Selected t12 minus all_eligible: H4=+0.1439, GS=-0.0004, notes_per_bar=-1.4449. The primary45 reference and selected configuration are retained exactly as specified.",
+      "limitations": "The45song set is contained in the full set; these comparisons are descriptive and are not independent hypothesis tests. Agreement on H4/GS/density does not establish representative musical style or perceived quality.",
+      "evidence_files": [
+        "results/evaluation/reference_sensitivity.json",
+        "results/evaluation/real_reference_all/real_reference_summary.json",
+        "results/evaluation/real_reference_all/real_reference_per_piece.csv",
+        "results/evaluation/real_reference_all/real_reference_selection.json"
+      ]
+    }
+  ],
+  "failures": [],
+  "limitations": [
+    "No human listening or preference ratings were collected; selections use the stated symbolic proxies.",
+    "The primary 45-song reference was held out only before the final fit. Both the 45-song and 891-song real references overlap the final model trained on all 896 songs; the final model has no independent test set.",
+    "Sampling settings are selected using the displayed generated sets. Bootstrap intervals describe variability over pieces or prompts for one checkpoint, without repeated training seeds.",
+    "Generation uses grammar masks, a 64-note cap per bar, fixed generated meter/tempo and context rollover. These choices constrain expression and long-range memory.",
+    "Eight positions per beat, quantized velocity and a 32-beat duration cap lose source detail. Original continuation prefixes and bonus melodies are restored after generation and verified separately.",
+    "H4 measures pitch-class diversity and GS measures onset consistency with padded position normalization. Neither certifies musical quality; OA histograms also omit note order and pitch register.",
+    "The bonus model conditions on melody and beat timing, without explicit chord input. Its measured chord agreement remains low relative to the ground-truth piano self-reference.",
+    "Zero exact training-window matches does not rule out approximate, transposed or partial-note copying.",
+    "The official metrics are descriptive proxies; no numeric formula converts these values into a course grade.",
+    "Removing all MELODY notes is an out-of-distribution intervention and changes context length and later sampled histories. It cannot isolate a causal effect on musical quality. Both outputs restore exactly the original melody; the empty variant is evaluation-only and is excluded from the formal submission.",
+    "Temperature selection uses the same10 provided prompts and evaluation ground truth; this is in-sample tuning without an independent test. A larger composite or individual metric does not establish better music or listener preference. The fixed T1 conditioning-ablation baseline is preserved separately."
+  ],
+  "evidence_files": [
+    "results/evaluation/final_integrity_audit.json"
+  ],
+  "bonus_method": "The roles Transformer reads only the supplied melody and annotation beat grid, forces MELODY tokens as context at each bar, and samples PIANO notes. Export restores the original melody notes; ground-truth piano/chords are used only by the evaluator."
+}

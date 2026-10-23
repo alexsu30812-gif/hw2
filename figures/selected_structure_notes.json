@@ -1,0 +1,8 @@
+{
+  "sample": "sample_001",
+  "selection": "first saved seed, not chosen by its structure plot",
+  "similarity_definition": "cosine of per-bar12-pitch-class note-count vectors; emptybar vectors remain0",
+  "limitation": "This is a diagnostic plot, not MusDr SI, and similarity alone does not establish musical form.",
+  "n_bars": 32,
+  "notes": 776
+}

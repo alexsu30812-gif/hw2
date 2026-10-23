@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/slSeanWU/MusDr",
+  "commit": "b034cf86550963cf2021299eafb1001d0fe34853",
+  "files": {
+    "musdr/side_utils.py": "5bb6f8d73d4c4fd068aa0aab6f68818dff34178d8ef192afaee3615c704208a6",
+    "LICENSE": "b732b3b0ff01ff971452943a1baaf3c23b55aee60eda5b2d89a445ec5a15b453"
+  }
+}

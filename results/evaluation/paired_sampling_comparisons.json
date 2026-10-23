@@ -1,0 +1,122 @@
+{
+  "t08": {
+    "metrics": {
+      "H4": {
+        "mean_second_minus_first": -0.11827393092281462,
+        "paired_mean_ci95": [
+          -0.18936407376396275,
+          -0.03956884509738914
+        ],
+        "n_pairs": 20
+      },
+      "GS": {
+        "mean_second_minus_first": 0.004878874747983852,
+        "paired_mean_ci95": [
+          0.0030624488092237958,
+          0.006909297820060449
+        ],
+        "n_pairs": 20
+      },
+      "GS_active": {
+        "mean_second_minus_first": 0.01951549899193548,
+        "paired_mean_ci95": [
+          0.012249795236895145,
+          0.02763719128024193
+        ],
+        "n_pairs": 20
+      }
+    },
+    "method": "5000 whole-piece paired bootstrap resamples with fixed seed6221",
+    "caution": "Same seeds reduce sampling variability but do not imply note-level correspondence across configurations; this is not an official grading score"
+  },
+  "t12": {
+    "metrics": {
+      "H4": {
+        "mean_second_minus_first": 0.05913907012802973,
+        "paired_mean_ci95": [
+          -0.015998104695430573,
+          0.13446578241900334
+        ],
+        "n_pairs": 20
+      },
+      "GS": {
+        "mean_second_minus_first": -0.022442823840725795,
+        "paired_mean_ci95": [
+          -0.034279391381048394,
+          -0.01233368904359876
+        ],
+        "n_pairs": 20
+      },
+      "GS_active": {
+        "mean_second_minus_first": -0.08977129536290315,
+        "paired_mean_ci95": [
+          -0.13711756552419346,
+          -0.049334756174395124
+        ],
+        "n_pairs": 20
+      }
+    },
+    "method": "5000 whole-piece paired bootstrap resamples with fixed seed6221",
+    "caution": "Same seeds reduce sampling variability but do not imply note-level correspondence across configurations; this is not an official grading score"
+  },
+  "k16": {
+    "metrics": {
+      "H4": {
+        "mean_second_minus_first": 0.00012405098825274408,
+        "paired_mean_ci95": [
+          -0.06471930403439094,
+          0.06103540483551093
+        ],
+        "n_pairs": 20
+      },
+      "GS": {
+        "mean_second_minus_first": -0.010688634072580649,
+        "paired_mean_ci95": [
+          -0.014257143082157286,
+          -0.00731868620841735
+        ],
+        "n_pairs": 20
+      },
+      "GS_active": {
+        "mean_second_minus_first": -0.04275453629032257,
+        "paired_mean_ci95": [
+          -0.05702857232862898,
+          -0.029274744833669403
+        ],
+        "n_pairs": 20
+      }
+    },
+    "method": "5000 whole-piece paired bootstrap resamples with fixed seed6221",
+    "caution": "Same seeds reduce sampling variability but do not imply note-level correspondence across configurations; this is not an official grading score"
+  },
+  "k32": {
+    "metrics": {
+      "H4": {
+        "mean_second_minus_first": -0.01936876559023497,
+        "paired_mean_ci95": [
+          -0.09180339541235835,
+          0.056559250099065324
+        ],
+        "n_pairs": 20
+      },
+      "GS": {
+        "mean_second_minus_first": -0.010459456905241948,
+        "paired_mean_ci95": [
+          -0.015261230468750015,
+          -0.006175635553175429
+        ],
+        "n_pairs": 20
+      },
+      "GS_active": {
+        "mean_second_minus_first": -0.04183782762096772,
+        "paired_mean_ci95": [
+          -0.06104492187499999,
+          -0.024702542212701656
+        ],
+        "n_pairs": 20
+      }
+    },
+    "method": "5000 whole-piece paired bootstrap resamples with fixed seed6221",
+    "caution": "Same seeds reduce sampling variability but do not imply note-level correspondence across configurations; this is not an official grading score"
+  }
+}

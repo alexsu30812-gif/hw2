@@ -1,0 +1,59 @@
+{
+  "experiment": "Representation reconstruction at 4, 8 and 16 subdivisions per annotation beat",
+  "method": "All 896 original training songs; identical annotation beat maps, rounding, velocity bins, merged tracks, 32-beat maximum duration. Position vocabulary supports 16 beats per bar at every resolution. No Transformer is retrained for this ablation.",
+  "n_training_songs": 896,
+  "n_notes": 1508536,
+  "results": {
+    "4": {
+      "clipped": 2,
+      "oov": 0,
+      "before_first_beat": 196,
+      "exact_same_pitch_grid_collisions": 45779,
+      "vocabulary_size": 491,
+      "onset_error_seconds": {
+        "mae": 0.00569172019681998,
+        "p95": 0.04065205466665134,
+        "max": 0.7089424685833333
+      },
+      "offset_error_seconds": {
+        "mae": 0.05080955465865499,
+        "p95": 0.11898527531249492,
+        "max": 8.732112480000012
+      }
+    },
+    "8": {
+      "clipped": 2,
+      "oov": 0,
+      "before_first_beat": 196,
+      "exact_same_pitch_grid_collisions": 44076,
+      "vocabulary_size": 683,
+      "onset_error_seconds": {
+        "mae": 0.003192491264640196,
+        "p95": 0.025448692499967507,
+        "max": 0.7089424685833333
+      },
+      "offset_error_seconds": {
+        "mae": 0.023955848717304502,
+        "p95": 0.05461527083333095,
+        "max": 8.732112480000012
+      }
+    },
+    "16": {
+      "clipped": 2,
+      "oov": 0,
+      "before_first_beat": 196,
+      "exact_same_pitch_grid_collisions": 42856,
+      "vocabulary_size": 1067,
+      "onset_error_seconds": {
+        "mae": 0.001746620880414314,
+        "p95": 0.013260850999987639,
+        "max": 0.7089424685833333
+      },
+      "offset_error_seconds": {
+        "mae": 0.012081517726670148,
+        "p95": 0.027264903416664765,
+        "max": 8.732112480000012
+      }
+    }
+  }
+}

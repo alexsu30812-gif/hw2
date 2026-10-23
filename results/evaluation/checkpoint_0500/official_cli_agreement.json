@@ -1,0 +1,11 @@
+{
+  "pieces": 20,
+  "metrics": [
+    "H1",
+    "H4",
+    "GS"
+  ],
+  "all_agree_to_absolute_tolerance": 1e-12,
+  "official_cli_executed": true,
+  "source_unchanged": true
+}

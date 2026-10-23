@@ -1,0 +1,145 @@
+{
+  "method": "MIDI source to quantized tokens, decode using original annotation clock, independent pretty_midi readback; checks count, pitch, quantized velocity and all note times. Includes compound/three-beat meter, largest pickup error and both duration-cap songs.",
+  "test_cases": [
+    {
+      "song_id": "001",
+      "notes": 1556,
+      "bar_beats": [
+        4
+      ],
+      "max_export_onset_error_sec": 0.0002222216666893928,
+      "max_export_offset_error_sec": 0.0002222216666893928,
+      "invalid_events": 0,
+      "source_quantization_stats": {
+        "source_notes": 1556,
+        "encoded_notes": 1556,
+        "duration_clipped": 0,
+        "onsets_before_first_beat": 0,
+        "onsets_after_requested_range": 0,
+        "onset_error_sec_sum": 2.774159731246672,
+        "onset_error_sec_max": 0.04605544041663734,
+        "offset_error_sec_sum": 31.862698120832732,
+        "offset_error_sec_max": 0.07894424708333503
+      }
+    },
+    {
+      "song_id": "003",
+      "notes": 1887,
+      "bar_beats": [
+        2,
+        3,
+        4
+      ],
+      "max_export_onset_error_sec": 0.00018292650003104427,
+      "max_export_offset_error_sec": 0.00018292650005946598,
+      "invalid_events": 0,
+      "source_quantization_stats": {
+        "source_notes": 1887,
+        "encoded_notes": 1887,
+        "duration_clipped": 0,
+        "onsets_before_first_beat": 0,
+        "onsets_after_requested_range": 0,
+        "onset_error_sec_sum": 4.3588336175165825,
+        "onset_error_sec_max": 0.09012178900002255,
+        "offset_error_sec_sum": 42.081509618998616,
+        "offset_error_sec_max": 0.12213392649999832
+      }
+    },
+    {
+      "song_id": "009",
+      "notes": 1628,
+      "bar_beats": [
+        3,
+        4,
+        6
+      ],
+      "max_export_onset_error_sec": 9.0579375012112e-05,
+      "max_export_offset_error_sec": 9.0579375012112e-05,
+      "invalid_events": 0,
+      "source_quantization_stats": {
+        "source_notes": 1628,
+        "encoded_notes": 1628,
+        "duration_clipped": 0,
+        "onsets_before_first_beat": 0,
+        "onsets_after_requested_range": 0,
+        "onset_error_sec_sum": 1.896369795008123,
+        "onset_error_sec_max": 0.0528983549999964,
+        "offset_error_sec_sum": 21.54267391500005,
+        "offset_error_sec_max": 0.061050498750006454
+      }
+    },
+    {
+      "song_id": "205",
+      "notes": 1588,
+      "bar_beats": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "max_export_onset_error_sec": 2.0680499972058897e-05,
+      "max_export_offset_error_sec": 2.068049998626975e-05,
+      "invalid_events": 0,
+      "source_quantization_stats": {
+        "source_notes": 1588,
+        "encoded_notes": 1588,
+        "duration_clipped": 1,
+        "onsets_before_first_beat": 0,
+        "onsets_after_requested_range": 0,
+        "onset_error_sec_sum": 1.369909551872131,
+        "onset_error_sec_max": 0.048441769083325426,
+        "offset_error_sec_sum": 19.709831076578595,
+        "offset_error_sec_max": 0.2210286749999284
+      }
+    },
+    {
+      "song_id": "209",
+      "notes": 1611,
+      "bar_beats": [
+        4,
+        6
+      ],
+      "max_export_onset_error_sec": 0.00011963625013322599,
+      "max_export_offset_error_sec": 0.0001196362501616477,
+      "invalid_events": 0,
+      "source_quantization_stats": {
+        "source_notes": 1611,
+        "encoded_notes": 1611,
+        "duration_clipped": 1,
+        "onsets_before_first_beat": 0,
+        "onsets_after_requested_range": 0,
+        "onset_error_sec_sum": 1.3576857586750184,
+        "onset_error_sec_max": 0.057734375000023874,
+        "offset_error_sec_sum": 28.292157368811992,
+        "offset_error_sec_max": 8.732112480000012
+      }
+    },
+    {
+      "song_id": "736",
+      "notes": 1377,
+      "bar_beats": [
+        2,
+        4,
+        6
+      ],
+      "max_export_onset_error_sec": 0.00031690087502056485,
+      "max_export_offset_error_sec": 0.00031690087502056485,
+      "invalid_events": 0,
+      "source_quantization_stats": {
+        "source_notes": 1377,
+        "encoded_notes": 1377,
+        "duration_clipped": 0,
+        "onsets_before_first_beat": 4,
+        "onsets_after_requested_range": 0,
+        "onset_error_sec_sum": 4.389992610177453,
+        "onset_error_sec_max": 0.7089424685833333,
+        "offset_error_sec_sum": 36.9814870434997,
+        "offset_error_sec_max": 0.7423931165000002
+      }
+    }
+  ],
+  "all_pass": true,
+  "max_allowed_export_error_sec": 0.002,
+  "quantization_note": "Export error is against quantized token times; original-to-token timing error is separately recorded and is not zero."
+}

@@ -1,0 +1,238 @@
+{
+  "tag": "k32",
+  "expected_pieces": 20,
+  "evaluated_pieces": 20,
+  "skipped_pieces": 0,
+  "expected_bars": 32,
+  "adapter": "model Pos8 -> official Pos16 by x2; 128 positions; identical for real/generated; empty bars carry a position-only event (no pitch or onset) so the official trailing-Bar rule retains them",
+  "uncertainty": "2000 whole-piece bootstrap draws, fixed seed8173; not overlapping H4 windows",
+  "summary": {
+    "H1": {
+      "mean": 2.2310455706171917,
+      "std": 0.13238448962307067,
+      "median": 2.2465405868085937,
+      "min": 1.8762550701183254,
+      "max": 2.5001760522897545,
+      "mean_ci95": [
+        2.1757972441302895,
+        2.2849920289477783
+      ]
+    },
+    "H4": {
+      "mean": 2.7060813806366815,
+      "std": 0.11165586263642571,
+      "median": 2.6953497702864126,
+      "min": 2.493580178156768,
+      "max": 2.996286990636633,
+      "mean_ci95": [
+        2.6607116392496653,
+        2.752517875830905
+      ]
+    },
+    "GS": {
+      "mean": 0.9821493825604841,
+      "std": 0.009521275545514506,
+      "median": 0.9847766507056452,
+      "min": 0.9529674899193549,
+      "max": 0.9951801915322581,
+      "mean_ci95": [
+        0.9780514034148186,
+        0.985800485918599
+      ]
+    },
+    "n_bars": {
+      "mean": 32.0,
+      "std": 0.0,
+      "median": 32.0,
+      "min": 32.0,
+      "max": 32.0,
+      "mean_ci95": [
+        32.0,
+        32.0
+      ]
+    },
+    "n_notes": {
+      "mean": 763.5,
+      "std": 183.3801056764194,
+      "median": 769.5,
+      "min": 432.0,
+      "max": 1131.0,
+      "mean_ci95": [
+        684.895,
+        836.005
+      ]
+    },
+    "notes_per_bar": {
+      "mean": 23.859375,
+      "std": 5.730628302388106,
+      "median": 24.046875,
+      "min": 13.5,
+      "max": 35.34375,
+      "mean_ci95": [
+        21.4515625,
+        26.3296875
+      ]
+    },
+    "empty_bar_fraction": {
+      "mean": 0.0,
+      "std": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "mean_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "unique_bar_fraction": {
+      "mean": 1.0,
+      "std": 0.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "mean_ci95": [
+        1.0,
+        1.0
+      ]
+    },
+    "longest_identical_bar_run": {
+      "mean": 1.0,
+      "std": 0.0,
+      "median": 1.0,
+      "min": 1.0,
+      "max": 1.0,
+      "mean_ci95": [
+        1.0,
+        1.0
+      ]
+    },
+    "pitch_min": {
+      "mean": 33.65,
+      "std": 3.9506828190633207,
+      "median": 33.5,
+      "min": 27.0,
+      "max": 40.0,
+      "mean_ci95": [
+        31.95,
+        35.3
+      ]
+    },
+    "pitch_max": {
+      "mean": 98.1,
+      "std": 6.560648234980892,
+      "median": 100.0,
+      "min": 81.0,
+      "max": 108.0,
+      "mean_ci95": [
+        94.94875,
+        100.65
+      ]
+    },
+    "pitch_std": {
+      "mean": 14.043923129846018,
+      "std": 2.435775098887443,
+      "median": 14.114241870945865,
+      "min": 9.130762069631551,
+      "max": 19.59324678956083,
+      "mean_ci95": [
+        13.024085778805098,
+        15.092829826176654
+      ]
+    },
+    "velocity_mean": {
+      "mean": 85.16057814470923,
+      "std": 8.552383546671315,
+      "median": 84.26534470468576,
+      "min": 71.32016925246826,
+      "max": 99.8719646799117,
+      "mean_ci95": [
+        81.6544556349235,
+        88.8017812011296
+      ]
+    },
+    "velocity_std": {
+      "mean": 15.497481552017721,
+      "std": 5.071747078252819,
+      "median": 15.89374867721181,
+      "min": 5.722033807388614,
+      "max": 23.9603318007076,
+      "mean_ci95": [
+        13.23495084889763,
+        17.6428992428034
+      ]
+    },
+    "mean_duration_beats": {
+      "mean": 0.7440045622341809,
+      "std": 0.24328594857083527,
+      "median": 0.7467435250360868,
+      "min": 0.3729000884173298,
+      "max": 1.1898148148148149,
+      "mean_ci95": [
+        0.6420168958717701,
+        0.8466816963407575
+      ]
+    },
+    "GS_active": {
+      "mean": 0.9285975302419356,
+      "std": 0.03808510218205801,
+      "median": 0.9391066028225806,
+      "min": 0.8118699596774194,
+      "max": 0.9807207661290323,
+      "mean_ci95": [
+        0.9110160187752017,
+        0.9427375252016128
+      ]
+    },
+    "H4_valid_windows": {
+      "mean": 29.0,
+      "std": 0.0,
+      "median": 29.0,
+      "min": 29.0,
+      "max": 29.0,
+      "mean_ci95": [
+        29.0,
+        29.0
+      ]
+    },
+    "H4_total_windows": {
+      "mean": 29.0,
+      "std": 0.0,
+      "median": 29.0,
+      "min": 29.0,
+      "max": 29.0,
+      "mean_ci95": [
+        29.0,
+        29.0
+      ]
+    },
+    "H4_skipped_empty_windows": {
+      "mean": 0.0,
+      "std": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "mean_ci95": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "source_sha256": {
+    "eval_basic.py": "dac6f82057bbb594fdee9fbd33dd3ca2eca4dc18b8faf40c90cca127325a4f91",
+    "side_utils.py": "5bb6f8d73d4c4fd068aa0aab6f68818dff34178d8ef192afaee3615c704208a6",
+    "evaluate.py": "c2ea07979a4a4a10f837536cb071eafa2e71882859858824f0ac808007f1c298"
+  },
+  "generation_provenance": {
+    "task": "unconditional",
+    "checkpoint": "artifacts/models/basic_final.pt",
+    "checkpoint_sha256": "6dc0698a331add3601714e704b4a195102730da9d32fc371b85d3f6ade56fd34",
+    "configuration": {
+      "temperature": 1.0,
+      "top_k": 32,
+      "top_p": 1.0,
+      "seed": 20261022,
+      "device": "cpu"
+    },
+    "manifest_sha256": "39ffc1e22540c828a1631d38948d6cd814b2544a7cb2aea0a03b77dc085917af"
+  }
+}
