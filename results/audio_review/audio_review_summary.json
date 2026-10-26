@@ -1,0 +1,677 @@
+{
+  "completed": true,
+  "completion_means": "Audio-input processing completed; critic validity did not pass.",
+  "source_model_input_frames_verified": true,
+  "human_listening_performed": false,
+  "quality_assessment_valid": false,
+  "calibration_passed": false,
+  "method": "Every complete WAV is encoded as ordered, bar-aligned <=30s clips in one multimodal request per piece. Official HF Whisper frontend replaces the numerically different MLX native frontend. Labels, MIDI metrics, chords and selection results are withheld from the model.",
+  "model": "mlx-community/Qwen2-Audio-7B-Instruct-4bit",
+  "coverage": {
+    "n_pieces": 9,
+    "full_frame_coverage_verified": true,
+    "n_encoded_clips": 39,
+    "resampled_frames_encoded": 14799510,
+    "source_audio_seconds": 924.9692063492065,
+    "release_tails_included": true
+  },
+  "calibration": {
+    "silence_is_zero": true,
+    "silence_raw_response": "The audio clip contains a segment of a pop catchy riff with a disturbing background humming. The main instrument is a bass, and there is no speech or singing. The rhythmic texture is upbeat and catchy, with a disturbing undertone created by the humming. There are no specific changes in the audio; it remains relatively consistent throughout.",
+    "result": "failed: the model describes music for a zero waveform",
+    "consequence": "No subjective preference, musical cadence, chord correctness or human-listening claim is supported."
+  },
+  "report_summary": "All nine complete WAVs (15 min 25 s, including release tails) reached Qwen2-Audio-7B-Instruct-4bit: 39 ordered clips, each at most 30 s, with all clip embeddings in one request per piece. Every frontend input length and waveform hash was checked. Labels, MIDI statistics and preferred versions were withheld. However, an identical-prompt silence control produced invented music. This completes audio-input coverage, not a validated listening evaluation.",
+  "report_rows": [
+    {
+      "prompt_id": "001",
+      "observation": "t08 and t10 give incompatible major/minor descriptions of the shared prompt. t10 and t12 omit clip 5 in their prose despite encoding it. Reject these unverified claims; use the preceding bar table."
+    },
+    {
+      "prompt_id": "002",
+      "observation": "All three receive generic smooth/fade descriptions despite different density trajectories. These words establish neither a preferred version nor a resolved cadence; the per-bar MIDI comparison remains the evidence."
+    },
+    {
+      "prompt_id": "003",
+      "observation": "The critic gives generic register/development descriptions rather than a checkable account of the t12 late density collapse and +16.19-semitone mean-pitch shift. Its text adds no validated quality judgment."
+    }
+  ],
+  "report_limitations": "No human listening or listener ratings were performed. The silence hallucination and omitted clip descriptions make this critic unreliable for preference or harmony claims. A synthesized release tail is not evidence of a composed cadence. Keep raw responses for audit; use MIDI for measured bar facts and listening.html for direct comparison.",
+  "rows": [
+    {
+      "blind_id": "R03",
+      "prompt_id": "001",
+      "configuration_id": "t08",
+      "source_wav": "results/basic_b/t08/001.wav",
+      "source_wav_sha256": "0de43f3538bd6ee6b00055dde6e7bf852ae6b4cf26cd6ae14b430714ff72abef",
+      "source_seconds": 121.90730158730159,
+      "encoded_clips": 5,
+      "all_resampled_frames_encoded": true,
+      "release_tail_included": true,
+      "clip_numbers_not_individually_described_in_output": [],
+      "raw_description_is_reliable_quality_evidence": false,
+      "verified_bar_comparison": [
+        {
+          "bar_range": [
+            1,
+            8
+          ],
+          "time_range": [
+            0.0,
+            29.976576
+          ],
+          "notes_per_bar": 15.5,
+          "mean_pitch": 60.943548387096776,
+          "p95_pitch": 79.0
+        },
+        {
+          "bar_range": [
+            9,
+            16
+          ],
+          "time_range": [
+            29.976576,
+            59.953152000000024
+          ],
+          "notes_per_bar": 31.0,
+          "mean_pitch": 63.13709677419355,
+          "p95_pitch": 79.0
+        },
+        {
+          "bar_range": [
+            17,
+            24
+          ],
+          "time_range": [
+            59.953152000000024,
+            89.92972800000004
+          ],
+          "notes_per_bar": 32.875,
+          "mean_pitch": 62.69201520912547,
+          "p95_pitch": 82.0
+        },
+        {
+          "bar_range": [
+            25,
+            32
+          ],
+          "time_range": [
+            89.92972800000004,
+            119.90630400000006
+          ],
+          "notes_per_bar": 37.0,
+          "mean_pitch": 66.02027027027027,
+          "p95_pitch": 89.0
+        }
+      ],
+      "interpretation": "The complete WAV was encoded, but the failed silence control prevents treating the model prose as a validated listening judgment. Bar facts are MIDI measurements, not human impressions."
+    },
+    {
+      "blind_id": "R04",
+      "prompt_id": "001",
+      "configuration_id": "t10",
+      "source_wav": "results/basic_b/t10/001.wav",
+      "source_wav_sha256": "6393c886e6a345a4bf7b06825398c316e69286093a3d6075b5f8c19b353ebfaa",
+      "source_seconds": 121.90730158730159,
+      "encoded_clips": 5,
+      "all_resampled_frames_encoded": true,
+      "release_tail_included": true,
+      "clip_numbers_not_individually_described_in_output": [
+        "5"
+      ],
+      "raw_description_is_reliable_quality_evidence": false,
+      "verified_bar_comparison": [
+        {
+          "bar_range": [
+            1,
+            8
+          ],
+          "time_range": [
+            0.0,
+            29.976576
+          ],
+          "notes_per_bar": 15.5,
+          "mean_pitch": 60.943548387096776,
+          "p95_pitch": 79.0
+        },
+        {
+          "bar_range": [
+            9,
+            16
+          ],
+          "time_range": [
+            29.976576,
+            59.953152000000024
+          ],
+          "notes_per_bar": 34.875,
+          "mean_pitch": 63.9426523297491,
+          "p95_pitch": 88.0
+        },
+        {
+          "bar_range": [
+            17,
+            24
+          ],
+          "time_range": [
+            59.953152000000024,
+            89.92972800000004
+          ],
+          "notes_per_bar": 46.625,
+          "mean_pitch": 67.31367292225201,
+          "p95_pitch": 98.0
+        },
+        {
+          "bar_range": [
+            25,
+            32
+          ],
+          "time_range": [
+            89.92972800000004,
+            119.90630400000006
+          ],
+          "notes_per_bar": 38.75,
+          "mean_pitch": 67.26129032258065,
+          "p95_pitch": 100.0
+        }
+      ],
+      "interpretation": "The complete WAV was encoded, but the failed silence control prevents treating the model prose as a validated listening judgment. Bar facts are MIDI measurements, not human impressions."
+    },
+    {
+      "blind_id": "R09",
+      "prompt_id": "001",
+      "configuration_id": "t12",
+      "source_wav": "results/basic_b/t12/001.wav",
+      "source_wav_sha256": "4112c49429f2c937285c5622e0a2926f4b7532c870b26af17352e0fcffdacdd3",
+      "source_seconds": 121.90730158730159,
+      "encoded_clips": 5,
+      "all_resampled_frames_encoded": true,
+      "release_tail_included": true,
+      "clip_numbers_not_individually_described_in_output": [
+        "5"
+      ],
+      "raw_description_is_reliable_quality_evidence": false,
+      "verified_bar_comparison": [
+        {
+          "bar_range": [
+            1,
+            8
+          ],
+          "time_range": [
+            0.0,
+            29.976576
+          ],
+          "notes_per_bar": 15.5,
+          "mean_pitch": 60.943548387096776,
+          "p95_pitch": 79.0
+        },
+        {
+          "bar_range": [
+            9,
+            16
+          ],
+          "time_range": [
+            29.976576,
+            59.953152000000024
+          ],
+          "notes_per_bar": 24.25,
+          "mean_pitch": 64.38144329896907,
+          "p95_pitch": 86.0
+        },
+        {
+          "bar_range": [
+            17,
+            24
+          ],
+          "time_range": [
+            59.953152000000024,
+            89.92972800000004
+          ],
+          "notes_per_bar": 26.75,
+          "mean_pitch": 68.13084112149532,
+          "p95_pitch": 91.69999999999999
+        },
+        {
+          "bar_range": [
+            25,
+            32
+          ],
+          "time_range": [
+            89.92972800000004,
+            119.90630400000006
+          ],
+          "notes_per_bar": 30.125,
+          "mean_pitch": 64.12448132780084,
+          "p95_pitch": 89.0
+        }
+      ],
+      "interpretation": "The complete WAV was encoded, but the failed silence control prevents treating the model prose as a validated listening judgment. Bar facts are MIDI measurements, not human impressions."
+    },
+    {
+      "blind_id": "R06",
+      "prompt_id": "002",
+      "configuration_id": "t08",
+      "source_wav": "results/basic_b/t08/002.wav",
+      "source_wav_sha256": "a0931e986d7cb1fa74e321b5f616b2384a3982de87c2f1ba31a71dc6e0013392",
+      "source_seconds": 73.11147392290249,
+      "encoded_clips": 4,
+      "all_resampled_frames_encoded": true,
+      "release_tail_included": true,
+      "clip_numbers_not_individually_described_in_output": [],
+      "raw_description_is_reliable_quality_evidence": false,
+      "verified_bar_comparison": [
+        {
+          "bar_range": [
+            1,
+            8
+          ],
+          "time_range": [
+            0.0,
+            17.777728
+          ],
+          "notes_per_bar": 22.125,
+          "mean_pitch": 65.9774011299435,
+          "p95_pitch": 77.0
+        },
+        {
+          "bar_range": [
+            9,
+            16
+          ],
+          "time_range": [
+            17.777728,
+            35.55545600000002
+          ],
+          "notes_per_bar": 34.625,
+          "mean_pitch": 67.89891696750902,
+          "p95_pitch": 89.39999999999998
+        },
+        {
+          "bar_range": [
+            17,
+            24
+          ],
+          "time_range": [
+            35.55545600000002,
+            53.333184000000045
+          ],
+          "notes_per_bar": 33.875,
+          "mean_pitch": 70.56457564575646,
+          "p95_pitch": 94.0
+        },
+        {
+          "bar_range": [
+            25,
+            32
+          ],
+          "time_range": [
+            53.333184000000045,
+            71.11091200000007
+          ],
+          "notes_per_bar": 42.875,
+          "mean_pitch": 69.66472303206997,
+          "p95_pitch": 96.79999999999995
+        }
+      ],
+      "interpretation": "The complete WAV was encoded, but the failed silence control prevents treating the model prose as a validated listening judgment. Bar facts are MIDI measurements, not human impressions."
+    },
+    {
+      "blind_id": "R02",
+      "prompt_id": "002",
+      "configuration_id": "t10",
+      "source_wav": "results/basic_b/t10/002.wav",
+      "source_wav_sha256": "61eab8251433679bb3fa86bfb7641d8fbafbd974135e70543e27b97b0bec442d",
+      "source_seconds": 73.11092970521543,
+      "encoded_clips": 4,
+      "all_resampled_frames_encoded": true,
+      "release_tail_included": true,
+      "clip_numbers_not_individually_described_in_output": [],
+      "raw_description_is_reliable_quality_evidence": false,
+      "verified_bar_comparison": [
+        {
+          "bar_range": [
+            1,
+            8
+          ],
+          "time_range": [
+            0.0,
+            17.777728
+          ],
+          "notes_per_bar": 22.125,
+          "mean_pitch": 65.9774011299435,
+          "p95_pitch": 77.0
+        },
+        {
+          "bar_range": [
+            9,
+            16
+          ],
+          "time_range": [
+            17.777728,
+            35.55545600000002
+          ],
+          "notes_per_bar": 38.5,
+          "mean_pitch": 65.05194805194805,
+          "p95_pitch": 87.0
+        },
+        {
+          "bar_range": [
+            17,
+            24
+          ],
+          "time_range": [
+            35.55545600000002,
+            53.333184000000045
+          ],
+          "notes_per_bar": 35.875,
+          "mean_pitch": 68.13588850174216,
+          "p95_pitch": 92.0
+        },
+        {
+          "bar_range": [
+            25,
+            32
+          ],
+          "time_range": [
+            53.333184000000045,
+            71.11091200000007
+          ],
+          "notes_per_bar": 32.125,
+          "mean_pitch": 66.08949416342412,
+          "p95_pitch": 91.0
+        }
+      ],
+      "interpretation": "The complete WAV was encoded, but the failed silence control prevents treating the model prose as a validated listening judgment. Bar facts are MIDI measurements, not human impressions."
+    },
+    {
+      "blind_id": "R07",
+      "prompt_id": "002",
+      "configuration_id": "t12",
+      "source_wav": "results/basic_b/t12/002.wav",
+      "source_wav_sha256": "6db4ae3ecad3a8470faf03bd1eff2040df38f993a7dc907e4965dc64fadeb3cf",
+      "source_seconds": 73.11147392290249,
+      "encoded_clips": 4,
+      "all_resampled_frames_encoded": true,
+      "release_tail_included": true,
+      "clip_numbers_not_individually_described_in_output": [],
+      "raw_description_is_reliable_quality_evidence": false,
+      "verified_bar_comparison": [
+        {
+          "bar_range": [
+            1,
+            8
+          ],
+          "time_range": [
+            0.0,
+            17.777728
+          ],
+          "notes_per_bar": 22.125,
+          "mean_pitch": 65.9774011299435,
+          "p95_pitch": 77.0
+        },
+        {
+          "bar_range": [
+            9,
+            16
+          ],
+          "time_range": [
+            17.777728,
+            35.55545600000002
+          ],
+          "notes_per_bar": 20.25,
+          "mean_pitch": 68.14197530864197,
+          "p95_pitch": 89.0
+        },
+        {
+          "bar_range": [
+            17,
+            24
+          ],
+          "time_range": [
+            35.55545600000002,
+            53.333184000000045
+          ],
+          "notes_per_bar": 19.125,
+          "mean_pitch": 65.86928104575163,
+          "p95_pitch": 89.0
+        },
+        {
+          "bar_range": [
+            25,
+            32
+          ],
+          "time_range": [
+            53.333184000000045,
+            71.11091200000007
+          ],
+          "notes_per_bar": 23.875,
+          "mean_pitch": 65.73298429319372,
+          "p95_pitch": 87.0
+        }
+      ],
+      "interpretation": "The complete WAV was encoded, but the failed silence control prevents treating the model prose as a validated listening judgment. Bar facts are MIDI measurements, not human impressions."
+    },
+    {
+      "blind_id": "R01",
+      "prompt_id": "003",
+      "configuration_id": "t08",
+      "source_wav": "results/basic_b/t08/003.wav",
+      "source_wav_sha256": "eee603f333d44e81c92f0eb87a8c8f4d951eaccc0167fc45f1d712277c56d9b2",
+      "source_seconds": 113.30507936507937,
+      "encoded_clips": 4,
+      "all_resampled_frames_encoded": true,
+      "release_tail_included": true,
+      "clip_numbers_not_individually_described_in_output": [],
+      "raw_description_is_reliable_quality_evidence": false,
+      "verified_bar_comparison": [
+        {
+          "bar_range": [
+            1,
+            8
+          ],
+          "time_range": [
+            0.0,
+            27.826048
+          ],
+          "notes_per_bar": 22.75,
+          "mean_pitch": 60.64835164835165,
+          "p95_pitch": 72.89999999999998
+        },
+        {
+          "bar_range": [
+            9,
+            16
+          ],
+          "time_range": [
+            27.826048,
+            55.652095999999915
+          ],
+          "notes_per_bar": 29.0,
+          "mean_pitch": 59.025862068965516,
+          "p95_pitch": 69.89999999999998
+        },
+        {
+          "bar_range": [
+            17,
+            24
+          ],
+          "time_range": [
+            55.652095999999915,
+            83.47814399999982
+          ],
+          "notes_per_bar": 35.0,
+          "mean_pitch": 61.47142857142857,
+          "p95_pitch": 78.0
+        },
+        {
+          "bar_range": [
+            25,
+            32
+          ],
+          "time_range": [
+            83.47814399999982,
+            111.30419199999972
+          ],
+          "notes_per_bar": 38.125,
+          "mean_pitch": 63.83606557377049,
+          "p95_pitch": 85.0
+        }
+      ],
+      "interpretation": "The complete WAV was encoded, but the failed silence control prevents treating the model prose as a validated listening judgment. Bar facts are MIDI measurements, not human impressions."
+    },
+    {
+      "blind_id": "R05",
+      "prompt_id": "003",
+      "configuration_id": "t10",
+      "source_wav": "results/basic_b/t10/003.wav",
+      "source_wav_sha256": "b7f852d822c908fda92b53e46b440f371f6655c2787d4982e4e222abe762335f",
+      "source_seconds": 113.30417233560091,
+      "encoded_clips": 4,
+      "all_resampled_frames_encoded": true,
+      "release_tail_included": true,
+      "clip_numbers_not_individually_described_in_output": [],
+      "raw_description_is_reliable_quality_evidence": false,
+      "verified_bar_comparison": [
+        {
+          "bar_range": [
+            1,
+            8
+          ],
+          "time_range": [
+            0.0,
+            27.826048
+          ],
+          "notes_per_bar": 22.75,
+          "mean_pitch": 60.64835164835165,
+          "p95_pitch": 72.89999999999998
+        },
+        {
+          "bar_range": [
+            9,
+            16
+          ],
+          "time_range": [
+            27.826048,
+            55.652095999999915
+          ],
+          "notes_per_bar": 30.625,
+          "mean_pitch": 63.57551020408163,
+          "p95_pitch": 81.0
+        },
+        {
+          "bar_range": [
+            17,
+            24
+          ],
+          "time_range": [
+            55.652095999999915,
+            83.47814399999982
+          ],
+          "notes_per_bar": 36.0,
+          "mean_pitch": 68.04861111111111,
+          "p95_pitch": 88.0
+        },
+        {
+          "bar_range": [
+            25,
+            32
+          ],
+          "time_range": [
+            83.47814399999982,
+            111.30419199999972
+          ],
+          "notes_per_bar": 27.25,
+          "mean_pitch": 64.3256880733945,
+          "p95_pitch": 83.0
+        }
+      ],
+      "interpretation": "The complete WAV was encoded, but the failed silence control prevents treating the model prose as a validated listening judgment. Bar facts are MIDI measurements, not human impressions."
+    },
+    {
+      "blind_id": "R08",
+      "prompt_id": "003",
+      "configuration_id": "t12",
+      "source_wav": "results/basic_b/t12/003.wav",
+      "source_wav_sha256": "60dd32de15c93477aa8419f7cac45a71d0e24c99d1d918e0c52cf4b91e536d6c",
+      "source_seconds": 113.30417233560091,
+      "encoded_clips": 4,
+      "all_resampled_frames_encoded": true,
+      "release_tail_included": true,
+      "clip_numbers_not_individually_described_in_output": [],
+      "raw_description_is_reliable_quality_evidence": false,
+      "verified_bar_comparison": [
+        {
+          "bar_range": [
+            1,
+            8
+          ],
+          "time_range": [
+            0.0,
+            27.826048
+          ],
+          "notes_per_bar": 22.75,
+          "mean_pitch": 60.64835164835165,
+          "p95_pitch": 72.89999999999998
+        },
+        {
+          "bar_range": [
+            9,
+            16
+          ],
+          "time_range": [
+            27.826048,
+            55.652095999999915
+          ],
+          "notes_per_bar": 33.875,
+          "mean_pitch": 69.08118081180812,
+          "p95_pitch": 90.0
+        },
+        {
+          "bar_range": [
+            17,
+            24
+          ],
+          "time_range": [
+            55.652095999999915,
+            83.47814399999982
+          ],
+          "notes_per_bar": 27.0,
+          "mean_pitch": 75.30092592592592,
+          "p95_pitch": 98.0
+        },
+        {
+          "bar_range": [
+            25,
+            32
+          ],
+          "time_range": [
+            83.47814399999982,
+            111.30419199999972
+          ],
+          "notes_per_bar": 9.25,
+          "mean_pitch": 85.27027027027027,
+          "p95_pitch": 102.35
+        }
+      ],
+      "interpretation": "The complete WAV was encoded, but the failed silence control prevents treating the model prose as a validated listening judgment. Bar facts are MIDI measurements, not human impressions."
+    }
+  ],
+  "evidence_files": [
+    "results/audio_review/input_coverage.json",
+    "results/audio_review/raw_audio_observations.json",
+    "analysis/audio_review_model_setup.json",
+    "analysis/audio_review_frontend_comparison.json",
+    "analysis/audio_review_smoke.json"
+  ],
+  "evidence_sha256": {
+    "results/audio_review/input_coverage.json": "17f28fc82b941fb5ad87424a36bc28e6c3c669ba6bf187b1c1a6df1e14241772",
+    "results/audio_review/raw_audio_observations.json": "fd44118b0440a6da8e01dd780bc1857f1b8ef59e65f1b4a1f0b14954d9fd6574",
+    "analysis/audio_review_model_setup.json": "3b09306705a0693b0799fc5ca5b67f8051d168b62088f8426c2d8d3a0f00991a",
+    "analysis/audio_review_frontend_comparison.json": "eec4393a14fa5f7f9466f9e825fa548eed8ac7033ddc1581cfa9902cbf7303b3",
+    "analysis/audio_review_smoke.json": "abeba5cba48576d683cf6cffae202d7330bc0210c24cf6163a7c2ad616a5e403"
+  },
+  "references": [
+    "Chu et al. (2024). Qwen2-Audio Technical Report. Evaluation-only audio-language critic; not a composition model. https://arxiv.org/abs/2407.10759",
+    "mlx-community/Qwen2-Audio-7B-Instruct-4bit (Apache-2.0). Revision c65570002626f41b4dc08b7b54f42f99f3e82e7f; external review weights excluded. https://huggingface.co/mlx-community/Qwen2-Audio-7B-Instruct-4bit",
+    "Blaizzy/mlx-audio v0.6.1 (MIT). Review runtime; official HF Whisper frontend substituted after numerical comparison. https://github.com/Blaizzy/mlx-audio"
+  ]
+}

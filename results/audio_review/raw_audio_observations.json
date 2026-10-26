@@ -1,0 +1,1308 @@
+{
+  "completed": true,
+  "provenance": {
+    "model_repository": "mlx-community/Qwen2-Audio-7B-Instruct-4bit",
+    "download_setup": {
+      "repo_id": "mlx-community/Qwen2-Audio-7B-Instruct-4bit",
+      "revision": "c65570002626f41b4dc08b7b54f42f99f3e82e7f",
+      "source_url": "https://huggingface.co/mlx-community/Qwen2-Audio-7B-Instruct-4bit",
+      "base_model": "Qwen/Qwen2-Audio-7B-Instruct",
+      "model_license": "Apache-2.0",
+      "runtime_license": "MIT",
+      "purpose": "Evaluation-only WAV input; no training or generation changes",
+      "local_directory": "cache/audio_review_models/Qwen2-Audio-7B-Instruct-4bit",
+      "download_bytes": 6574658472,
+      "files": [
+        {
+          "name": "README.md",
+          "bytes": 1716,
+          "sha256": "1cddc760431c9c2c043ed4d17d9c17716a1f81978e6093389420cd46e7f2ce6d"
+        },
+        {
+          "name": "config.json",
+          "bytes": 913,
+          "sha256": "39493dad1678533cc2a7ba2de0a573cc926a78ef4c7abef72a6b660159de94b7"
+        },
+        {
+          "name": "merges.txt",
+          "bytes": 1671839,
+          "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+        },
+        {
+          "name": "preprocessor_config.json",
+          "bytes": 342,
+          "sha256": "4cd7c6c061fe79244c57b0c320b2873f3ee5acce2277f7cc3aced042725680f2"
+        },
+        {
+          "name": "tokenizer.json",
+          "bytes": 7028015,
+          "sha256": "f7c9b2dba4a296b1aa76c16a34b8225c0c118978400d4bb66bff0902d702f5b8"
+        },
+        {
+          "name": "tokenizer_config.json",
+          "bytes": 638335,
+          "sha256": "c738158e70eeecf25736a6c4d8e5f34cfce683079980757edfb0665a7b2457ed"
+        },
+        {
+          "name": "vocab.json",
+          "bytes": 2776833,
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+        },
+        {
+          "name": "weights.safetensors",
+          "bytes": 6562540479,
+          "sha256": "0967cde270ad62aa4824f0bbce283d0a2a6da2825ccf587640753c527d4174da",
+          "expected_source_sha256": "0967cde270ad62aa4824f0bbce283d0a2a6da2825ccf587640753c527d4174da",
+          "matches_source_sha256": true
+        }
+      ],
+      "versions": {
+        "mlx-audio": "0.6.1",
+        "mlx": "0.32.4",
+        "mlx-metal": "0.32.4",
+        "transformers": "5.20.2",
+        "huggingface-hub": "2.3.0",
+        "numpy": "2.2.6",
+        "scipy": "1.14.1",
+        "soundfile": "0.14.0",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.4"
+      },
+      "audio_input": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "per_clip_max_samples": 480000,
+        "per_clip_max_seconds": 30,
+        "multiple_clips": "List of waveforms merged into one multi-audio context",
+        "timestamp_warning": "STTOutput.segments records inference time, not audio time"
+      },
+      "evaluation_frontend_adjustment": {
+        "frontend": "Official local Hugging Face WhisperFeatureExtractor",
+        "replaces": "MLX runtime _extract_features only",
+        "reason": "Numerical frontend differences measured before review",
+        "comparison_evidence": "analysis/audio_review_frontend_comparison.json",
+        "composition_or_training_changes": false
+      }
+    },
+    "runtime_versions": {
+      "mlx-audio": "0.6.1",
+      "mlx": "0.32.4",
+      "mlx-metal": "0.32.4",
+      "transformers": "5.20.2",
+      "huggingface-hub": "2.3.0",
+      "numpy": "2.2.6",
+      "scipy": "1.14.1",
+      "soundfile": "0.14.0"
+    },
+    "backend_source_sha256": "74b63b0d0f0ffb98a46ffa4a481476ed63ef73f5ddaf52e01d07f593c4c88af9",
+    "input_coverage_sha256": "17f28fc82b941fb5ad87424a36bc28e6c3c669ba6bf187b1c1a6df1e14241772",
+    "driver_sha256": "1830b4aee810b297a7f1b63fe3d5bd880d02d364d5c927da275f3c17b7ec3f91",
+    "decoding": {
+      "temperature": 0.0,
+      "max_tokens": 900,
+      "prefill_step_size": 512
+    }
+  },
+  "method": "Every complete WAV is encoded as ordered, bar-aligned <=30s clips in one multimodal request per piece. Official HF Whisper frontend replaces the numerically different MLX native frontend. Labels, MIDI metrics, chords and selection results are withheld from the model.",
+  "pieces": [
+    {
+      "blind_id": "R01",
+      "prompt_id": "003",
+      "configuration_id": "t08",
+      "source_wav": "results/basic_b/t08/003.wav",
+      "source_wav_sha256": "eee603f333d44e81c92f0eb87a8c8f4d951eaccc0167fc45f1d712277c56d9b2",
+      "full_frame_coverage_verified": true,
+      "all_frontend_waveform_hashes_match": true,
+      "original_seconds": 113.30507936507937,
+      "segments": [
+        {
+          "clip": 1,
+          "path": "cache/audio_review_inputs/t08_003_01.wav",
+          "sha256": "210b04690c856dc181ef7185ee0a86d8968bb1babbbec86bbe379daf9d19289e",
+          "sample_rate": 16000,
+          "frames": 445217,
+          "start_frame": 0,
+          "end_frame": 445217,
+          "start_seconds": 0.0,
+          "end_seconds": 27.8260625,
+          "first_bar_1based": 1,
+          "last_bar_1based": 8,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 2,
+          "path": "cache/audio_review_inputs/t08_003_02.wav",
+          "sha256": "8aad81d0d42234c53ddec1ced251da602ca91473d27a2e8ce68ada40e35a831f",
+          "sample_rate": 16000,
+          "frames": 445217,
+          "start_frame": 445217,
+          "end_frame": 890434,
+          "start_seconds": 27.8260625,
+          "end_seconds": 55.652125,
+          "first_bar_1based": 9,
+          "last_bar_1based": 16,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 3,
+          "path": "cache/audio_review_inputs/t08_003_03.wav",
+          "sha256": "d88fb585dac3d819176301321f6a8629231f77e820c26340d6af1c943599871f",
+          "sample_rate": 16000,
+          "frames": 445216,
+          "start_frame": 890434,
+          "end_frame": 1335650,
+          "start_seconds": 55.652125,
+          "end_seconds": 83.478125,
+          "first_bar_1based": 17,
+          "last_bar_1based": 24,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 4,
+          "path": "cache/audio_review_inputs/t08_003_04.wav",
+          "sha256": "49eb5f88c3c3db32c7f15bc30c8ac4b55bb9ecba2cffef641e693b61d77888fc",
+          "sample_rate": 16000,
+          "frames": 477232,
+          "start_frame": 1335650,
+          "end_frame": 1812882,
+          "start_seconds": 83.478125,
+          "end_seconds": 113.305125,
+          "first_bar_1based": 25,
+          "last_bar_1based": 32,
+          "includes_release_tail": true
+        }
+      ],
+      "prompt": "The audio inputs are consecutive, non-overlapping parts of ONE instrumental performance, in chronological order; concatenate them mentally to assess the whole recording. Audio 1 covers 0.000–27.826 seconds, bars 1–8. Audio 2 covers 27.826–55.652 seconds, bars 9–16. Audio 3 covers 55.652–83.478 seconds, bars 17–24. Audio 4 covers 83.478–113.305 seconds, bars 25–32 and the final release tail.\nReview the actual audio, including every supplied part. For each Audio N give one concise observation about audible texture, register, rhythmic regularity, repetition or change, and say if the evidence is uncertain. Then describe: (a) the transition from the first eight bars into the following material; (b) whether later parts develop or remain similar; (c) the ending: a resolved close, a fade, an abrupt stop, or unclear. Do not invent note names, exact chords, exact tempo, composer, title, genre, or quality scores. Do not assume an abrupt change is an error. If an aspect is not reliably audible, say it is unclear. Return JSON with keys clips (list of {audio,observation,confidence}), opening_transition, later_development, ending, uncertainties. Keep the answer under 450 words. You have no MIDI, parameter settings, reference performance, or preferred-version label.",
+      "frontend_extractions": [
+        {
+          "input_frames": 445217,
+          "input_sha256_float32": "daf22498968a711aa258664a28262a29308cefcbdedb6ef1a6671555f3016b04",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "8f96e7406fbb386020b96c6592518b110811edd68c9d0edbecd976c45fefeaf8",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 445217,
+          "input_sha256_float32": "d6fe6b762bf4d53b00b713a6306b612e4567884607427cb83724a4380b309fd3",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "7b0525e2e5a97fd8b2a330cface8ea79fd62f08305a6308658cc893c6c8cfde7",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 445216,
+          "input_sha256_float32": "c77b04cb71aef2fe8613ea9526281c0d2ae707ef7d8f75912a33771f617264e3",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "a199819cfced80e99fd28f81589126bdbfd16a0ad931e277613643a18d8365e8",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 477232,
+          "input_sha256_float32": "c540fce84e3a7a28f690219e4ed83bf6d39292c299285b48739efa1450eb4aab",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "322d1599506b1cd718d27ac2d69d28df6f62840bd90bcc5d8e87ff78fb19befe",
+          "audio_tokens": 750
+        }
+      ],
+      "raw_response": "{\\\"clips\\\": [{\\\"audio\\\": \\\"1\\\", \\\"observation\\\": \\\"The first eight bars have a steady rhythm and a melody that rises in pitch.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"2\\\", \\\"observation\\\": \\\"The second part has a more complex melody and a slightly lower register.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"3\\\", \\\"observation\\\": \\\"The third part has a repetitive melody and a slightly higher register.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"4\\\", \\\"observation\\\": \\\"The final part has a descending melody and a lower register.\\\", \\\"confidence\\\": \\\"Moderate\\\"}], \\\"opening_transition\\\": \\\"The transition between the first eight bars and the following material is gradual.\\\", \\\"later_development\\\": \\\"The later parts develop by adding more complexity to the melody.\\\", \\\"ending\\\": \\\"The ending is a fade-out of the final melody.\\\", \\\"uncertainties\\\": \\\"The exact chords and tempo of the performance are unclear.\\\"}",
+      "parsed_response": null,
+      "prompt_tokens": 3380,
+      "generation_tokens": 212,
+      "possibly_token_limited": false,
+      "review_seconds": 17.104018792000716,
+      "peak_memory_bytes": 9016111986,
+      "review_type": "machine_audio_language_analysis",
+      "human_listening": false
+    },
+    {
+      "blind_id": "R02",
+      "prompt_id": "002",
+      "configuration_id": "t10",
+      "source_wav": "results/basic_b/t10/002.wav",
+      "source_wav_sha256": "61eab8251433679bb3fa86bfb7641d8fbafbd974135e70543e27b97b0bec442d",
+      "full_frame_coverage_verified": true,
+      "all_frontend_waveform_hashes_match": true,
+      "original_seconds": 73.11092970521543,
+      "segments": [
+        {
+          "clip": 1,
+          "path": "cache/audio_review_inputs/t10_002_01.wav",
+          "sha256": "6e31ec587aafa5be1a42e13bdc6a5a7c9771033ba7ed38bc28912ac4a906e6b8",
+          "sample_rate": 16000,
+          "frames": 284444,
+          "start_frame": 0,
+          "end_frame": 284444,
+          "start_seconds": 0.0,
+          "end_seconds": 17.77775,
+          "first_bar_1based": 1,
+          "last_bar_1based": 8,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 2,
+          "path": "cache/audio_review_inputs/t10_002_02.wav",
+          "sha256": "608ab8e379eccb044d41544c3765359fa0c676d2593dd5b4d91e7612c1ee7f65",
+          "sample_rate": 16000,
+          "frames": 284443,
+          "start_frame": 284444,
+          "end_frame": 568887,
+          "start_seconds": 17.77775,
+          "end_seconds": 35.5554375,
+          "first_bar_1based": 9,
+          "last_bar_1based": 16,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 3,
+          "path": "cache/audio_review_inputs/t10_002_03.wav",
+          "sha256": "7c738a2781e4c78dffeb4cf6945cee81613f1f8817ed03bb7e9f9bfe2934a594",
+          "sample_rate": 16000,
+          "frames": 284444,
+          "start_frame": 568887,
+          "end_frame": 853331,
+          "start_seconds": 35.5554375,
+          "end_seconds": 53.3331875,
+          "first_bar_1based": 17,
+          "last_bar_1based": 24,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 4,
+          "path": "cache/audio_review_inputs/t10_002_04.wav",
+          "sha256": "e024a041b2f160e52ad7d9b8083fc6ff666d7a76dca403df1e6cc8f3c3190cc3",
+          "sample_rate": 16000,
+          "frames": 316444,
+          "start_frame": 853331,
+          "end_frame": 1169775,
+          "start_seconds": 53.3331875,
+          "end_seconds": 73.1109375,
+          "first_bar_1based": 25,
+          "last_bar_1based": 32,
+          "includes_release_tail": true
+        }
+      ],
+      "prompt": "The audio inputs are consecutive, non-overlapping parts of ONE instrumental performance, in chronological order; concatenate them mentally to assess the whole recording. Audio 1 covers 0.000–17.778 seconds, bars 1–8. Audio 2 covers 17.778–35.555 seconds, bars 9–16. Audio 3 covers 35.555–53.333 seconds, bars 17–24. Audio 4 covers 53.333–73.111 seconds, bars 25–32 and the final release tail.\nReview the actual audio, including every supplied part. For each Audio N give one concise observation about audible texture, register, rhythmic regularity, repetition or change, and say if the evidence is uncertain. Then describe: (a) the transition from the first eight bars into the following material; (b) whether later parts develop or remain similar; (c) the ending: a resolved close, a fade, an abrupt stop, or unclear. Do not invent note names, exact chords, exact tempo, composer, title, genre, or quality scores. Do not assume an abrupt change is an error. If an aspect is not reliably audible, say it is unclear. Return JSON with keys clips (list of {audio,observation,confidence}), opening_transition, later_development, ending, uncertainties. Keep the answer under 450 words. You have no MIDI, parameter settings, reference performance, or preferred-version label.",
+      "frontend_extractions": [
+        {
+          "input_frames": 284444,
+          "input_sha256_float32": "05c40b6e28d95e78f059879aee81ff8a649c34d9600cca39ff3baff99e97533f",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "5380a6778727cd574367da82666e9b2c18e02d267cd26f12da2cf120f070462c",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 284443,
+          "input_sha256_float32": "7f6823ba8ccc4516ccbdf8cd8ede273fc5411311532f5acc424710c913f679fd",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "dd5ae3418e4189b869d7c806f3bb004320a1c739d1d03d0763dd594253b1e7cb",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 284444,
+          "input_sha256_float32": "81e7c3af2c44c7bd7e01cef23663d505a26e71b46553aa6ee4e1e4532b2ef748",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "ff1ff901e72ddc54b54b68927839958881ebf733e271fb88708783cf0e386239",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 316444,
+          "input_sha256_float32": "59b425263338a45a3dc43c661282e9119f242ce10c5346ccfc96ba115a7e147a",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "e89f78c085600d6a2334a8246a76bee903a010001014f383f22c3d213b151a34",
+          "audio_tokens": 750
+        }
+      ],
+      "raw_response": "{\\\"clips\\\": [{\\\"audio\\\": \\\"1\\\", \\\"observation\\\": \\\"The first eight bars have a lively, melodic feel with a steady rhythm and a sense of building tension\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"2\\\", \\\"observation\\\": \\\"The transition from the first eight bars to the next material is smooth and there is no noticeable change in the musical texture or mood\\\", \\\"confidence\\\": \\\"High\\\"}, {\\\"audio\\\": \\\"3\\\", \\\"observation\\\": \\\"The next material has a similar feel to the first eight bars but with a slightly different rhythm and a more relaxed mood\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"4\\\", \\\"observation\\\": \\\"The last part of the performance features a smooth and gradual fade-out, indicating a resolution to the piece\\\", \\\"confidence\\\": \\\"High\\\"}], \\\"opening_transition\\\": \\\"The transition from the first eight bars to the next material is smooth and there is no noticeable change in the musical texture or mood\\\", \\\"later_development\\\": \\\"The next material has a similar feel to the first eight bars but with a slightly different rhythm and a more relaxed mood\\\", \\\"ending\\\": \\\"The last part of the performance features a smooth and gradual fade-out, indicating a resolution to the piece\\\", \\\"uncertainties\\\": []}",
+      "parsed_response": null,
+      "prompt_tokens": 3379,
+      "generation_tokens": 264,
+      "possibly_token_limited": false,
+      "review_seconds": 17.431219833000796,
+      "peak_memory_bytes": 9016111986,
+      "review_type": "machine_audio_language_analysis",
+      "human_listening": false
+    },
+    {
+      "blind_id": "R03",
+      "prompt_id": "001",
+      "configuration_id": "t08",
+      "source_wav": "results/basic_b/t08/001.wav",
+      "source_wav_sha256": "0de43f3538bd6ee6b00055dde6e7bf852ae6b4cf26cd6ae14b430714ff72abef",
+      "full_frame_coverage_verified": true,
+      "all_frontend_waveform_hashes_match": true,
+      "original_seconds": 121.90730158730159,
+      "segments": [
+        {
+          "clip": 1,
+          "path": "cache/audio_review_inputs/t08_001_01.wav",
+          "sha256": "4290d6e19a7a89508bf58c2c5ae4af7b5029e030d98d03a972c461fe5ad4bb76",
+          "sample_rate": 16000,
+          "frames": 479625,
+          "start_frame": 0,
+          "end_frame": 479625,
+          "start_seconds": 0.0,
+          "end_seconds": 29.9765625,
+          "first_bar_1based": 1,
+          "last_bar_1based": 8,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 2,
+          "path": "cache/audio_review_inputs/t08_001_02.wav",
+          "sha256": "779806c52da7e70606d5368d3e2e7de468e0d7421847094cfb2d308ebb9346b1",
+          "sample_rate": 16000,
+          "frames": 479625,
+          "start_frame": 479625,
+          "end_frame": 959250,
+          "start_seconds": 29.9765625,
+          "end_seconds": 59.953125,
+          "first_bar_1based": 9,
+          "last_bar_1based": 16,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 3,
+          "path": "cache/audio_review_inputs/t08_001_03.wav",
+          "sha256": "5550a03b38727b3b81c49628e7da97fb985aa7f41a970d1eee2afcd0dca17f54",
+          "sample_rate": 16000,
+          "frames": 479626,
+          "start_frame": 959250,
+          "end_frame": 1438876,
+          "start_seconds": 59.953125,
+          "end_seconds": 89.92975,
+          "first_bar_1based": 17,
+          "last_bar_1based": 24,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 4,
+          "path": "cache/audio_review_inputs/t08_001_04.wav",
+          "sha256": "8fd46fa6b2a342cffca396743dd4b63d281f28feb4c106e13f664e264207f26d",
+          "sample_rate": 16000,
+          "frames": 419672,
+          "start_frame": 1438876,
+          "end_frame": 1858548,
+          "start_seconds": 89.92975,
+          "end_seconds": 116.15925,
+          "first_bar_1based": 25,
+          "last_bar_1based": 31,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 5,
+          "path": "cache/audio_review_inputs/t08_001_05.wav",
+          "sha256": "69f428e35fff6ce5c7f0de84c6133e3b9cc67f9ee1bcefc06a5d889f37cfecd5",
+          "sample_rate": 16000,
+          "frames": 91969,
+          "start_frame": 1858548,
+          "end_frame": 1950517,
+          "start_seconds": 116.15925,
+          "end_seconds": 121.9073125,
+          "first_bar_1based": 32,
+          "last_bar_1based": 32,
+          "includes_release_tail": true
+        }
+      ],
+      "prompt": "The audio inputs are consecutive, non-overlapping parts of ONE instrumental performance, in chronological order; concatenate them mentally to assess the whole recording. Audio 1 covers 0.000–29.977 seconds, bars 1–8. Audio 2 covers 29.977–59.953 seconds, bars 9–16. Audio 3 covers 59.953–89.930 seconds, bars 17–24. Audio 4 covers 89.930–116.159 seconds, bars 25–31. Audio 5 covers 116.159–121.907 seconds, bars 32–32 and the final release tail.\nReview the actual audio, including every supplied part. For each Audio N give one concise observation about audible texture, register, rhythmic regularity, repetition or change, and say if the evidence is uncertain. Then describe: (a) the transition from the first eight bars into the following material; (b) whether later parts develop or remain similar; (c) the ending: a resolved close, a fade, an abrupt stop, or unclear. Do not invent note names, exact chords, exact tempo, composer, title, genre, or quality scores. Do not assume an abrupt change is an error. If an aspect is not reliably audible, say it is unclear. Return JSON with keys clips (list of {audio,observation,confidence}), opening_transition, later_development, ending, uncertainties. Keep the answer under 450 words. You have no MIDI, parameter settings, reference performance, or preferred-version label.",
+      "frontend_extractions": [
+        {
+          "input_frames": 479625,
+          "input_sha256_float32": "06bb7f98c7e6191dba009a379f8d9cf39c4830d1d2f676f2c15b088bb3296174",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "3bf490a5785b265c4111bad5c3d292807222c9f317f2117bcb43cf867a2acced",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 479625,
+          "input_sha256_float32": "e39d8f58361f00b6917cfa58869af70cf8f3c881b22ad2226f1a9f0c8c9c6c28",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "998037e9b65889fccf2e8c6828314400900befaa9454384758a06c94826c5e33",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 479626,
+          "input_sha256_float32": "a883c3ed2bd88cb1c55e26fcaba775092bcaf4593a6df49d3ade511eabd89947",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "f504df3fd92fd4e0811584542003607d186cb7b96910c86fd521cb24c2f4f271",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 419672,
+          "input_sha256_float32": "e55f7cbc48a945f4ee66599bf9a4179ed5f5122656d5bcd6bd45f7f88396bc33",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "c534c2a9c0cb02a5ff5508e6c4612072aa9dac37c1a654285b1fe465bdcb11a0",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 91969,
+          "input_sha256_float32": "ae72e23f38a75dc0b6a31226f81c8c9a201421542b41e6ff489e0ceb883e2552",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "3723a2f265a3ce4f30810645c1a17f3f5ec9bd8dc62d3aba06125f6e9076452d",
+          "audio_tokens": 750
+        }
+      ],
+      "raw_response": "{\\\"clips\\\": [{\\\"audio\\\": \\\"1\\\", \\\"observation\\\": \\\"The first eight bars have a light, melodic texture in a major key with a steady rhythm and repeating chord progression.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"2\\\", \\\"observation\\\": \\\"The next segment has a darker, more complex texture with a irregular rhythm and a chord progression that alternates between major and minor.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"3\\\", \\\"observation\\\": \\\"The third segment has a similar texture to the second, but with a slightly more pronounced shift between major and minor.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"4\\\", \\\"observation\\\": \\\"The final segment has a more relaxed, flowing texture with a consistent major chord progression and a slightly slower tempo.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"5\\\", \\\"observation\\\": \\\"The ending of the performance is unclear, as the last notes fade out without a clear resolution.\\\", \\\"confidence\\\": \\\"Uncertain\\\"}], \\\"opening_transition\\\": \\\"The transition between the first eight bars and the following material is gradual and smooth.\\\", \\\"later_development\\\": \\\"The later parts of the performance develop and add more complexity to the texture and rhythm.\\\", \\\"ending\\\": \\\"The ending of the performance is unclear, as the last notes fade out without a clear resolution.\\\", \\\"uncertainties\\\": [\\\"The exact chords and notes played in the later parts of the performance are not clearly identified.\\\"]}",
+      "parsed_response": null,
+      "prompt_tokens": 4168,
+      "generation_tokens": 314,
+      "possibly_token_limited": false,
+      "review_seconds": 22.016954209000687,
+      "peak_memory_bytes": 9473638058,
+      "review_type": "machine_audio_language_analysis",
+      "human_listening": false
+    },
+    {
+      "blind_id": "R04",
+      "prompt_id": "001",
+      "configuration_id": "t10",
+      "source_wav": "results/basic_b/t10/001.wav",
+      "source_wav_sha256": "6393c886e6a345a4bf7b06825398c316e69286093a3d6075b5f8c19b353ebfaa",
+      "full_frame_coverage_verified": true,
+      "all_frontend_waveform_hashes_match": true,
+      "original_seconds": 121.90730158730159,
+      "segments": [
+        {
+          "clip": 1,
+          "path": "cache/audio_review_inputs/t10_001_01.wav",
+          "sha256": "2e939985d9548c1e2f98e9d51310adf15131e57f3d6a4e17ad38cf958b16dee8",
+          "sample_rate": 16000,
+          "frames": 479625,
+          "start_frame": 0,
+          "end_frame": 479625,
+          "start_seconds": 0.0,
+          "end_seconds": 29.9765625,
+          "first_bar_1based": 1,
+          "last_bar_1based": 8,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 2,
+          "path": "cache/audio_review_inputs/t10_001_02.wav",
+          "sha256": "4498b2ed59c61a7a7d6be2ffbc0a5c795be18e53edaff0338d939c0d38219ed7",
+          "sample_rate": 16000,
+          "frames": 479625,
+          "start_frame": 479625,
+          "end_frame": 959250,
+          "start_seconds": 29.9765625,
+          "end_seconds": 59.953125,
+          "first_bar_1based": 9,
+          "last_bar_1based": 16,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 3,
+          "path": "cache/audio_review_inputs/t10_001_03.wav",
+          "sha256": "fbcc3b77aaf801b1398ea9a36ee334e7d808ff2901d875378430c484bb56eaf4",
+          "sample_rate": 16000,
+          "frames": 479626,
+          "start_frame": 959250,
+          "end_frame": 1438876,
+          "start_seconds": 59.953125,
+          "end_seconds": 89.92975,
+          "first_bar_1based": 17,
+          "last_bar_1based": 24,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 4,
+          "path": "cache/audio_review_inputs/t10_001_04.wav",
+          "sha256": "356a8cb34dea0d0058b630099c03ccad257662edb24cc8018b8c225189c0f628",
+          "sample_rate": 16000,
+          "frames": 419672,
+          "start_frame": 1438876,
+          "end_frame": 1858548,
+          "start_seconds": 89.92975,
+          "end_seconds": 116.15925,
+          "first_bar_1based": 25,
+          "last_bar_1based": 31,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 5,
+          "path": "cache/audio_review_inputs/t10_001_05.wav",
+          "sha256": "8faf17a660be35c1f68965b5048fbeef30c70b94f95acabd788aaac667aa8272",
+          "sample_rate": 16000,
+          "frames": 91969,
+          "start_frame": 1858548,
+          "end_frame": 1950517,
+          "start_seconds": 116.15925,
+          "end_seconds": 121.9073125,
+          "first_bar_1based": 32,
+          "last_bar_1based": 32,
+          "includes_release_tail": true
+        }
+      ],
+      "prompt": "The audio inputs are consecutive, non-overlapping parts of ONE instrumental performance, in chronological order; concatenate them mentally to assess the whole recording. Audio 1 covers 0.000–29.977 seconds, bars 1–8. Audio 2 covers 29.977–59.953 seconds, bars 9–16. Audio 3 covers 59.953–89.930 seconds, bars 17–24. Audio 4 covers 89.930–116.159 seconds, bars 25–31. Audio 5 covers 116.159–121.907 seconds, bars 32–32 and the final release tail.\nReview the actual audio, including every supplied part. For each Audio N give one concise observation about audible texture, register, rhythmic regularity, repetition or change, and say if the evidence is uncertain. Then describe: (a) the transition from the first eight bars into the following material; (b) whether later parts develop or remain similar; (c) the ending: a resolved close, a fade, an abrupt stop, or unclear. Do not invent note names, exact chords, exact tempo, composer, title, genre, or quality scores. Do not assume an abrupt change is an error. If an aspect is not reliably audible, say it is unclear. Return JSON with keys clips (list of {audio,observation,confidence}), opening_transition, later_development, ending, uncertainties. Keep the answer under 450 words. You have no MIDI, parameter settings, reference performance, or preferred-version label.",
+      "frontend_extractions": [
+        {
+          "input_frames": 479625,
+          "input_sha256_float32": "5f943d8ae722bb0a4945a9c87095a5932293dec6bda7468633315dd87249999e",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "3c0095aae09f25bcfa669bd44746391dc4f108812eb48f28ff5a0a0779d554f0",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 479625,
+          "input_sha256_float32": "a99e35b0448ed14cf3247f0568f90d5d389db437523033b775c49ab686982ed5",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "f8a13fe63a628216a178873a857bca1929c6b23f4bf7e205e3e81a1ffb7d8f1b",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 479626,
+          "input_sha256_float32": "5e69957e44800fcc902c1685ff1661df6416c1f084980d77567833a99bf5c690",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "839290df47d1f22936df22669e10e378d36ec888baa6c3dd618b05bc7f108f13",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 419672,
+          "input_sha256_float32": "27039b0cecc10aa5d20be1b04e2e8b739ae061debd588dada4f3bdcfca9c7e7a",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "6ff23d842c7a4d5d764d16b0af6826c4446d674c0514a7a255cab745f05f13ab",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 91969,
+          "input_sha256_float32": "2eaa162c7148680274bc19dddab8c273e6de689383b3f39716b2f75a247a1556",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "0598555472ce9915f04e87b873ff0c65a25ea7064cc64175dfaf26dc9026d84b",
+          "audio_tokens": 750
+        }
+      ],
+      "raw_response": "{\\\"clips\\\": [{\\\"audio\\\": \\\"1\\\", \\\"observation\\\": \\\"The first eight bars have a clear melody in a minor key with a steady rhythm and a sense of building tension\\\", \\\"confidence\\\": \\\"high\\\"}, {\\\"audio\\\": \\\"2\\\", \\\"observation\\\": \\\"The second part starts with a similar melody but in a major key, which creates a contrast and a sense of resolution\\\", \\\"confidence\\\": \\\"medium\\\"}, {\\\"audio\\\": \\\"3\\\", \\\"observation\\\": \\\"The third part has a more complex melody and rhythm, with a shift to a higher key, which creates a sense of progression and excitement\\\", \\\"confidence\\\": \\\"high\\\"}, {\\\"audio\\\": \\\"4\\\", \\\"observation\\\": \\\"The final part has a smooth and soothing melody with a slow and steady rhythm, which creates a sense of closure\\\", \\\"confidence\\\": \\\"high\\\"}], \\\"opening_transition\\\": \\\"The transition from the first eight bars to the second part is smooth and seamless\\\", \\\"later_development\\\": \\\"The later parts develop and build upon the initial melody, creating a more complex and dynamic sound\\\", \\\"ending\\\": \\\"The ending of the final part is a smooth and peaceful close, with a sense of resolution and finality\\\", \\\"uncertainties\\\": \\\"The exact chords and notes used in each part are not clearly identified, which may affect the accuracy of the observations\\\"}",
+      "parsed_response": null,
+      "prompt_tokens": 4168,
+      "generation_tokens": 276,
+      "possibly_token_limited": false,
+      "review_seconds": 21.14803954200761,
+      "peak_memory_bytes": 9473638058,
+      "review_type": "machine_audio_language_analysis",
+      "human_listening": false
+    },
+    {
+      "blind_id": "R05",
+      "prompt_id": "003",
+      "configuration_id": "t10",
+      "source_wav": "results/basic_b/t10/003.wav",
+      "source_wav_sha256": "b7f852d822c908fda92b53e46b440f371f6655c2787d4982e4e222abe762335f",
+      "full_frame_coverage_verified": true,
+      "all_frontend_waveform_hashes_match": true,
+      "original_seconds": 113.30417233560091,
+      "segments": [
+        {
+          "clip": 1,
+          "path": "cache/audio_review_inputs/t10_003_01.wav",
+          "sha256": "9541014bade4c130aed76e98bfcf95da098d01b4d717f48a546ec58be1db7689",
+          "sample_rate": 16000,
+          "frames": 445217,
+          "start_frame": 0,
+          "end_frame": 445217,
+          "start_seconds": 0.0,
+          "end_seconds": 27.8260625,
+          "first_bar_1based": 1,
+          "last_bar_1based": 8,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 2,
+          "path": "cache/audio_review_inputs/t10_003_02.wav",
+          "sha256": "4e4f070f975f92998ae096dc0e3a86596b480df3467c694ad1efd9a292cc4be7",
+          "sample_rate": 16000,
+          "frames": 445217,
+          "start_frame": 445217,
+          "end_frame": 890434,
+          "start_seconds": 27.8260625,
+          "end_seconds": 55.652125,
+          "first_bar_1based": 9,
+          "last_bar_1based": 16,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 3,
+          "path": "cache/audio_review_inputs/t10_003_03.wav",
+          "sha256": "510d79c55c4955a693849a49b87241bc8edf9212e6688acfdaeb90a10847c4b9",
+          "sample_rate": 16000,
+          "frames": 445216,
+          "start_frame": 890434,
+          "end_frame": 1335650,
+          "start_seconds": 55.652125,
+          "end_seconds": 83.478125,
+          "first_bar_1based": 17,
+          "last_bar_1based": 24,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 4,
+          "path": "cache/audio_review_inputs/t10_003_04.wav",
+          "sha256": "8e1081eb16dea6bc4df7eae45964e019e3a66f4779e90ff3a98c489067fe3340",
+          "sample_rate": 16000,
+          "frames": 477217,
+          "start_frame": 1335650,
+          "end_frame": 1812867,
+          "start_seconds": 83.478125,
+          "end_seconds": 113.3041875,
+          "first_bar_1based": 25,
+          "last_bar_1based": 32,
+          "includes_release_tail": true
+        }
+      ],
+      "prompt": "The audio inputs are consecutive, non-overlapping parts of ONE instrumental performance, in chronological order; concatenate them mentally to assess the whole recording. Audio 1 covers 0.000–27.826 seconds, bars 1–8. Audio 2 covers 27.826–55.652 seconds, bars 9–16. Audio 3 covers 55.652–83.478 seconds, bars 17–24. Audio 4 covers 83.478–113.304 seconds, bars 25–32 and the final release tail.\nReview the actual audio, including every supplied part. For each Audio N give one concise observation about audible texture, register, rhythmic regularity, repetition or change, and say if the evidence is uncertain. Then describe: (a) the transition from the first eight bars into the following material; (b) whether later parts develop or remain similar; (c) the ending: a resolved close, a fade, an abrupt stop, or unclear. Do not invent note names, exact chords, exact tempo, composer, title, genre, or quality scores. Do not assume an abrupt change is an error. If an aspect is not reliably audible, say it is unclear. Return JSON with keys clips (list of {audio,observation,confidence}), opening_transition, later_development, ending, uncertainties. Keep the answer under 450 words. You have no MIDI, parameter settings, reference performance, or preferred-version label.",
+      "frontend_extractions": [
+        {
+          "input_frames": 445217,
+          "input_sha256_float32": "253e00fba588eeb2eeb9ed65071d6883aae15c8eaa5831dc37e7da3b5d9c2e2f",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "098d0ab391c30e0950aae57a5861ce6de071679f71cb9b32769d6abeb573fb3d",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 445217,
+          "input_sha256_float32": "6549e1249a3c92e94c98f9eed41105b81a78c006847a98e8a24e7eb743b8479f",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "804b3aa2741b43edca0a8c3b5f0b3d92faf90784a7e9b8230ce26ef7b21948f5",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 445216,
+          "input_sha256_float32": "1a4fb596dd8fcfa43185ccad86e356900ca4f58d51b7cd2918dd09db59225630",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "74a7d6f5cabaea960f6cb4e97ab8b4a8c43bd54510002288e4a947f4b24654b9",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 477217,
+          "input_sha256_float32": "6e7a94d74d6ce940e5a387db81012cec402ae47cde0fab80d37761f58fbc38b6",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "18771d5ace7d7ec08a76c2fa32cc9a5cad69a770238fd8dde2e833ac2b309730",
+          "audio_tokens": 750
+        }
+      ],
+      "raw_response": "{\\\"clips\\\": [{\\\"audio\\\": \\\"1\\\", \\\"observation\\\": \\\"The first eight bars have a steady rhythm and a melody that rises in pitch.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"2\\\", \\\"observation\\\": \\\"The second part has a more complex melody and a slightly lower pitch.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"3\\\", \\\"observation\\\": \\\"The third part has a repetitive melody and a slightly higher pitch.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"4\\\", \\\"observation\\\": \\\"The final part has a descending melody and a lower pitch.\\\", \\\"confidence\\\": \\\"Moderate\\\"}], \\\"opening_transition\\\": \\\"The transition between the first eight bars and the following material is gradual.\\\", \\\"later_development\\\": \\\"The later parts develop by adding more complexity and variation to the melody.\\\", \\\"ending\\\": \\\"The ending is a fade-out of the final melody.\\\", \\\"uncertainties\\\": \\\"The exact chords and tempo of the performance are unclear.\\\"}",
+      "parsed_response": null,
+      "prompt_tokens": 3380,
+      "generation_tokens": 214,
+      "possibly_token_limited": false,
+      "review_seconds": 16.19993458398676,
+      "peak_memory_bytes": 9473638058,
+      "review_type": "machine_audio_language_analysis",
+      "human_listening": false
+    },
+    {
+      "blind_id": "R06",
+      "prompt_id": "002",
+      "configuration_id": "t08",
+      "source_wav": "results/basic_b/t08/002.wav",
+      "source_wav_sha256": "a0931e986d7cb1fa74e321b5f616b2384a3982de87c2f1ba31a71dc6e0013392",
+      "full_frame_coverage_verified": true,
+      "all_frontend_waveform_hashes_match": true,
+      "original_seconds": 73.11147392290249,
+      "segments": [
+        {
+          "clip": 1,
+          "path": "cache/audio_review_inputs/t08_002_01.wav",
+          "sha256": "ba93cb9ab6314747befe783508b53cf5df8b02a372945b8c767b1f4bbfcba68a",
+          "sample_rate": 16000,
+          "frames": 284444,
+          "start_frame": 0,
+          "end_frame": 284444,
+          "start_seconds": 0.0,
+          "end_seconds": 17.77775,
+          "first_bar_1based": 1,
+          "last_bar_1based": 8,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 2,
+          "path": "cache/audio_review_inputs/t08_002_02.wav",
+          "sha256": "8f25c89a23b24c9bf54c0ada74e28961c2b6c287506ee0c0acf10256638d6cd0",
+          "sample_rate": 16000,
+          "frames": 284443,
+          "start_frame": 284444,
+          "end_frame": 568887,
+          "start_seconds": 17.77775,
+          "end_seconds": 35.5554375,
+          "first_bar_1based": 9,
+          "last_bar_1based": 16,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 3,
+          "path": "cache/audio_review_inputs/t08_002_03.wav",
+          "sha256": "9fbffb2fdee1299951125c3481de56a5e8581c43ca8f7511f613dcca09447d68",
+          "sample_rate": 16000,
+          "frames": 284444,
+          "start_frame": 568887,
+          "end_frame": 853331,
+          "start_seconds": 35.5554375,
+          "end_seconds": 53.3331875,
+          "first_bar_1based": 17,
+          "last_bar_1based": 24,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 4,
+          "path": "cache/audio_review_inputs/t08_002_04.wav",
+          "sha256": "9ea287eb26c56e7fb53fed648b152fc17a1d5f939091157317d4af9662b1a21e",
+          "sample_rate": 16000,
+          "frames": 316453,
+          "start_frame": 853331,
+          "end_frame": 1169784,
+          "start_seconds": 53.3331875,
+          "end_seconds": 73.1115,
+          "first_bar_1based": 25,
+          "last_bar_1based": 32,
+          "includes_release_tail": true
+        }
+      ],
+      "prompt": "The audio inputs are consecutive, non-overlapping parts of ONE instrumental performance, in chronological order; concatenate them mentally to assess the whole recording. Audio 1 covers 0.000–17.778 seconds, bars 1–8. Audio 2 covers 17.778–35.555 seconds, bars 9–16. Audio 3 covers 35.555–53.333 seconds, bars 17–24. Audio 4 covers 53.333–73.112 seconds, bars 25–32 and the final release tail.\nReview the actual audio, including every supplied part. For each Audio N give one concise observation about audible texture, register, rhythmic regularity, repetition or change, and say if the evidence is uncertain. Then describe: (a) the transition from the first eight bars into the following material; (b) whether later parts develop or remain similar; (c) the ending: a resolved close, a fade, an abrupt stop, or unclear. Do not invent note names, exact chords, exact tempo, composer, title, genre, or quality scores. Do not assume an abrupt change is an error. If an aspect is not reliably audible, say it is unclear. Return JSON with keys clips (list of {audio,observation,confidence}), opening_transition, later_development, ending, uncertainties. Keep the answer under 450 words. You have no MIDI, parameter settings, reference performance, or preferred-version label.",
+      "frontend_extractions": [
+        {
+          "input_frames": 284444,
+          "input_sha256_float32": "72266d049cdc1e2273fb82091f1cf638c17a00c550e38b74b74fd3c6a057a83c",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "26de41e76dce63ffac68ced00ff307fb1bd3cc00c61b819821d3d27b0707da87",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 284443,
+          "input_sha256_float32": "ebf74e2005ad14d761b5ad941bfaf5cfa47bbebaf159453e7f8806318d67ced3",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "3ded1a589bc6d30fb92b6257bda0dcc7ecd9f9b5586b6b4da964aa1027de80c6",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 284444,
+          "input_sha256_float32": "631412611de489c8b69426cb92956e287328c8d9f038f33619adcf889a0ddbc6",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "a888cafe281cab29d0b0d416d70ad311c96918a4f6e8e47c9e4c74a6b4f2c0e3",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 316453,
+          "input_sha256_float32": "98f4bacdac0fbcf49af68fd833bbbb60b4fb8d750b3bd17678f07fa3e88bc532",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "b4503b9d86bda1d400f84c82e6ac7f42558865b7c277f26c86ef92a3cab4f1f5",
+          "audio_tokens": 750
+        }
+      ],
+      "raw_response": "{\\\"clips\\\": [{\\\"audio\\\": \\\"1\\\", \\\"observation\\\": \\\"The first eight bars have a steady rhythm and harmonic texture.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"2\\\", \\\"observation\\\": \\\"The second part has a more complex melody and rhythm.\\\", \\\"confidence\\\": \\\"High\\\"}, {\\\"audio\\\": \\\"3\\\", \\\"observation\\\": \\\"The third part has a repetitive melody and rhythm.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"4\\\", \\\"observation\\\": \\\"The final part has a smooth transition and a fade-out.\\\", \\\"confidence\\\": \\\"High\\\"}], \\\"opening_transition\\\": \\\"The transition between the first and second parts is smooth.\\\", \\\"later_development\\\": \\\"The later parts develop with more complex melodies and rhythms.\\\", \\\"ending\\\": \\\"The ending has a smooth fade-out.\\\", \\\"uncertainties\\\": [\\\"The exact chords and tempo of the audio are not clearly audible.\\\"]}",
+      "parsed_response": null,
+      "prompt_tokens": 3379,
+      "generation_tokens": 196,
+      "possibly_token_limited": false,
+      "review_seconds": 16.188640791995567,
+      "peak_memory_bytes": 9473638058,
+      "review_type": "machine_audio_language_analysis",
+      "human_listening": false
+    },
+    {
+      "blind_id": "R07",
+      "prompt_id": "002",
+      "configuration_id": "t12",
+      "source_wav": "results/basic_b/t12/002.wav",
+      "source_wav_sha256": "6db4ae3ecad3a8470faf03bd1eff2040df38f993a7dc907e4965dc64fadeb3cf",
+      "full_frame_coverage_verified": true,
+      "all_frontend_waveform_hashes_match": true,
+      "original_seconds": 73.11147392290249,
+      "segments": [
+        {
+          "clip": 1,
+          "path": "cache/audio_review_inputs/t12_002_01.wav",
+          "sha256": "a359f8cd4a36ffe0088178c004307f6796476a7a8fb6fdabb4106eb8a58faff0",
+          "sample_rate": 16000,
+          "frames": 284444,
+          "start_frame": 0,
+          "end_frame": 284444,
+          "start_seconds": 0.0,
+          "end_seconds": 17.77775,
+          "first_bar_1based": 1,
+          "last_bar_1based": 8,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 2,
+          "path": "cache/audio_review_inputs/t12_002_02.wav",
+          "sha256": "75f65801684ada3c8c4c63f6ad04c50ee9a4d1c484f86d1b27bc3bf5c139f89f",
+          "sample_rate": 16000,
+          "frames": 284443,
+          "start_frame": 284444,
+          "end_frame": 568887,
+          "start_seconds": 17.77775,
+          "end_seconds": 35.5554375,
+          "first_bar_1based": 9,
+          "last_bar_1based": 16,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 3,
+          "path": "cache/audio_review_inputs/t12_002_03.wav",
+          "sha256": "b3f8dd722bc77693cd65b3ad574a87c5e3acd57c018bdf9eb8df72928e0657b5",
+          "sample_rate": 16000,
+          "frames": 284444,
+          "start_frame": 568887,
+          "end_frame": 853331,
+          "start_seconds": 35.5554375,
+          "end_seconds": 53.3331875,
+          "first_bar_1based": 17,
+          "last_bar_1based": 24,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 4,
+          "path": "cache/audio_review_inputs/t12_002_04.wav",
+          "sha256": "744050c76e89b4f4847f4e1a8aebd3eaa600c6a158a47f62ea0101ab7f37b509",
+          "sample_rate": 16000,
+          "frames": 316453,
+          "start_frame": 853331,
+          "end_frame": 1169784,
+          "start_seconds": 53.3331875,
+          "end_seconds": 73.1115,
+          "first_bar_1based": 25,
+          "last_bar_1based": 32,
+          "includes_release_tail": true
+        }
+      ],
+      "prompt": "The audio inputs are consecutive, non-overlapping parts of ONE instrumental performance, in chronological order; concatenate them mentally to assess the whole recording. Audio 1 covers 0.000–17.778 seconds, bars 1–8. Audio 2 covers 17.778–35.555 seconds, bars 9–16. Audio 3 covers 35.555–53.333 seconds, bars 17–24. Audio 4 covers 53.333–73.112 seconds, bars 25–32 and the final release tail.\nReview the actual audio, including every supplied part. For each Audio N give one concise observation about audible texture, register, rhythmic regularity, repetition or change, and say if the evidence is uncertain. Then describe: (a) the transition from the first eight bars into the following material; (b) whether later parts develop or remain similar; (c) the ending: a resolved close, a fade, an abrupt stop, or unclear. Do not invent note names, exact chords, exact tempo, composer, title, genre, or quality scores. Do not assume an abrupt change is an error. If an aspect is not reliably audible, say it is unclear. Return JSON with keys clips (list of {audio,observation,confidence}), opening_transition, later_development, ending, uncertainties. Keep the answer under 450 words. You have no MIDI, parameter settings, reference performance, or preferred-version label.",
+      "frontend_extractions": [
+        {
+          "input_frames": 284444,
+          "input_sha256_float32": "498113c6d4a8609a84ae9ec6b7a2c14b4c6fb7d61e59ddd7a9f95629da4bd998",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "2499cc49f5216e90b1515c8ccacf585943a8883de041ef1a4131cd8799f78f4e",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 284443,
+          "input_sha256_float32": "9542265c1b234c75d0cf5b2df3691b91491901783ad9c502aa67527cbf7dd788",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "463edc418800fa5ad4bba37c5362a7b07208692169993971faaa7393d960a3d9",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 284444,
+          "input_sha256_float32": "6fb353239eb6b269db69fc685c16a69fd11c298111969fd6f3eff989246bf83f",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "a48ee8705bac7f763ceba180be1e622bc0fab525aa047519b7adca2aaccddb99",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 316453,
+          "input_sha256_float32": "fcd028fc59071fa56ba6ac9df27db803675a1a5851b5a31c499fb83e3d2fb529",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "67afbc0579a8310581fa98f474e33ad21ba531149b8f2fdd3922cebc176b4e75",
+          "audio_tokens": 750
+        }
+      ],
+      "raw_response": "{\\\"clips\\\": [{\\\"audio\\\": \\\"1\\\", \\\"observation\\\": \\\"The first eight bars have a steady rhythm and a melody that rises in pitch.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"2\\\", \\\"observation\\\": \\\"The second part has a more complex melody and a slightly lower pitch.\\\", \\\"confidence\\\": \\\"High\\\"}, {\\\"audio\\\": \\\"3\\\", \\\"observation\\\": \\\"The third part has a repetitive melody and a slightly higher pitch.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"4\\\", \\\"observation\\\": \\\"The final part has a descending melody and a slightly lower pitch.\\\", \\\"confidence\\\": \\\"High\\\"}], \\\"opening_transition\\\": \\\"The transition between the first and second parts is smooth.\\\", \\\"later_development\\\": \\\"The later parts develop by adding more complexity to the melody.\\\", \\\"ending\\\": \\\"The ending is a fade-out of the final melody.\\\", \\\"uncertainties\\\": \\\"The exact chords and tempo are not clearly audible.\\\"}",
+      "parsed_response": null,
+      "prompt_tokens": 3379,
+      "generation_tokens": 207,
+      "possibly_token_limited": false,
+      "review_seconds": 16.6187182499998,
+      "peak_memory_bytes": 9473638058,
+      "review_type": "machine_audio_language_analysis",
+      "human_listening": false
+    },
+    {
+      "blind_id": "R08",
+      "prompt_id": "003",
+      "configuration_id": "t12",
+      "source_wav": "results/basic_b/t12/003.wav",
+      "source_wav_sha256": "60dd32de15c93477aa8419f7cac45a71d0e24c99d1d918e0c52cf4b91e536d6c",
+      "full_frame_coverage_verified": true,
+      "all_frontend_waveform_hashes_match": true,
+      "original_seconds": 113.30417233560091,
+      "segments": [
+        {
+          "clip": 1,
+          "path": "cache/audio_review_inputs/t12_003_01.wav",
+          "sha256": "47ff6e3945b9519c9f73956cb92bcbda1787c79ee7d3d24c4c9a9611a21ab3cb",
+          "sample_rate": 16000,
+          "frames": 445217,
+          "start_frame": 0,
+          "end_frame": 445217,
+          "start_seconds": 0.0,
+          "end_seconds": 27.8260625,
+          "first_bar_1based": 1,
+          "last_bar_1based": 8,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 2,
+          "path": "cache/audio_review_inputs/t12_003_02.wav",
+          "sha256": "c207fd19e9c58aabe45bac2c8a80063582776b4f11376b8bc2edfe4b53321338",
+          "sample_rate": 16000,
+          "frames": 445217,
+          "start_frame": 445217,
+          "end_frame": 890434,
+          "start_seconds": 27.8260625,
+          "end_seconds": 55.652125,
+          "first_bar_1based": 9,
+          "last_bar_1based": 16,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 3,
+          "path": "cache/audio_review_inputs/t12_003_03.wav",
+          "sha256": "1999f0d70226f7aa41dfe9dd2e327654b244be7f5daf94d339900d901d4736c2",
+          "sample_rate": 16000,
+          "frames": 445216,
+          "start_frame": 890434,
+          "end_frame": 1335650,
+          "start_seconds": 55.652125,
+          "end_seconds": 83.478125,
+          "first_bar_1based": 17,
+          "last_bar_1based": 24,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 4,
+          "path": "cache/audio_review_inputs/t12_003_04.wav",
+          "sha256": "ba64a2d2cf05fa3fa86f4451c4fa330971284d37f8382a0ae3ebbdd3d732e168",
+          "sample_rate": 16000,
+          "frames": 477217,
+          "start_frame": 1335650,
+          "end_frame": 1812867,
+          "start_seconds": 83.478125,
+          "end_seconds": 113.3041875,
+          "first_bar_1based": 25,
+          "last_bar_1based": 32,
+          "includes_release_tail": true
+        }
+      ],
+      "prompt": "The audio inputs are consecutive, non-overlapping parts of ONE instrumental performance, in chronological order; concatenate them mentally to assess the whole recording. Audio 1 covers 0.000–27.826 seconds, bars 1–8. Audio 2 covers 27.826–55.652 seconds, bars 9–16. Audio 3 covers 55.652–83.478 seconds, bars 17–24. Audio 4 covers 83.478–113.304 seconds, bars 25–32 and the final release tail.\nReview the actual audio, including every supplied part. For each Audio N give one concise observation about audible texture, register, rhythmic regularity, repetition or change, and say if the evidence is uncertain. Then describe: (a) the transition from the first eight bars into the following material; (b) whether later parts develop or remain similar; (c) the ending: a resolved close, a fade, an abrupt stop, or unclear. Do not invent note names, exact chords, exact tempo, composer, title, genre, or quality scores. Do not assume an abrupt change is an error. If an aspect is not reliably audible, say it is unclear. Return JSON with keys clips (list of {audio,observation,confidence}), opening_transition, later_development, ending, uncertainties. Keep the answer under 450 words. You have no MIDI, parameter settings, reference performance, or preferred-version label.",
+      "frontend_extractions": [
+        {
+          "input_frames": 445217,
+          "input_sha256_float32": "bd57f9e4b60650e05b7e9fe180ff5d213fd7afb46eec944afa0446a6c84ce039",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "9950ae65b1c138b03fd830c5152ce7cabe81f050fa8a12a819446771f108bdb4",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 445217,
+          "input_sha256_float32": "f4dfde96b18003e0b3a81173b09895f6d7d43f323ba0e62ba8f5366969c97296",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "382a73d52c54a8d1c3dde12e58c533e1c8b0c0a075caa51b60e48b41d8f4db0b",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 445216,
+          "input_sha256_float32": "334b762863081b9131622458ef85d72a685aff5562811eaf8306d394b99e6b3b",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "ff630b3e60fccf41d265315ff0ac617008a555e7a617aa9789811bc1b1b872d7",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 477217,
+          "input_sha256_float32": "e540faaa06c880e5d901878d12e976065edfd34ca7b997d4322826070637a6ba",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "5ea3e8c51e6951b2b3628e6b365be168d5533d420160e174a56024507f1a8a81",
+          "audio_tokens": 750
+        }
+      ],
+      "raw_response": "{\\\"clips\\\": [{\\\"audio\\\": \\\"1\\\", \\\"observation\\\": \\\"The first eight bars have a steady rhythm and a melody that rises in pitch.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"2\\\", \\\"observation\\\": \\\"The second part has a different melody and a lower pitch.\\\", \\\"confidence\\\": \\\"High\\\"}, {\\\"audio\\\": \\\"3\\\", \\\"observation\\\": \\\"The third part has a melody that is similar to the second part but with a higher pitch.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"4\\\", \\\"observation\\\": \\\"The final part has a melody that fades out and ends with a release tail.\\\", \\\"confidence\\\": \\\"High\\\"}], \\\"opening_transition\\\": \\\"The transition from the first eight bars into the following material is smooth.\\\", \\\"later_development\\\": \\\"The later parts develop by adding variations to the original melody.\\\", \\\"ending\\\": \\\"The ending is a fade that leads to a release tail.\\\", \\\"uncertainties\\\": [\\\"The exact chords and tempo of the performance are unclear.\\\"]}",
+      "parsed_response": null,
+      "prompt_tokens": 3380,
+      "generation_tokens": 220,
+      "possibly_token_limited": false,
+      "review_seconds": 16.934809416998178,
+      "peak_memory_bytes": 9473638058,
+      "review_type": "machine_audio_language_analysis",
+      "human_listening": false
+    },
+    {
+      "blind_id": "R09",
+      "prompt_id": "001",
+      "configuration_id": "t12",
+      "source_wav": "results/basic_b/t12/001.wav",
+      "source_wav_sha256": "4112c49429f2c937285c5622e0a2926f4b7532c870b26af17352e0fcffdacdd3",
+      "full_frame_coverage_verified": true,
+      "all_frontend_waveform_hashes_match": true,
+      "original_seconds": 121.90730158730159,
+      "segments": [
+        {
+          "clip": 1,
+          "path": "cache/audio_review_inputs/t12_001_01.wav",
+          "sha256": "1f3c30ac83e921daad5bcb2d3e3123cf042b5e1f83790e0abb934367401d4d5d",
+          "sample_rate": 16000,
+          "frames": 479625,
+          "start_frame": 0,
+          "end_frame": 479625,
+          "start_seconds": 0.0,
+          "end_seconds": 29.9765625,
+          "first_bar_1based": 1,
+          "last_bar_1based": 8,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 2,
+          "path": "cache/audio_review_inputs/t12_001_02.wav",
+          "sha256": "7b3872aaddddc18dd276d4c5bb8417a1764f67e94269c607fb6e7fbb2b73cb7b",
+          "sample_rate": 16000,
+          "frames": 479625,
+          "start_frame": 479625,
+          "end_frame": 959250,
+          "start_seconds": 29.9765625,
+          "end_seconds": 59.953125,
+          "first_bar_1based": 9,
+          "last_bar_1based": 16,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 3,
+          "path": "cache/audio_review_inputs/t12_001_03.wav",
+          "sha256": "77420fc4d02376ca8e0efe7ed6a8a453a29508f6c7d5d3fb78d31cd9bd858929",
+          "sample_rate": 16000,
+          "frames": 479626,
+          "start_frame": 959250,
+          "end_frame": 1438876,
+          "start_seconds": 59.953125,
+          "end_seconds": 89.92975,
+          "first_bar_1based": 17,
+          "last_bar_1based": 24,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 4,
+          "path": "cache/audio_review_inputs/t12_001_04.wav",
+          "sha256": "72c2749725760ee8aed095bd069df05b0b10cfbf645c1cca7cc6ce71aa228279",
+          "sample_rate": 16000,
+          "frames": 419672,
+          "start_frame": 1438876,
+          "end_frame": 1858548,
+          "start_seconds": 89.92975,
+          "end_seconds": 116.15925,
+          "first_bar_1based": 25,
+          "last_bar_1based": 31,
+          "includes_release_tail": false
+        },
+        {
+          "clip": 5,
+          "path": "cache/audio_review_inputs/t12_001_05.wav",
+          "sha256": "66e68b8f41160159e3b1bc78fdc70f4d697d111e375785887ec52049d63335e1",
+          "sample_rate": 16000,
+          "frames": 91969,
+          "start_frame": 1858548,
+          "end_frame": 1950517,
+          "start_seconds": 116.15925,
+          "end_seconds": 121.9073125,
+          "first_bar_1based": 32,
+          "last_bar_1based": 32,
+          "includes_release_tail": true
+        }
+      ],
+      "prompt": "The audio inputs are consecutive, non-overlapping parts of ONE instrumental performance, in chronological order; concatenate them mentally to assess the whole recording. Audio 1 covers 0.000–29.977 seconds, bars 1–8. Audio 2 covers 29.977–59.953 seconds, bars 9–16. Audio 3 covers 59.953–89.930 seconds, bars 17–24. Audio 4 covers 89.930–116.159 seconds, bars 25–31. Audio 5 covers 116.159–121.907 seconds, bars 32–32 and the final release tail.\nReview the actual audio, including every supplied part. For each Audio N give one concise observation about audible texture, register, rhythmic regularity, repetition or change, and say if the evidence is uncertain. Then describe: (a) the transition from the first eight bars into the following material; (b) whether later parts develop or remain similar; (c) the ending: a resolved close, a fade, an abrupt stop, or unclear. Do not invent note names, exact chords, exact tempo, composer, title, genre, or quality scores. Do not assume an abrupt change is an error. If an aspect is not reliably audible, say it is unclear. Return JSON with keys clips (list of {audio,observation,confidence}), opening_transition, later_development, ending, uncertainties. Keep the answer under 450 words. You have no MIDI, parameter settings, reference performance, or preferred-version label.",
+      "frontend_extractions": [
+        {
+          "input_frames": 479625,
+          "input_sha256_float32": "924000daf0d6ac29580316e59bc5e3e853230cccc7b8936567f850e5062e435c",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "f7c3d74b65963920d1c48a6fc5a183b1be6b8780a965a5abfa6c54e5a75b6d22",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 479625,
+          "input_sha256_float32": "7e2da94a42fc576ef595676c8b057aab7e21e93f1fd1e25c3cf306207096c5b4",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "3d8170d6af34260e5419c4b9ca221269dccd188f431373000ba2099bc56e8f62",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 479626,
+          "input_sha256_float32": "794241196c12d54b042fb60ee04aa0153f58643ee106898d1d9a79e6651abb09",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "9f78434584ae6da937d244dbae48f697e5c3abc872a78cfa5457652350f207c7",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 419672,
+          "input_sha256_float32": "63296dd5c7df5b2e42d5b0afa9ddc1a08b7dc35993608a78496aa2236f08f9ea",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "7683e0651ccc2b571bff79c26b562573f500eb7756b08f6a96184b508db6c0be",
+          "audio_tokens": 750
+        },
+        {
+          "input_frames": 91969,
+          "input_sha256_float32": "ad7dac4943ea11f1850b6645a985309d6374935995d398e68d4e5a890bba09e1",
+          "feature_shape": [
+            1,
+            128,
+            3000
+          ],
+          "official_feature_sha256_float32": "0075bcd459df096c3712cb8e2c9266e8c124c6fe6c1e6b778ba1292014d29e38",
+          "audio_tokens": 750
+        }
+      ],
+      "raw_response": "{\\\"clips\\\": [{\\\"audio\\\": \\\"1\\\", \\\"observation\\\": \\\"The first eight bars have a steady rhythm and a melody that rises and falls in a repeated pattern.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"2\\\", \\\"observation\\\": \\\"The second part has a different melody and rhythm, which feels more dynamic and less repetitive.\\\", \\\"confidence\\\": \\\"High\\\"}, {\\\"audio\\\": \\\"3\\\", \\\"observation\\\": \\\"The third part has a similar melody and rhythm to the second part, but with a slightly different key.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"audio\\\": \\\"4\\\", \\\"observation\\\": \\\"The final part has a similar melody and rhythm to the second part, but with a slightly different key and a more complex chord progression.\\\", \\\"confidence\\\": \\\"High\\\"}, {\\\"open_transition\\\": \\\"The transition from the first eight bars into the following material is gradual and smooth.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"later_development\\\": \\\"Later parts develop and add more complexity to the melody and rhythm.\\\", \\\"confidence\\\": \\\"High\\\"}, {\\\"ending\\\": \\\"The ending feels resolved and conclusive, with a smooth fade-out.\\\", \\\"confidence\\\": \\\"Moderate\\\"}, {\\\"uncertainties\\\": \\\"There are some uncertainties about the exact notes and chords played, especially towards the end of the final part.\\\"}], \\\"opening_transition\\\": \\\"The transition from the first eight bars into the following material is gradual and smooth.\\\", \\\"later_development\\\": \\\"Later parts develop and add more complexity to the melody and rhythm.\\\", \\\"ending\\\": \\\"The ending feels resolved and conclusive, with a smooth fade-out.\\\", \\\"uncertainties\\\": \\\"There are some uncertainties about the exact notes and chords played, especially towards the end of the final part.\\\"}",
+      "parsed_response": null,
+      "prompt_tokens": 4168,
+      "generation_tokens": 371,
+      "possibly_token_limited": false,
+      "review_seconds": 24.96979079200537,
+      "peak_memory_bytes": 9473638058,
+      "review_type": "machine_audio_language_analysis",
+      "human_listening": false
+    }
+  ],
+  "pieces_completed": 9,
+  "human_listening_performed": false,
+  "limitations": [
+    "Audio-language descriptions may be generic or hallucinated and are not listener ratings.",
+    "Each audio encoder clip has at most30s context, although all clip embeddings enter one language-model request.",
+    "Time and bar coordinates come from verified waveform segmentation, not the backend STTOutput.segments latency field.",
+    "Model text is cross-checked with MIDI evidence; model words alone do not verify a chord, a cadence or a preferred configuration."
+  ]
+}

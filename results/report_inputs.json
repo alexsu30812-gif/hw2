@@ -1,5 +1,6 @@
 {
   "artifact_url": "https://github.com/alexsu30812-gif/hw2",
+  "audio_review": "results/audio_review/audio_review_summary.json",
   "user_selected_repository_hosting": true,
   "cloud_drive_requirement_unverified": true
 }

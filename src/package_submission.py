@@ -157,11 +157,11 @@ def validate_sample_files(root, payload):
 def collect_sources(root, payload, report_path, results_path):
     samples, checks = validate_sample_files(root, payload)
     files = samples + [report_path, results_path]
-    for name in ("README.md", "requirements.txt", "requirements-experiments.txt"):
+    for name in ("README.md", "requirements.txt", "requirements-experiments.txt", "requirements-audio-review.txt"):
         path = root / name
         if path.is_file():
             files.append(path)
-        elif name != "requirements-experiments.txt":
+        elif name in ("README.md", "requirements.txt"):
             raise ValueError(f"Missing required file: {name}")
     for name in ("infer.py", "model.py"):
         if not (root / "src" / name).is_file():
@@ -169,6 +169,12 @@ def collect_sources(root, payload, report_path, results_path):
     files += sorted((root / "src").glob("*.py"))
     files += sorted((root / "tools").glob("*.swift"))
     files += sorted((root / "tools").glob("*.sh"))
+    # Optional audio-only criticism has separate dependencies and never ships
+    # downloaded external weights, environments, caches, or clipped WAV copies.
+    for name in ("prepare_audio_review_model.py", "check_audio_review_frontend.py", "audio_review_smoke.py"):
+        path = root / "tools" / name
+        if path.is_file():
+            files.append(path)
     for name in ("eval_basic.py", "eval_bonus.py", "tokenization.py", "README.md"):
         path = root / "HW2_scripts" / name
         if path.is_file():
@@ -216,9 +222,20 @@ def collect_sources(root, payload, report_path, results_path):
         if not recorded or sha256(path) != recorded:
             raise ValueError(f"Measured evidence hash missing or changed: {relative}")
         files.append(path)
-    files += sorted((root / "tests").glob("*.py"))
+    for name in reproduce.get("figure_artifacts", []):
+        path, relative = owned_file(root, name)
+        if path.suffix.lower() not in (".png", ".jpg", ".jpeg", ".svg"):
+            raise ValueError(f"Unsupported case-study figure: {relative}")
+        recorded = reproduce.get("figure_sha256", {}).get(str(relative))
+        if not recorded or sha256(path) != recorded:
+            raise ValueError(f"Case-study figure hash missing or changed: {relative}")
+        files.append(path)
+    files += [path for path in sorted((root / "tests").glob("*.py"))
+              if path.name != "test_update_published_report.py"]
     # Include the code behind reported audits, not their raw/preprocessed data.
     files += sorted((root / "analysis").glob("*.py"))
+    files += sorted((root / "analysis/case_studies").glob("*.py"))
+    files += sorted((root / "analysis/audio_review").glob("*.py"))
     # Figures and the listening index are produced from the submitted outputs.
     for name in ("figures/selected_structure.png", "figures/sampling_distributions.png",
                  "figures/selected_structure_notes.json", "listening.html", "HW2_說明.html", "analysis/report_data_template.json",

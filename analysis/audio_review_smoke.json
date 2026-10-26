@@ -1,0 +1,47 @@
+{
+  "test_is_full_piece": false,
+  "purpose": "Verify non-ASR audio understanding and local runtime only",
+  "source_wav": "results/basic_b/t08/001.wav",
+  "source_wav_sha256": "0de43f3538bd6ee6b00055dde6e7bf852ae6b4cf26cd6ae14b430714ff72abef",
+  "source_full_seconds": 121.90730158730159,
+  "input_interval_seconds": [
+    0,
+    20
+  ],
+  "input_sample_rate": 16000,
+  "input_samples": 320000,
+  "input_waveform_sha256": "fc51ede03d7be1ed1dad13afe28f96de01339ee6c23a30392959b7cbc12a9d36",
+  "input_clip_intervals_seconds": [
+    [
+      0,
+      10
+    ],
+    [
+      10,
+      20
+    ]
+  ],
+  "multiple_clips_one_context": true,
+  "input_features": "Official local Hugging Face WhisperFeatureExtractor",
+  "prompt": "The two audio clips are consecutive parts of one recording. Describe the audible sounds in this recording. Identify the main instrument or instruments and whether there is speech or singing. Then describe the rhythmic texture and any audible changes. Base the answer only on the audio. Do not infer a composer, title, exact key, exact chords, or exact tempo. If something is uncertain, say so.",
+  "raw_response": "The audio clip features a classical genre with a piano as the main instrument. There is no speech or singing detected. The rhythmic texture is set by a steady beat, creating a soothing and continuous melody. There are no discernible changes in the audio clip.",
+  "generation_tokens": 52,
+  "output_reached_token_limit": false,
+  "prompt_tokens": 1613,
+  "load_seconds": 2.7531069579999894,
+  "review_seconds": 7.824218292007572,
+  "silence_control": {
+    "input_samples": 320000,
+    "input_waveform_sha256": "ac8ced7a23a8f82aee71ae9e8f5a206f7676a49598be376e53e93ba0d1664a1f",
+    "zero_waveform": true,
+    "same_prompt_and_decode": true,
+    "prompt_tokens": 1613,
+    "raw_response": "The audio clip contains a segment of a pop catchy riff with a disturbing background humming. The main instrument is a bass, and there is no speech or singing. The rhythmic texture is upbeat and catchy, with a disturbing undertone created by the humming. There are no specific changes in the audio; it remains relatively consistent throughout.",
+    "generation_tokens": 66,
+    "output_reached_token_limit": false,
+    "review_seconds": 6.306003582998528,
+    "interpretation": "Audible music described for silence is hallucination evidence"
+  },
+  "peak_memory_bytes": 8099043262,
+  "limitation": "Machine audio description is not a human listening judgment"
+}

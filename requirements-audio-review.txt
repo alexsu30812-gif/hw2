@@ -1,0 +1,12 @@
+# Optional evaluation-only audio understanding, on Apple Silicon / macOS.
+# This environment is separate from the from-scratch composition models.
+# External evaluation weights are downloaded separately and are not submitted.
+mlx-audio==0.6.1
+mlx==0.32.4
+mlx-metal==0.32.4
+transformers==5.20.2
+huggingface-hub==2.3.0
+numpy==2.2.6
+scipy==1.14.1
+soundfile==0.14.0
+jinja2==3.1.6

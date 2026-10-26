@@ -85,6 +85,23 @@ def hosting_warnings(payload):
     return []
 
 
+def validate_audio_review(review):
+    """A model review is complete only when every full WAV was consumed."""
+    if not review:
+        return []
+    checks = (
+        (review.get("completed") is True, "audio review is not complete"),
+        (review.get("coverage", {}).get("n_pieces") == 9, "audio review does not cover all nine pieces"),
+        (review.get("coverage", {}).get("full_frame_coverage_verified") is True,
+         "full audio-frame coverage is not verified"),
+        (review.get("source_model_input_frames_verified") is True,
+         "all audio frames reaching the model are not verified"),
+        (review.get("human_listening_performed") is False,
+         "audio-model review must remain distinct from human listening"),
+    )
+    return [reason for passed, reason in checks if not passed]
+
+
 def validate_payload(payload):
     """Check report completeness; filesystem/sample integrity is checked at packaging."""
     reasons = []
@@ -176,6 +193,7 @@ def validate_payload(payload):
             reasons.append("bonus original melody preservation is not verified")
     if not payload.get("references"):
         reasons.append("references are missing")
+    reasons.extend(validate_audio_review(payload.get("audio_review")))
     return list(dict.fromkeys(reasons))
 
 
@@ -548,6 +566,121 @@ def figure_page(slides, title, path, caption, section):
     slides.text(caption, 40, 474, 880, 30, size=11, minimum=10)
 
 
+def register_case_pages(slides, payload):
+    """Show register failures independently of pitch-class/onset proxies."""
+    study = payload.get("structured_failure_analysis", {}).get("basic_a", {})
+    if not study:
+        return
+    summary = study["register_summary"]
+    slides.start("A failure hidden by H4 / GS: register", "BASIC A | SPECIFIC FAILURE CASES",
+                 "Same selected t12 outputs and descriptive 45-song reference. Every song has equal weight; pitches use MIDI numbers.")
+    rows = []
+    for label, field, percentage in (
+        ("Mean note pitch, averaged by piece", "piece_mean_pitch", False),
+        ("95th-percentile pitch, averaged by piece", "piece_mean_p95_pitch", False),
+        ("Onset share at pitch >=96 (C7)", "piece_mean_fraction_pitch_ge_96", True),
+    ):
+        generated, real = summary.get("generated_" + field), summary.get("reference_" + field)
+        if generated is None or real is None:
+            raise ValueError(f"Register case summary is incomplete: {field}")
+        rows.append([label, f"{generated*100:.3f}%" if percentage else f"{generated:.3f}",
+                     f"{real*100:.3f}%" if percentage else f"{real:.3f}",
+                     f"{(generated-real)*100:+.3f} percentage points" if percentage else f"{generated-real:+.3f} semitones"])
+    slides.table(["Descriptor", "Generated (20)", "Real reference (45)", "Gap"], rows,
+                 [345, 165, 175, 195], top=146, height=31, size=11.5)
+    bar_rows = []
+    for case in study["cases"]:
+        for bar in case["bar_examples"]:
+            bar_rows.append([case["sample_id"], f"{bar['bar']} ({bar['t0']:.1f}-{bar['t1']:.1f}s)",
+                             str(bar["notes"]), f"{bar['pitch_min']}-{bar['pitch_max']}",
+                             f"{bar['mean_pitch']:.2f}", f"{bar['fraction_pitch_ge_96']*100:.1f}%"])
+    slides.table(["Sample", "Bar (WAV time)", "Onsets", "Pitch range", "Mean pitch", "Pitch >=96"],
+                 bar_rows, [130, 235, 95, 140, 140, 140], top=284, height=29, size=11.5)
+    slides.text("Cases: maximum piece-p95 (004), and nearest median-p95 (001); sample-ID ties. Each shows its two bars with the greatest onset share at >=96, then p95/bar-number ties. H4 discards octave and GS uses onset positions. This measured mismatch does not prove poor sound; no pitch clipping was applied.",
+                40, 441, 880, 56, size=11.5, minimum=10.5)
+    combined = study.get("combined_figure", {})
+    if combined.get("figure_path"):
+        figure_page(slides, "Where the high register appears", combined["figure_path"],
+                    "Unchanged t12 samples 004 and 001. Red dotted line: MIDI 96 (C7), a descriptive marker. Bar numbers and WAV times support checking the actual audio; this is not a listening preference.",
+                    "BASIC A | REGISTER CASE INSPECTION")
+
+
+def continuation_case_pages(slides, payload):
+    """Compare every continuation over the complete 24 generated bars."""
+    study = payload.get("structured_failure_analysis", {}).get("basic_b", {})
+    if not study:
+        return
+    comments = {
+        "001": "t12 remains the local-boundary choice, yet density grows from 24.250 to 30.125 notes/bar (prompt: 15.500). t08 velocity rises from 101.73 to 120.96. A small seam score does not establish stable density or dynamics later.",
+        "002": "t12 density stays closer to the prompt's 22.125 notes/bar than the other settings across all three windows. Its mean pitch moves from 68.14 to 65.73. By contrast, t08 reaches 42.875 notes/bar in bars 25-32. This is a descriptor comparison, not a preference rating.",
+        "003": "t12 drops from 33.875 to 9.250 notes/bar while mean pitch rises 69.08 to 85.27 (+16.19 semitones). The original t10 choice changes much less between the first/last generated windows: 30.625 to 27.250 notes/bar and 63.58 to 64.33.",
+    }
+    for prompt in ("001", "002", "003"):
+        group = sorted([r for r in study["rows"] if r["prompt_id"] == prompt],
+                       key=lambda r: r["configuration_id"])
+        if len(group) != 3:
+            raise ValueError(f"Full-continuation case table needs all three settings: {prompt}")
+        slides.start(f"Continuation {prompt}: compare the full 32 bars", "BASIC B | COMPLETE SEGMENT COMPARISON",
+                     "Saved-token onset statistics; bars are 1-based. Prompt velocity is quantized in this table; the submitted MIDI retains its original velocities. * = original boundary-rule choice.")
+        segments = [("Prompt", group[0]["segments"][0])]
+        for row in group:
+            label = row["configuration_id"] + (" *" if row["selected_by_original_boundary_rule"] else "")
+            segments.extend((label, segment) for segment in row["segments"][1:])
+        rows = []
+        for label, s in segments:
+            lo, hi = s["bar_range"]
+            t0, t1 = s["time_range"]
+            rows.append([label, f"{lo}-{hi} ({t0:.1f}-{t1:.1f}s)", f"{s['notes_per_bar']:.3f}",
+                         f"{s['mean_pitch']:.2f}", f"{s['p95_pitch']:.2f}", f"{s['mean_velocity']:.2f}"])
+        slides.table(["Set", "Bars (WAV time)", "Notes/bar", "Mean pitch", "p95 pitch", "Mean velocity"], rows,
+                     [85, 265, 130, 130, 130, 140], top=146, height=27, size=11)
+        slides.text(comments[prompt] + " Full per-bar values are retained in the CSV/JSON evidence.",
+                    40, 452, 880, 48, size=11.3, minimum=10.5)
+
+
+def harmony_case_page(slides, payload):
+    cases = payload.get("structured_failure_analysis", {}).get("bonus", [])
+    if not cases:
+        return
+    slides.start("Harmony failures: which bars disagree?", "BONUS | EXACT CHORD CASES",
+                 "Official 24-triad estimator; reference = maximum-duration annotation per bar. Ground-truth piano is evaluation-only, never input to the generator.")
+    rows = []
+    for case in cases:
+        for bar in case["bar_examples"]:
+            rows.append([case["prompt_id"], f"{bar['bar']} ({bar['t0']:.2f}-{bar['t1']:.2f}s)",
+                         bar["reference_chord"], bar["generated_chord"], bar["gt_piano_estimated_chord"],
+                         "match" if bar["match"] else "mismatch"])
+    slides.table(["Prompt", "Bar (WAV time)", "Reference", "Generated", "GT estimator", "Result"], rows,
+                 [75, 250, 145, 145, 145, 120], top=146, height=33, size=11.5)
+    slides.bullets([
+        "Overall CA: 18/160 bars (11.25%). Prompt 004: 0/16; 009: 4/16 (bars 3, 4, 5, 14). The same GT-piano estimator matches 13/16 in both prompts: this proxy is imperfect.",
+        "004 bars 1-2 receive relative-minor estimates, sharing two of three triad tones with the reference. A CA mismatch need not be audible dissonance; high pitch-class OA does not establish correct chord order.",
+        "Examples: first two mismatches with a correct GT estimate, then first two successes (none for 004). Future models should test train-only chord/phrase objectives. The submitted generation and original selection remain unchanged."
+    ], top=389, size=11.5, gap=10)
+
+
+def audio_review_page(slides, payload):
+    """Render actual audio-model observations only after complete coverage."""
+    review = payload.get("audio_review", {})
+    if review.get("completed") is not True:
+        return
+    reasons = validate_audio_review(review)
+    if reasons:
+        raise ValueError("Incomplete audio-model review: " + "; ".join(reasons))
+    rows = review.get("report_rows", [])
+    if len(rows) != 3 or {str(r.get("prompt_id", "")).zfill(3) for r in rows} != {"001", "002", "003"}:
+        raise ValueError("Completed audio review requires one reviewed summary for each of the three prompts")
+    if not review.get("report_summary") or not review.get("report_limitations"):
+        raise ValueError("Completed audio review requires methods, coverage and limitations text")
+    slides.start("Complete audio input, failed critic calibration", "BASIC B | AI-ASSISTED AUDIO REVIEW",
+                 "The critic consumes the WAV signal. This is an AI-model review, not human listening or a listener-preference study.")
+    slides.text(review["report_summary"], 40, 145, 880, 80, size=13, minimum=11.5)
+    slides.table(["Prompt", "Exploratory model text and verification limits"],
+                 [[str(r["prompt_id"]).zfill(3), r["observation"]] for r in sorted(rows, key=lambda r: str(r["prompt_id"]))],
+                 [95, 785], top=235, height=51, size=12)
+    slides.text(review["report_limitations"], 40, 449, 880, 48, size=11.5, minimum=10.5)
+
+
 def render_complete(slides, p, reasons):
     """Compact main report; full per-piece evidence remains in the package."""
     a, b, bonus = p["basic_a"], p["basic_b"], p["bonus"]
@@ -646,8 +779,9 @@ def render_complete(slides, p, reasons):
 
     figure_page(slides,"Sampling changes distributions, not just one mean",p['figures']['sampling'],
                 "All 20 pieces per setting are shown. The real reference uses the same event grid. These are metric distributions, not listener scores.","BASIC A | DISTRIBUTIONS")
-    figure_page(slides,"One generated piece: notes and bar similarity",p['figures']['structure'],
-                "t12 / sample_001: the first saved seed, not a cherry-picked example. Cosine similarity of bar pitch-class counts is a diagnostic; this is not the optional MusDr SI score.","BASIC A | STRUCTURE INSPECTION")
+    # The original first-seed similarity figure remains in the public evidence;
+    # use this report space for the more specific register failure cases.
+    register_case_pages(slides, p)
 
     slides.start("Basic b: all 9 continuations and chosen versions", "RESULTS | SAME BASIC CHECKPOINT", "Supply 8 original bars, sample 24 new bars, then restore every original prefix note. All nine retain the 8-bar note identity and contain new notes.")
     boundary = experiment(p,"Continuation boundary")
@@ -660,13 +794,9 @@ def render_complete(slides, p, reasons):
     slides.table(["Prompt","Set","Sampling","Boundary score","Density ratio","Pitch jump","Choice"],rows,[85,80,155,150,145,150,115],top=155,height=29,size=11)
     slides.text("Selection compares the two bars before/after the boundary: |log density ratio| + |mean pitch jump|/12 + (1 - pitch-class Jaccard). Lower wins within each prompt. All use the same basic checkpoint and CPU; only T=0.8/1.0/1.2 changes. Best labels are local continuity preferences, not listener judgments.",40,459,880,42,size=11.5)
 
-    slides.start("Continuation: what the chosen labels establish", "BASIC B | SPECIFIC ANALYSIS")
-    slides.bullets([
-        "001 / t12: boundary density ratio 1.333, mean pitch shift -0.296 semitones, pitch-class Jaccard 0.857. Its score 0.4552 is lower than t08 1.0342 and t10 1.0499; the other settings nearly double the local density.",
-        "002 / t12: density ratio 0.913, pitch shift +2.588, Jaccard 0.750; score 0.5566 versus 0.8008 and 0.7137. It preserves local density better, although it does not minimize every descriptor separately.",
-        "003 / t10: density ratio 1.113, pitch shift +0.941, Jaccard 0.857; score 0.3285. t12 instead jumps +7.108 semitones at the seam, illustrating that the best unconditional temperature need not be best for every prompt.",
-        "Boundary continuity does not evaluate the remaining 24-bar form. The model sees only its recent complete bars after cache rollover. Full-32-bar and continuation-only-24-bar metrics are saved separately; the supplied prefix is not counted as newly generated music."
-    ],size=14,gap=19)
+    # Replace the earlier seam-only prose page with full-sequence comparisons.
+    continuation_case_pages(slides, p)
+    audio_review_page(slides, p)
 
     slides.start("Bonus: melody-conditioned piano generation", "METHOD | BAR-INTERLEAVED ROLES")
     bonus_q=bonus.get('parameters',{})
@@ -683,6 +813,7 @@ def render_complete(slides, p, reasons):
     slides.table(["Prompt"]+list(BONUS_METRICS),rows,[100,156,156,156,156,156],top=152,height=27,size=12)
     pooled=bonus.get('aggregate',{}).get('pooled',{})
     slides.text("Means over all ten prompts: CA "+mean_text(pooled.get('CA'))+"; OA_P "+mean_text(pooled.get('DP (Pitch-class OA)'))+"; OA_V "+mean_text(pooled.get('DV (Velocity OA)'))+"; OA_D "+mean_text(pooled.get('DD (Duration OA)'))+"; OA_IOI "+mean_text(pooled.get('DIOI (Inter-Onset OA)'))+". Zero skipped files. CA-ceiling "+mean_text(pooled.get('CA-ceiling'))+" is the same chord estimator on ground truth, not a strict upper bound.",40,467,880,36,size=11.5)
+    harmony_case_page(slides, p)
 
     tuning=experiment(p,'Bonus sampling temperature')
     if tuning:
@@ -702,7 +833,7 @@ def render_complete(slides, p, reasons):
     slides.start("Discussion, limits and reproduction", "CONCLUSION")
     slides.bullets([
         "Useful changes: more training improves note-content prediction; the controlled 2048-token branch predicts better at this budget; warmer sampling reduces the dense, nearly fixed onset behavior of low temperature.",
-        "What remains weak: accompaniment CA is low even when pitch-class OA is high. The model has no explicit chord input or harmonic objective. Distribution overlap can hide wrong chord order, register or voice leading; a high OA_P should not be read as correct harmony.",
+        "Specific weaknesses: mean piece-p95 pitch is 92.39 versus real 78.36; bonus chord agreement is 18/160 bars. Prompt 003/t12 also drifts upward and becomes sparse in bars 25-32. H4/GS and distribution overlap miss these details; high OA_P does not establish correct harmony.",
         "Long-range form is unverified. Absolute-position resets, finite recent-bar context and grammar constraints can limit phrasing. No human listening study, architecture sweep or official SI experiment is claimed.",
         "Reproduce inference with pip install -r requirements.txt, then src/infer.py; README gives exact checkpoint, seed, settings, output-path and WAV-rendering commands. All 39 submitted MIDI/WAV pairs are synthesized from matching MIDI and checked for duration, finite audio and non-silence.",
         "The public package includes two own checkpoints, vocabulary, code, licenses, measured tables/manifests, figures and hashes. It excludes training MIDI, preprocessed training arrays, external weights and caches. See the appendix for audit experiments and references."
@@ -739,10 +870,19 @@ def render_complete(slides, p, reasons):
         "This narrow exact-match check cannot rule out transposition, approximation, partial copying or memorization. Zero exact matches is not proof of originality. Selection and uncertainty estimates use reported output sets, not a new hidden test."
     ],top=340,size=12.5,gap=13)
 
-    slides.start("References, source evidence and AI disclosure", "APPENDIX D | ATTRIBUTION")
-    refs=p.get('references',[])
-    slides.bullets(refs,size=11.5,gap=13,top=143)
-    slides.text("AI assistance: Codex assisted implementation, execution, result aggregation, analysis and English drafting. The HW2 slides permit internet and AI use (p.34). All reported numbers come from saved actual outputs. Full SHA256 inventories, checkpoint ancestry and per-piece tables are in results/report_data.json, FILE_SHA256.json and SUBMISSION_CHECKS.json.",40,443,880,58,size=11)
+    ref_pages = list(chunks(p.get('references', []), 5)) or [[]]
+    for i, refs in enumerate(ref_pages, 1):
+        title = "References, source evidence and AI disclosure"
+        if len(ref_pages) > 1:
+            title += f" ({i}/{len(ref_pages)})"
+        slides.start(title, "APPENDIX D | ATTRIBUTION")
+        slides.bullets(refs, size=11.5, gap=13, top=143)
+        if i == len(ref_pages):
+            audio_note = (" The pretrained Qwen audio critic is evaluation-only; its failed silence control makes its prose unreliable."
+                          if p.get("audio_review", {}).get("completed") is True else "")
+            slides.text("AI assistance: Codex assisted implementation, execution, aggregation, analysis and English drafting, permitted by the HW2 slides (p.34). Scores come from saved outputs." + audio_note +
+                        " Full source hashes, checkpoint ancestry and per-piece tables are in results/report_data.json, FILE_SHA256.json and SUBMISSION_CHECKS.json.",
+                        40, 443, 880, 58, size=11)
 
 
 def render(slides, payload, reasons):

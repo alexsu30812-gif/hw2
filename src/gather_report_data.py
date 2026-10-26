@@ -14,7 +14,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from build_report import BASIC_METRICS, BONUS_METRICS, hosting_warnings, validate_payload
+from build_report import BASIC_METRICS, BONUS_METRICS, hosting_warnings, validate_audio_review, validate_payload
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIGS = ("t08", "t10", "t12", "k16", "k32")
@@ -218,6 +218,19 @@ def named_evidence(value):
             yield from named_evidence(item)
 
 
+def named_figures(value):
+    """Keep report images separate from tabular measured evidence."""
+    if isinstance(value, dict):
+        for key, item in value.items():
+            if key == "figure_path" and isinstance(item, str):
+                yield item
+            elif isinstance(item, (dict, list)):
+                yield from named_figures(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from named_figures(item)
+
+
 def assemble(root, inputs=None):
     inputs = inputs or {}
     payload = read(root / "analysis/report_data_template.json")
@@ -384,6 +397,46 @@ def assemble(root, inputs=None):
     payload["additional_experiments"] = (training_ablation_experiments(root, evidence)
         + reconstruction_experiments(root, evidence)
         + [row for row in analysis.get("additional_experiments", []) if row.get("name") not in direct_studies])
+    # Case studies inspect the unchanged submitted samples, after the initial
+    # metric-only selection. They are not another sampling/tuning experiment.
+    case_path = root / inputs.get("case_studies", "analysis/case_studies/bar_case_studies.json")
+    cases = read(case_path)
+    figure_files = set()
+    if cases:
+        payload["structured_failure_analysis"] = cases
+        evidence.add(case_path)
+        for name in named_evidence(cases):
+            path = root / relative(root, name)
+            if not path.is_file() or path.suffix.lower() not in (".json", ".csv"):
+                raise ValueError(f"Case-study evidence is missing or not tabular: {name}")
+            evidence.add(path)
+        for name in named_figures(cases):
+            path = root / relative(root, name)
+            if not path.is_file() or path.suffix.lower() not in (".png", ".jpg", ".jpeg", ".svg"):
+                raise ValueError(f"Case-study figure is missing or unsupported: {name}")
+            figure_files.add(path)
+    audio_path = inputs.get("audio_review")
+    if audio_path:
+        path = root / relative(root, audio_path)
+        review = read(path)
+        if not review:
+            raise ValueError(f"Named audio review is missing: {audio_path}")
+        payload["audio_review"] = review
+        audio_reasons = validate_audio_review(review)
+        if audio_reasons:
+            raise ValueError("Named audio review is not complete: " + "; ".join(audio_reasons))
+        for reference in review.get("references", []):
+            if reference not in payload["references"]:
+                payload["references"].append(reference)
+        evidence.add(path)
+        for name in named_evidence(review):
+            source = root / relative(root, name)
+            if not source.is_file() or source.suffix.lower() not in (".json", ".csv"):
+                raise ValueError(f"Audio-review evidence is missing or not tabular: {name}")
+            recorded = review.get("evidence_sha256", {}).get(name)
+            if recorded and sha256(source) != recorded:
+                raise ValueError(f"Audio-review evidence changed after its review: {name}")
+            evidence.add(source)
     for name in ("results/final_generation_device_probe.json", "figures/selected_structure_notes.json",
                  "results/evaluation/evidence_freeze.json"):
         if (root / name).is_file():
@@ -411,6 +464,8 @@ def assemble(root, inputs=None):
         "tokenizer_files": ["artifacts/vocabulary.json"] if vocabulary_path.is_file() else [],
         "source_artifacts": allowed_evidence,
         "source_sha256": {relative(root, path): sha256(path) for path in sorted(evidence) if path.is_file()},
+        "figure_artifacts": sorted(relative(root, path) for path in figure_files),
+        "figure_sha256": {relative(root, path): sha256(path) for path in sorted(figure_files)},
         "inference_cli": "src/infer.py accepts --data-root and --output-dir; all three tasks load our submitted checkpoints.",
         "listening_files": "Twenty selected basic-a pairs, all nine basic-b pairs, and ten bonus pairs; audio is synthesized from the corresponding MIDI."})
     payload["status"] = "complete"

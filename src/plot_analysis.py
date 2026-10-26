@@ -74,7 +74,12 @@ def comparisons(output_dir):
 
 def listening_index(destination):
     destination = Path(destination); destination.parent.mkdir(parents=True, exist_ok=True)
+    case_path = ROOT / 'analysis/case_studies/bar_case_studies.json'
+    cases = json.loads(case_path.read_text()) if case_path.is_file() else {}
+    continuation_segments = {(row['prompt_id'], row['configuration_id']): row['segments']
+                             for row in cases.get('basic_b', {}).get('rows', [])}
     groups = []
+    audio_count = 0
     for folder in ('basic_a', 'basic_b', 'bonus'):
         for manifest_path in sorted((ROOT / 'results' / folder).rglob('manifest.json')):
             manifest = json.loads(manifest_path.read_text())
@@ -87,12 +92,77 @@ def listening_index(destination):
                 import os
                 url = html.escape(os.path.relpath(wav, destination.parent), quote=True)
                 label = html.escape(f"{folder}/{manifest_path.parent.name}/{sample['song_name']}")
-                items.append(f'<p>{label}<br><audio controls preload="none" src="{url}"></audio></p>')
+                audio_id = f'audio-{audio_count}'
+                audio_count += 1
+                segment_table = ''
+                if folder == 'basic_b':
+                    segments = continuation_segments.get((sample['song_name'], manifest_path.parent.name), [])
+                    if segments:
+                        if [segment['bar_range'] for segment in segments] != [[1, 8], [9, 16], [17, 24], [25, 32]]:
+                            raise ValueError('Continuation comparison must retain all four original 8-bar windows')
+                        rows = []
+                        for segment in segments:
+                            start_bar, end_bar = segment['bar_range']
+                            t0, t1 = segment['time_range']
+                            phase = '原提示' if start_bar == 1 else '生成'
+                            rows.append(f'<tr><td><button type="button" class="bar-seek" '
+                                f'data-audio-id="{audio_id}" data-time="{float(t0)!r}" '
+                                f'aria-label="{label} 從第 {start_bar} 小節播放">▶ 第 {start_bar} 小節</button></td>'
+                                f'<td>{start_bar}–{end_bar}（{phase}）</td><td>{t0:.3f}–{t1:.3f} 秒</td>'
+                                f'<td>{segment["notes_per_bar"]:.3f}</td><td>{segment["mean_pitch"]:.2f}</td></tr>')
+                        segment_table = ('<div class="segment-comparison"><table><caption>每 8 小節比較：'
+                            '第 1–8 小節是原提示，第 9 小節起續寫。時間從此 WAV 開頭計算。</caption>'
+                            '<thead><tr><th>跳播</th><th>小節</th><th>WAV 時間</th><th>音符數／小節</th>'
+                            '<th>平均 MIDI 音高</th></tr></thead><tbody>' + ''.join(rows) + '</tbody></table>'
+                            '<p class="note">數值來自儲存的 token 音符起音；平均音高不是聽感評分。'
+                            '按鈕會暫停其他曲目，再從所選小節播放；可在同一提示的三種設定間逐段比較。</p></div>')
+                items.append(f'<article><p>{label}<br><audio id="{audio_id}" controls preload="none" src="{url}"></audio></p>'
+                             + segment_table + '</article>')
             if items: groups.append(''.join(items))
     destination.write_text('<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>HW2 試聽</title>'
-        '<style>body{font-family:system-ui;max-width:960px;margin:40px auto;line-height:1.8}audio{width:100%}section{border-top:1px solid #bbb;padding:20px}</style>'
+        '<style>body{font-family:system-ui;max-width:960px;margin:40px auto;line-height:1.8}audio{width:100%}section{border-top:1px solid #bbb;padding:20px}'
+        'article{margin-bottom:28px}.segment-comparison{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem;text-align:left}'
+        'caption{text-align:left;margin-bottom:8px}th,td{border-bottom:1px solid #ddd;padding:6px 8px;white-space:nowrap}'
+        'button{font:inherit;cursor:pointer;padding:5px 9px}.note{font-size:.88rem;color:#444}#playback-status{min-height:1.8em}</style>'
         '<h1>HW2 生成成果試聽</h1><p>所有音訊由自己的模型生成 MIDI 後渲染。請比較節奏、和聲、樂句發展與續寫邊界；此頁不代表已進行人工評分。</p>'
-        + ''.join('<section>' + group + '</section>' for group in groups) + '</html>')
+        '<p><strong>沒有真人試聽評分。</strong>先前 AI audio critic 未通過 silence control（靜音對照檢查），'
+        '其聽感文字不採信，也不作為報告結論。此頁供下載／解壓後在本機逐段聽比，不代表已有人完整聽完。</p>'
+        '<p id="playback-status" role="status" aria-live="polite"></p>'
+        + ''.join('<section>' + group + '</section>' for group in groups)
+        + '<script>\n'
+        'function pauseOtherAudio(target) {\n'
+        '  document.querySelectorAll("audio").forEach(audio => { if (audio !== target) audio.pause(); });\n'
+        '}\n'
+        'document.addEventListener("play", event => {\n'
+        '  if (event.target.tagName === "AUDIO") pauseOtherAudio(event.target);\n'
+        '}, true);\n'
+        'document.addEventListener("click", async event => {\n'
+        '  const button = event.target.closest("button.bar-seek");\n'
+        '  if (!button) return;\n'
+        '  const audio = document.getElementById(button.dataset.audioId);\n'
+        '  const time = Number(button.dataset.time);\n'
+        '  const status = document.getElementById("playback-status");\n'
+        '  if (!audio || !Number.isFinite(time) || time < 0) return;\n'
+        '  pauseOtherAudio(audio);\n'
+        '  try {\n'
+        '    if (audio.readyState === 0) {\n'
+        '      await new Promise((resolve, reject) => {\n'
+        '        const cleanup = () => { audio.removeEventListener("loadedmetadata", loaded); audio.removeEventListener("error", failed); };\n'
+        '        const loaded = () => { cleanup(); resolve(); };\n'
+        '        const failed = () => { cleanup(); reject(new Error("無法載入音訊")); };\n'
+        '        audio.addEventListener("loadedmetadata", loaded); audio.addEventListener("error", failed);\n'
+        '        audio.preload = "metadata"; audio.load();\n'
+        '      });\n'
+        '    }\n'
+        '    pauseOtherAudio(audio);\n'
+        '    audio.currentTime = Number.isFinite(audio.duration) ? Math.min(time, audio.duration) : time;\n'
+        '    await audio.play();\n'
+        '    status.textContent = button.getAttribute("aria-label") + "（" + time.toFixed(3) + " 秒）";\n'
+        '  } catch (error) {\n'
+        '    status.textContent = "播放未開始，請確認在本機開啟並保留 WAV 的相對位置，或按播放器播放鍵。";\n'
+        '  }\n'
+        '});\n'
+        '</script></html>')
 
 
 def main():

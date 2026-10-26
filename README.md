@@ -29,8 +29,8 @@ python -m pip install -r requirements.txt
 ```
 
 PyTorch runs on CPU; `--device mps` can use Apple Silicon when supported by the
-inference CLI. The checkpoint is our own trained model; no pretrained model
-download is required. macOS audio synthesis uses the included Swift tool and
+inference CLI. Composition inference loads our own trained checkpoints; it
+requires no pretrained model download. macOS audio synthesis uses the included Swift tool and
 system General MIDI piano sounds. Rendering on other platforms requires a
 compatible synthesizer such as FluidSynth and a user-provided soundfont; the
 MIDI generation itself does not depend on a soundfont.
@@ -133,7 +133,9 @@ four OA metrics, narrowly above T=1.2. Its CA is only 0.1125 despite OA_P=0.8552
 the report discusses this harmonic weakness and in-sample tuning limits.
 
 Open **`listening.html`** locally for all 39 formal listening samples and the
-marked continuation choices. **`HW2_說明.html`** explains the implementation,
+marked continuation choices. All nine continuations have jump buttons at bars
+1, 9, 17 and 25, with segment timing, density and mean-pitch tables for direct comparison.
+**`HW2_說明.html`** explains the implementation,
 principles and results in Chinese; the formal submission report is the English
 16:9 **`r14942154_report.pdf`**.
 
@@ -166,6 +168,63 @@ prompt note timing is checked independently of this notation choice.
 Automated note, rhythm and waveform inspection is not a human listening test.
 Any report statement about a human listening comparison must identify an actual
 completed listening procedure; no listener ratings are inferred from metrics.
+
+## Optional audio-only evaluation
+
+This additional review uses the pretrained
+[Qwen2-Audio-7B-Instruct](https://huggingface.co/Qwen/Qwen2-Audio-7B-Instruct)
+audio-language model through its
+[MLX 4-bit conversion](https://huggingface.co/mlx-community/Qwen2-Audio-7B-Instruct-4bit)
+and the [MLX Audio runtime](https://github.com/Blaizzy/mlx-audio).
+It is an **evaluation-only tool**: it does not train or change the composition
+models, generated MIDI/WAV, or previously selected versions. All submitted
+composition weights still originate from random initialization on the official
+training set. The pretrained audio-review weights are not submitted.
+
+On Apple Silicon/macOS, create a separate Python 3.10 environment. These optional
+dependencies are not part of `requirements.txt` and are unnecessary for music
+generation or the required official metrics:
+
+```sh
+python3.10 -m venv .venv_audio_review
+.venv_audio_review/bin/python -m pip install -r requirements-audio-review.txt
+
+# Download approximately 6.56 GB into the excluded local cache.
+.venv_audio_review/bin/python tools/prepare_audio_review_model.py
+
+# Check the input frontend, then a short real clip and an all-zero control.
+.venv_audio_review/bin/python tools/check_audio_review_frontend.py
+.venv_audio_review/bin/python tools/audio_review_smoke.py
+
+# Prepare every WAV frame, then submit all clips of each piece together.
+.venv_audio_review/bin/python analysis/audio_review/prepare_inputs.py
+.venv_audio_review/bin/python analysis/audio_review/review_all.py
+```
+
+`prepare_inputs.py` covers all nine full continuation WAVs, including release
+tails, using bar-aligned clips of at most 30 seconds. Each piece's chronological
+clips enter one request. Blind prompts include the waveform and segment
+coordinates; they omit sampling settings, chosen-version labels, MIDI statistics,
+chord labels, ground-truth piano and expected failures. The frontend uses the
+official Hugging Face Whisper feature extractor after a numerical comparison
+with the native MLX frontend. Model revision, file hashes, dependencies, input
+frame coverage and frontend waveform hashes are recorded in the result evidence.
+
+**The silence control failed:** the model invented musical sounds on all-zero
+audio. Its textual descriptions are therefore exploratory and unreliable, not
+proof of sound quality, correct harmony or a preferred version. Full input
+coverage establishes which audio reached the model; it does not establish that
+the model understood it correctly. This is not human listening or a listening
+study. Specific bar-level conclusions in the report use independently checkable
+MIDI and waveform measurements.
+
+Raw responses are saved in `results/audio_review/raw_audio_observations.json`;
+`completed=true` is set only after all nine pieces have been processed. The
+report separately records the completed review's coverage and limitations.
+The package contains the analysis code, optional dependency list and measured
+JSON evidence. Downloaded weights, the isolated environment, caches and clipped
+WAV copies are excluded. Exact model/runtime revisions matter when rerunning
+this optional analysis.
 
 ## Regenerate the report and assemble the submission
 
@@ -221,8 +280,10 @@ package there and update the cover/comment link; no retraining is needed.
 
 The course's HW2 slides permit using the internet and AI (p.34). Codex assisted
 with implementation, execution, result aggregation, analysis, and English
-drafting. All reported scores must come from actual saved outputs. The model
-weights are learned from scratch on the official training set; the source code
+drafting. The optional Qwen audio critic is a separate pretrained evaluation
+aid with a failed silence control; its descriptions do not constitute human
+listening evidence. All reported scores must come from actual saved outputs.
+All submitted composition weights are learned from scratch on the official training set; the source code
 and report cite the public methods and evaluation code used.
 
 Primary task references: POP909 (Wang et al., ISMIR 2020), Pop Music Transformer

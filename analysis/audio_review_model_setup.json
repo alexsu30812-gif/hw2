@@ -1,0 +1,82 @@
+{
+  "repo_id": "mlx-community/Qwen2-Audio-7B-Instruct-4bit",
+  "revision": "c65570002626f41b4dc08b7b54f42f99f3e82e7f",
+  "source_url": "https://huggingface.co/mlx-community/Qwen2-Audio-7B-Instruct-4bit",
+  "base_model": "Qwen/Qwen2-Audio-7B-Instruct",
+  "model_license": "Apache-2.0",
+  "runtime_license": "MIT",
+  "purpose": "Evaluation-only WAV input; no training or generation changes",
+  "local_directory": "cache/audio_review_models/Qwen2-Audio-7B-Instruct-4bit",
+  "download_bytes": 6574658472,
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 1716,
+      "sha256": "1cddc760431c9c2c043ed4d17d9c17716a1f81978e6093389420cd46e7f2ce6d"
+    },
+    {
+      "name": "config.json",
+      "bytes": 913,
+      "sha256": "39493dad1678533cc2a7ba2de0a573cc926a78ef4c7abef72a6b660159de94b7"
+    },
+    {
+      "name": "merges.txt",
+      "bytes": 1671839,
+      "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+    },
+    {
+      "name": "preprocessor_config.json",
+      "bytes": 342,
+      "sha256": "4cd7c6c061fe79244c57b0c320b2873f3ee5acce2277f7cc3aced042725680f2"
+    },
+    {
+      "name": "tokenizer.json",
+      "bytes": 7028015,
+      "sha256": "f7c9b2dba4a296b1aa76c16a34b8225c0c118978400d4bb66bff0902d702f5b8"
+    },
+    {
+      "name": "tokenizer_config.json",
+      "bytes": 638335,
+      "sha256": "c738158e70eeecf25736a6c4d8e5f34cfce683079980757edfb0665a7b2457ed"
+    },
+    {
+      "name": "vocab.json",
+      "bytes": 2776833,
+      "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    },
+    {
+      "name": "weights.safetensors",
+      "bytes": 6562540479,
+      "sha256": "0967cde270ad62aa4824f0bbce283d0a2a6da2825ccf587640753c527d4174da",
+      "expected_source_sha256": "0967cde270ad62aa4824f0bbce283d0a2a6da2825ccf587640753c527d4174da",
+      "matches_source_sha256": true
+    }
+  ],
+  "versions": {
+    "mlx-audio": "0.6.1",
+    "mlx": "0.32.4",
+    "mlx-metal": "0.32.4",
+    "transformers": "5.20.2",
+    "huggingface-hub": "2.3.0",
+    "numpy": "2.2.6",
+    "scipy": "1.14.1",
+    "soundfile": "0.14.0",
+    "jinja2": "3.1.6",
+    "markupsafe": "3.0.4"
+  },
+  "audio_input": {
+    "sample_rate": 16000,
+    "channels": 1,
+    "per_clip_max_samples": 480000,
+    "per_clip_max_seconds": 30,
+    "multiple_clips": "List of waveforms merged into one multi-audio context",
+    "timestamp_warning": "STTOutput.segments records inference time, not audio time"
+  },
+  "evaluation_frontend_adjustment": {
+    "frontend": "Official local Hugging Face WhisperFeatureExtractor",
+    "replaces": "MLX runtime _extract_features only",
+    "reason": "Numerical frontend differences measured before review",
+    "comparison_evidence": "analysis/audio_review_frontend_comparison.json",
+    "composition_or_training_changes": false
+  }
+}
