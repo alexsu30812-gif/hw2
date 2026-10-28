@@ -125,12 +125,18 @@ nine continuation variants and ten bonus pieces. The submitted basic-a set is
 real reference H4=2.639774, GS=0.970831, 22.953 notes/bar. This is metric
 proximity, not a listening score.
 
-Additional measured experiments cover equal-token context length, token-family
-prediction errors, quantization resolution, two early checkpoints, three bonus
-temperatures, melody-conditioning removal, reference-set sensitivity and local
-training-window matches. Bonus T=1.0 wins the predeclared average of CA and the
-four OA metrics, narrowly above T=1.2. Its CA is only 0.1125 despite OA_P=0.8552;
-the report discusses this harmonic weakness and in-sample tuning limits.
+The concise report prioritizes two additional studies: equal-token context
+length and paired melody-conditioning removal. Each includes the method,
+measured results, interpretation and limitations. Register drift, late
+continuation changes and bar-level chord mismatches show what the required
+metrics miss. Full token-family, quantization, early-checkpoint, temperature,
+reference-sensitivity and local-match results remain in `results/report_data.json`
+and its named evidence files.
+
+Bonus T=1.0 is retained by the predeclared average of CA and the four OA metrics,
+narrowly above T=1.2. The paired composite-difference interval includes zero;
+this is in-sample tuning, not evidence of a perceptual advantage. Its CA is only
+0.1125 despite OA_P=0.8552; the report explains this harmonic weakness.
 
 Open **`listening.html`** locally for all 39 formal listening samples and the
 marked continuation choices. All nine continuations have jump buttons at bars
@@ -141,8 +147,9 @@ principles and results in Chinese; the formal submission report is the English
 
 H4 is pitch-class diversity, and GS is onset-pattern consistency. Neither is
 a listening-quality score. OA histograms ignore octave and much temporal order;
-empty bars can produce deceptively high overlap. Metrics are interpreted with
-density, repetition, completeness and listening evidence.
+empty bars can produce deceptively high overlap. The report cross-checks metrics
+against density, repetition and completeness; perceived musical quality remains
+unverified by a human listening study.
 
 The model uses eight positions per annotated beat. The metric adapter maps
 `Pos_q` to `Pos_(2*q)` on the official 16-subdivision grid, with 128 consecutive

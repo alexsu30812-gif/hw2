@@ -682,207 +682,218 @@ def audio_review_page(slides, payload):
 
 
 def render_complete(slides, p, reasons):
-    """Compact main report; full per-piece evidence remains in the package."""
+    """Twelve self-contained slides; full tables and audit studies stay in the package."""
+    from reportlab.lib.utils import ImageReader
+
     a, b, bonus = p["basic_a"], p["basic_b"], p["bonus"]
     configs, base = configurations(p), a["real_baseline"]
     selected = a["selected_configuration"]
     chosen = next(row for row in configs if row["id"] == selected)
-    extras = p.get("additional_experiments", [])
-    cloud_note = hosting_warnings(p)
-    slides.start("Symbolic Music Generation", "HW2 | r14942154", "A causal Transformer trained from scratch on POP909")
-    slides.bullets([
-        "Student ID: r14942154",
-        "Code, own model weights and MIDI/WAV results:",
-        p.get("artifact_url", "PENDING"),
-        "Basic a: 5 settings x 20 complete 32-bar pieces; submit the selected 20 MIDI/WAV pairs.",
-        "Basic b: all 9 prompt continuations. Bonus: all 10 melody-conditioned accompaniments.",
-        "Extra experiments: context length, token prediction, quantization, sampling, checkpoint learning and melody conditioning."
-    ], size=16, gap=14)
-    if cloud_note:
-        slides.text("Hosting note: GitHub substitution for the slides' cloud-drive wording is unverified; no TA acceptance is claimed.", 40, 468, 880, 32, size=10.5)
+    failures = p["structured_failure_analysis"]
+    register = failures["basic_a"]["register_summary"]
+    pooled = bonus["aggregate"]["pooled"]
+
+    # 1. One overview replaces the former cover and separate results overview.
+    slides.start("Symbolic Music Generation", "HW2 | r14942154",
+                 "POP909 | Causal Transformer models trained from random initialization")
+    slides.text("Student ID: r14942154", 40, 147, 880, 30, size=18, bold=True)
+    slides.text("Code, own weights and all listening files: " + p["artifact_url"],
+                40, 190, 880, 30, size=15)
+    slides.table(["Task", "Required result", "Submitted files"], [
+        ["Basic a", "5 settings x 20 complete 32-bar samples; select t12", "20 MIDI + 20 WAV"],
+        ["Basic b", "3 prompts x 3 settings; original 8 + 24 new bars", "9 MIDI + 9 WAV"],
+        ["Bonus", "10 melody-conditioned 16-bar piano accompaniments", "10 MIDI + 10 WAV"],
+    ], [110, 530, 240], top=238, height=44, size=13)
+    slides.text("Beyond the minimum: an equal-token context experiment and a paired melody-conditioning ablation, with uncertainty and concrete register/harmony failures.",
+                40, 431, 880, 44, size=15, bold=True)
+    if hosting_warnings(p):
+        slides.text("Hosting note: GitHub replaces the slides' cloud-drive folder at the user's request; TA acceptance of that substitution is unverified.",
+                    40, 483, 880, 22, size=10.5)
     if reasons:
         slides.text("DRAFT: " + "; ".join(reasons), 40, 450, 880, 50, size=11)
 
-    slides.start("Main results and how to read them", "OVERVIEW")
-    rows = [
-        ["Basic a", f"{selected}: H4 {mean_text(chosen['metrics']['H4'])}; GS {mean_text(chosen['metrics']['GS'],6)}", "20 selected MIDI + 20 WAV"],
-        ["Basic b", "Best by local boundary rule: 001:t12, 002:t12, 003:t10", "9 MIDI + 9 WAV; original 8 bars retained"],
-        ["Bonus", "10 prompts; required CA and four OA measures reported", "10 MIDI + 10 WAV; original melody retained"],
-    ]
-    slides.table(["Task", "Measured result", "Submitted listening files"], rows, [100, 450, 330], height=54, size=12)
-    slides.bullets([
-        "The report compares actual saved outputs. All final checkpoints have observed the complete 896-song training set; no pretrained weights or extra training data are used.",
-        "A 45-song split supports pre-refit diagnostics. Those songs enter the final all-song fit, so the real-data reference is descriptive, not an independent test of the final model.",
-        "H4/GS and CA/OA are proxies. No human preference ratings were collected, and none of these values is a course-grade formula."
-    ], top=391, size=12, gap=10)
-
-    slides.start("Data preparation: trust the beat annotations", "METHOD | DATA AND CLOCKS")
-    slides.bullets([
-        "Use only the supplied 896 training songs. Merge MELODY, BRIDGE and PIANO for basic tasks; retain separate MELODY/PIANO roles for accompaniment. All 13 official prompt songs are excluded from fitting.",
-        p["data"]["diagnostic_split"],
-        "The TA announcement warns that many source MIDI time signatures are wrong. Bar boundaries and beat times come from beat_midi.txt; source MIDI time-signature metadata is not authoritative.",
-        "Canonical export: one annotation beat becomes one quarter note; a bar with n supplied beats is written as n/4. This preserves the supplied clock and bar count, including mixed meters. It does not recover an original denominator such as 6/8.",
-        "Short pickup bars are retained. Notes before the first annotated beat are clamped; representation error is measured rather than called lossless. Original prompt notes are restored after generation."
-    ], size=14.5, gap=16)
-
-    slides.start("Token representation and causal model", "METHOD | IMPLEMENTATION")
-    slides.text("REMI-style event sequence", 40, 148, 410, 30, size=18, bold=True)
-    slides.text("BOS, [Bar, Meter, Tempo, (Pos, Pitch, Vel, Dur)*], ..., EOS\n\n683 tokens; 8 subdivisions per supplied beat; 32 velocity bins; note duration 1..256 grid steps (up to 32 beats).\n\nFor bonus, each bar contains Track_Melody + its notes, then Track_Piano + its notes. Future-bar melody is not visible while that bar's piano is sampled.",40,190,410,245,size=15)
+    # 2. Keep the full model/method recipe, with short labeled blocks.
+    slides.start("Data, representation and model", "METHOD | REPRODUCIBLE DESIGN")
+    slides.text("Data and timing", 40, 145, 420, 27, size=18, bold=True)
+    slides.text("Only the 896 supplied training songs; exclude all 13 prompt songs. Diagnostic split: 851/45 songs (seed 20261022); final own checkpoints observe all 896. The final fit has no held-out validation score.\n\nUse beat_midi.txt for beat/bar boundaries: source MIDI meters can be wrong. Export n annotation beats as n/4; retain pickup bars.",
+                40, 181, 420, 148, size=13.5)
+    slides.text("REMI-style event tokens", 40, 344, 420, 27, size=18, bold=True)
+    slides.text("BOS, [Bar, Meter, Tempo, (Pos, Pitch, Vel, Dur)*], EOS. Vocabulary: 683; 8 subdivisions/beat, 32 velocity bins, durations 1..256 grid steps. Basic merges MELODY/BRIDGE/PIANO; bonus retains MELODY/PIANO roles.",
+                40, 381, 420, 104, size=13.5)
+    slides.text("Causal Transformer", 500, 145, 420, 27, size=18, bold=True)
     arch = p["model"]["architecture"]
-    slides.text("Decoder-only Transformer", 500, 148, 420, 30, size=18, bold=True)
-    slides.text(f"{arch.get('layers')} layers; width {arch.get('width')}; {arch.get('heads')} attention heads; {p['model'].get('parameter_count',0):,} parameters.\n\nLearned absolute positions (4096 capacity), pre-layer normalization, GELU, dropout 0.1 and tied embedding/output weights. Selected effective training/inference context: 2048 tokens.\n\nTrain by next-token cross-entropy, ignoring padding. Causal attention sees only preceding tokens. All music-model weights originate from random initialization.",500,190,420,245,size=15)
-    slides.text("Reliable decoding uses legal event-type masks, ascending pitches at one onset, piano-range pitches 21..108, a 64-note/bar cap and exact end boundaries. Overflow retains recent complete bars and rebuilds the KV cache; this limits long-range memory.",40,451,880,43,size=12)
+    slides.text(f"{arch['layers']} layers, width {arch['width']}, {arch['heads']} heads; {p['model']['parameter_count']:,} parameters. Pre-LN, GELU, dropout 0.1, tied embeddings, learned absolute positions (capacity 4096; effective context 2048).\n\nRandom initialization; predict the next token with cross-entropy, ignoring padding. Bonus continues our own refined basic weights.",
+                500, 181, 420, 148, size=13.5)
+    slides.text("Optimization and decoding", 500, 344, 420, 27, size=18, bold=True)
+    slides.text("AdamW (betas .9/.95, weight decay .1), norm clip 1; warmup + cosine LR; legal transposition -5..+5. Decode with grammar masks, pitch 21..108, at most 64 notes/bar. Overflow retains recent complete bars and resets positions/KV cache.",
+                500, 381, 420, 104, size=13.5)
 
-    slides.start("Optimization and checkpoint lineage", "TRAINING | ACTUAL EXPOSURE", "Apple M4 Pro / PyTorch MPS training. Own checkpoint continuation resets the optimizer at each stage.")
-    stages = p["training"]["stages"]
+    # 3. Training progress and the strongest controlled training experiment share a page.
+    slides.start("Training lineage and the context experiment", "TRAINING | MEASURED TOKEN BUDGETS",
+                 "New non-padding targets at each stage; optimizer resets between stages. M4 Pro / PyTorch MPS.")
+    stage_labels = {
+        "basic_diagnostic": "Basic diagnostic", "basic_refined": "Basic refined",
+        "context_2048": "Context 2048", "context_4096": "Context 4096",
+        "basic_all": "Basic final", "roles_diagnostic": "Roles diagnostic", "roles_all": "Roles final",
+    }
+    lrs = ["3e-4", "1.8e-4", "8e-5", "8e-5", "5e-5", "1.5e-4", "5e-5"]
     rows = []
-    for name, d in stages.items():
-        rows.append([name, str(d.get("steps")), f"{d['nonpad_target_tokens']/1e6:.3f}M", str(d.get("context")), str(d.get("seen_songs")), mean_text(d.get("validation_CE")) if d.get("validation_CE") is not None else "not held out"])
-    slides.table(["Stage", "Steps", "New targets", "Context", "Songs seen", "Val CE"], rows, [240,80,145,105,125,185], top=149,height=33,size=11)
-    slides.text("AdamW: betas (0.9, 0.95), weight decay 0.1, gradient norm clip 1.0; warmup + cosine decay. Learning rates by row: 3e-4, 1.8e-4, 8e-5, 8e-5, 5e-5, 1.5e-4, 5e-5. Batch 4, except context_4096 batch 2. Legal pitch transposition -5..+5 semitones; no validation augmentation.",40,423,880,62,size=12)
-
-    slides.start("Training and validation loss", "TRAINING | MEASURED CURVE")
-    plot_training(slides, p["training"]["history"])
-    slides.text("The fixed 851/45 song split uses deterministic 2048-token validation windows. The optimizer restarts after step 2000. CE falls from 2.36666 at step 500 to 1.71925 after refinement. Final all-song fitting has no held-out validation score.",40,466,880,36,size=11.5)
-
+    for i, (name, d) in enumerate(p["training"]["stages"].items()):
+        rows.append([stage_labels[name], str(d["steps"]), f"{d['nonpad_target_tokens']/1e6:.3f}M",
+                     str(d["context"]), str(d["seen_songs"]), "2" if name == "context_4096" else "4",
+                     lrs[i], mean_text(d["validation_CE"], 5) if d["validation_CE"] is not None else "not held out"])
+    slides.table(["Stage", "Steps", "New targets", "Context", "Songs", "Batch", "LR", "Val CE"], rows,
+                 [185, 70, 110, 85, 65, 65, 95, 205], top=148, height=26, size=11)
+    slides.text("Basic: diagnostic -> refined -> context 2048 -> final. Roles: refined -> roles diagnostic -> roles final. Validation CE falls from 2.36666 (step 500) to 1.71925 (refined).", 
+                40, 365, 880, 34, size=11.5)
     context = experiment(p, "Equal-token context")
-    slides.start("Extra experiment: does more context help?", "EXPERIMENT | CONTROLLED TOKEN BUDGET")
-    slides.text(context["method"],40,145,880,76,size=14)
-    slides.table(context["headers"], [[format_value(v,5) for v in row] for row in context["rows"]], [125,190,100,230,235],top=231,height=36,size=13)
-    slides.bullets([context["analysis"], context["limitations"]],top=365,size=13,gap=13)
+    c2048, c4096 = context["rows"]
+    slides.text("Extra experiment: same refined parent, LR 8e-5, ~4M new targets per branch.",
+                40, 413, 880, 24, size=13.5, bold=True)
+    slides.text(f"2048: CE {c2048[3]:.5f} in {c2048[4]:.1f}s; 4096: CE {c4096[3]:.5f} in {c4096[4]:.1f}s. Both use the same 45-song, 2048-token validation; token budgets differ by 0.086%. Select 2048 before final refitting. One run each; batches/steps differ, the parent favors 2048, and validation uses 2048. This does not establish that longer context is generally worse.",
+                40, 446, 880, 59, size=12.5)
 
-    token = experiment(p, "What improves")
-    slides.start("Extra experiment: grammar versus note content", "EXPERIMENT | TEACHER-FORCED PREDICTION")
-    slides.text(token["method"],40,143,880,65,size=13)
-    slides.table(token["headers"], [[format_value(v,3) for v in row] for row in token["rows"]], [180,175,175,175,175],top=221,height=32,size=12)
-    slides.text(token["analysis"] + " " + token["limitations"],40,432,880,65,size=12,minimum=10.5)
-
-    slides.start("Basic a: sampling settings and required metrics", "RESULTS | 100 COMPLETE 32-BAR PIECES", "Each setting uses the same final checkpoint, CPU float32 and piece seed 20261022+i (i=0..19). Means +/- piece standard deviations.")
-    rows = [["Real reference (45)", "same adapter", mean_sd(base["H4"]), mean_sd(base["GS"],6)]]
+    # 4. All required unconditional configurations and the reference remain visible.
+    slides.start("Basic a: all sampling settings and H4 / GS", "RESULTS | 100 COMPLETE 32-BAR PIECES",
+                 "Same basic_final checkpoint, CPU float32; seed 20261022+i (i=0..19). Unconditional 4/4, 120 BPM; means +/- piece SD.")
+    rows = [["Real reference (45)", "same grid adapter", mean_sd(base["H4"]), mean_sd(base["GS"], 6)]]
     for c in configs:
-        q=c["parameters"]
-        setting = f"T={q['temperature']:g}, " + (f"k={q['top_k']}" if q.get('top_k') else f"p={q['top_p']:g}")
-        rows.append([c['id']+(' [selected]' if c['id']==selected else ''),setting,mean_sd(c['metrics']['H4']),mean_sd(c['metrics']['GS'],6)])
-    slides.table(["Set", "Sampling", "H4", "GS (official)"], rows, [230,170,230,250],top=160,height=40,size=12)
-    slides.text("H4 is pitch-class entropy over 4-bar windows; GS compares bar onset patterns. Unconditional generation fixes 4/4 and 120 BPM. All 100 pieces pass 32-bar/ID/hash/note checks with zero skips. Real/generated music uses the same Pos8-to-Pos16 mapping; 2000 whole-piece bootstrap draws provide saved confidence intervals.",40,457,880,43,size=12)
+        q = c["parameters"]
+        setting = f"T={q['temperature']:g}; p={q['top_p']:g}; k={q['top_k']}"
+        rows.append([c["id"] + (" [selected]" if c["id"] == selected else ""), setting,
+                     mean_sd(c["metrics"]["H4"]), mean_sd(c["metrics"]["GS"], 6)])
+    slides.table(["Set", "T / top-p / top-k", "H4", "GS (official)"], rows,
+                 [205, 225, 220, 230], top=153, height=37, size=12)
+    slides.text("H4: pitch-class entropy in 4-bar windows. GS: bar-onset pattern similarity. Reference: one deterministic eligible 32-bar crop per diagnostic song, included in final fitting (descriptive reference); all use the same Pos8-to-Pos16 adapter. All 100 generated pieces pass length/note checks; zero skips.",
+                40, 422, 880, 45, size=12)
+    slides.text("Selection rule: minimize the mean absolute H4/GS gap in real-reference SD units. t12: 0.6155; k32: 0.6882; k16: 0.7593. This is selection on the reported samples, not an independent test or a musical-quality score.",
+                40, 473, 880, 27, size=11.5)
 
-    slides.start("Why select t12? Inspect density and rhythm too", "BASIC A | ANALYSIS AND FAILURE MODES")
-    rows=[]
-    for c in configs:
-        m=c['metrics']; rows.append([c['id'], mean_text(m['notes_per_bar'],3),mean_text(m['GS_active'],4),mean_text(m['velocity_std'],3),mean_text(m['mean_duration_beats'],3)])
-    slides.table(["Set", "Notes/bar", "GS active", "Velocity SD", "Mean duration/beat"], rows, [100,170,170,190,250],top=148,height=34,size=12)
+    # 5. One clear failure figure replaces distributions and two register slides.
+    slides.start("Basic a: similar metrics can hide register drift", "ANALYSIS | DENSITY, RHYTHM AND REGISTER")
+    diag_rows = []
+    for label, metrics in [("t08", next(c for c in configs if c["id"] == "t08")["metrics"]), ("t12", chosen["metrics"])]:
+        diag_rows.append([label, mean_text(metrics["notes_per_bar"], 3), mean_text(metrics["GS_active"], 5)])
+    slides.table(["Set", "Notes/bar", "GS active"], diag_rows,
+                 [125, 140, 145], top=150, height=28, size=12)
+    slides.text(f"GS active is native-grid onset similarity, not official GS. t08 is dense with nearly fixed onsets; t12 reduces both (real density: 22.953 notes/bar). Mean piece-p95 pitch is {register['generated_piece_mean_p95_pitch']:.3f} vs real {register['reference_piece_mean_p95_pitch']:.3f} (+14.022 semitones). H4 discards octave; GS ignores pitch.\n\n004 has the largest piece-p95 (100). Bar 26, 50-52 s: 7 of 9 onsets reach >=96 (C7). This is a descriptive warning, not proof of poor sound.",
+                490, 148, 430, 130, size=12.5)
+    slides.text("Selected sample 004 | whole-piece piano roll; dotted C7 line is a register marker, not a correctness cutoff.",
+                40, 284, 880, 22, size=11.5)
+    image = ImageReader(str(ROOT / failures["basic_a"]["cases"][0]["figure_path"]))
+    iw, ih = image.getSize()
+    scale = min(880 / iw, 194 / ih)
+    w, h = iw * scale, ih * scale
+    slides.c.drawImage(image, (960-w)/2, 540-303-h, width=w, height=h, preserveAspectRatio=True)
+
+    # 6. The chosen files remain explicit and all nine seam scores are reported.
+    slides.start("Basic b: all nine continuations and best labels", "RESULTS | SAME BASIC CHECKPOINT",
+                 "8 supplied bars + 24 generated bars. Restore every original prefix note; all nine preserve pitch/velocity/timing identity within export rounding.")
+    rows = []
+    for r in sorted(b["results"], key=lambda row: (row["prompt_id"], row["configuration_id"])):
+        d = r["boundary_diagnostics"]
+        rows.append([r["prompt_id"], r["configuration_id"], f"{r['parameters']['temperature']:g}",
+                     mean_text(d["boundary_selection_score"], 4), mean_text(d["note_density_ratio"], 3),
+                     mean_text(d["pitch_mean_jump"], 3), "BEST" if r["is_best"] else ""])
+    slides.table(["Prompt", "Set", "T", "Boundary score", "Density ratio", "Pitch jump", "Choice"], rows,
+                 [85, 85, 65, 185, 160, 160, 140], top=153, height=28, size=12)
+    slides.text("All use top-p=.95, top-k=0 and CPU float32; fixed seed per prompt (20261022 + prompt index 0..2). Compare 2 bars before/after the seam: |log density ratio| + |mean pitch jump|/12 + (1 - pitch-class Jaccard); lowest wins within each prompt.",
+                40, 444, 880, 43, size=12)
+    slides.text("Best labels measure local symbolic continuity. The assignment requires no objective metrics here; no human listening preference is claimed.",
+                40, 487, 880, 20, size=10.5)
+
+    # 7. All three generated windows retain full-sequence comparison in one table.
+    slides.start("Basic b: what changes after the boundary?", "ANALYSIS | ALL NINE COMPLETE CONTINUATIONS",
+                 "Each cell lists bars 9-16 / 17-24 / 25-32, in that order. Saved-token statistics; * = original boundary-rule choice.")
+    group = sorted(failures["basic_b"]["rows"], key=lambda r: (r["prompt_id"], r["configuration_id"]))
+    rows = []
+    for r in group:
+        segments = r["segments"][1:]
+        rows.append([r["prompt_id"], r["configuration_id"] + (" *" if r["selected_by_original_boundary_rule"] else ""),
+                     " / ".join(f"{s['notes_per_bar']:.3f}" for s in segments),
+                     " / ".join(f"{s['mean_pitch']:.2f}" for s in segments),
+                     " / ".join(f"{s['mean_velocity']:.2f}" for s in segments)])
+    slides.table(["Prompt", "Set", "Notes/bar: early / mid / late", "Mean pitch: early / mid / late", "Velocity: early / mid / late"], rows,
+                 [70, 70, 245, 245, 250], top=148, height=27, size=11.5)
+    clocks, baselines = [], []
+    for prompt in ("001", "002", "003"):
+        r = next(r for r in group if r["prompt_id"] == prompt)
+        seg = r["segments"]
+        times = [seg[1]["time_range"][0]] + [s["time_range"][1] for s in seg[1:]]
+        clocks.append(prompt + ": " + "/".join(f"{t:.1f}" for t in times) + "s")
+        baselines.append(f"{prompt}: {seg[0]['notes_per_bar']:.2f} notes/bar, pitch {seg[0]['mean_pitch']:.2f}")
+    slides.text("Window time boundaries: " + "; ".join(clocks) + ". Prompt bars 1-8: " + "; ".join(baselines) + ".",
+                40, 428, 880, 33, size=10.5)
+    slides.text("003/t12: late density falls 72.7% and pitch rises 16.19 semitones relative to bars 9-16; selected t10 stays much closer (30.625 -> 27.250 notes/bar, pitch 63.58 -> 64.33). A smooth seam does not establish later stability. Full per-bar CSV/JSON is included.",
+                40, 465, 880, 38, size=11.5)
+
+    # 8. Melody conditioning and all ten official result rows fit together.
+    slides.start("Bonus: melody-conditioned accompaniment", "METHOD AND RESULTS | ALL TEN 16-BAR PROMPTS",
+                 "Own roles_final: insert each bar's MELODY, then sample PIANO (T1, p=.95, k=0), seeing past bars/current melody. Input: melody.mid + beat_midi.txt; no reference piano/chords. Restore original melody; export MELODY + PIANO.")
+    rows = [[r["prompt_id"]] + [mean_text(r["metrics"][m], 4) for m in BONUS_METRICS]
+            for r in sorted(bonus["results"], key=lambda row: row["prompt_id"])]
+    aggregate = [pooled["CA"], pooled["DP (Pitch-class OA)"], pooled["DV (Velocity OA)"],
+                 pooled["DD (Duration OA)"], pooled["DIOI (Inter-Onset OA)"]]
+    rows.append(["Mean"] + [mean_text(v, 4) for v in aggregate])
+    slides.table(["Prompt"] + list(BONUS_METRICS), rows, [100, 156, 156, 156, 156, 156],
+                 top=153, height=26, size=11.5)
+    slides.text("CA: 24-triad agreement with bar annotations. OA_P/V/D/IOI: distribution overlap in pitch class / velocity / duration / inter-onset interval. All 16 bars evaluated per prompt; zero skips.",
+                40, 477, 880, 29, size=11)
+
+    # 9. Preserve the informative paired intervention and all five intervals.
+    slides.start("Extra experiment: remove melody conditioning", "BONUS | PAIRED ABLATION")
+    ablation = experiment(p, "Bonus melody-conditioning")
+    slides.text("Same roles checkpoint, 10 prompts, seed schedule and T=1 / p=.95. Remove melody-note tokens, retain bar/meter/tempo/track headers; restore the complete original melody in both exports. Evaluate official CA/OA; bootstrap 5,000 paired whole-prompt resamples.",
+                40, 145, 880, 63, size=13)
+    slides.table(["Metric", "Normal", "Empty melody", "Difference", "95% low", "95% high"],
+                 [[format_value(v, 4) for v in row] for row in ablation["rows"]],
+                 [120, 150, 155, 155, 150, 150], top=215, height=31, size=12.5)
+    slides.text("CA rises by 0.0750, OA_V by 0.2352 and OA_D by 0.1356; their intervals stay above zero. OA_P and OA_IOI intervals include zero. Melody access affects measured descriptors, with weaker evidence for pitch-class and onset-distribution overlap.",
+                40, 414, 880, 43, size=13)
+    slides.text("Limits: only 10 prompts; five unadjusted intervals. Empty melody is out of distribution and changes context length/sample history. This does not isolate perceived quality. The empty condition is evaluation-only and is not submitted.",
+                40, 467, 880, 35, size=11)
+
+    # 10. Keep exact harmony examples rather than a second generic discussion.
+    slides.start("Harmony failures: which bars disagree?", "BONUS | SPECIFIC BAR COMPARISON",
+                 "Official 24-triad estimator vs maximum-duration annotation per bar. Ground-truth piano is evaluated separately, never supplied to generation.")
+    rows = []
+    for case in failures["bonus"]:
+        for bar in case["bar_examples"]:
+            rows.append([case["prompt_id"], f"{bar['bar']} ({bar['t0']:.2f}-{bar['t1']:.2f}s)",
+                         bar["reference_chord"], bar["generated_chord"], bar["gt_piano_estimated_chord"],
+                         "match" if bar["match"] else "mismatch"])
+    slides.table(["Prompt", "Bar (WAV time)", "Reference", "Generated", "GT estimator", "Result"], rows,
+                 [75, 250, 145, 145, 145, 120], top=151, height=31, size=12)
     slides.bullets([
-        f"Predeclared choice: minimize the mean of absolute H4 and GS mean gaps divided by real-reference SDs. t12 scores 0.6155, versus k32 0.6882 and k16 0.7593. This rule selects on the same reported samples; it is not an independent test.",
-        f"t12 has {mean_text(chosen['metrics']['notes_per_bar'],3)} notes/bar versus real 22.953. T=0.8 is much denser (38.952), with nearly identical onset patterns (GS active 0.98995) and little velocity variation (SD 3.833). Exact note-level bars are still unique; the collapse is rhythmic/expressive, not literal repeated bars.",
-        "t12 minus t10: GS -0.02244, paired 95% bootstrap CI [-0.03428, -0.01233]. H4 +0.05914, CI [-0.01600, 0.13447], so the H4 difference is less certain. No human listening preference is inferred."
-    ],top=371,size=12.5,gap=12)
+        "Overall CA: 18/160 bars. 004: 0/16; 009: 4/16 (bars 3, 4, 5, 14). The GT estimator matches 13/16 for both and 0.7625 overall, so it is an imperfect comparison, not a strict upper bound.",
+        "004 bars 1-2 are estimated as relative minors (Ab:maj -> F:min; Eb:maj -> C:min): each pair shares 2 of 3 triad tones. A CA mismatch need not mean audible dissonance.",
+        "High OA_P can coexist with wrong chord order. Test train-only chord/phrase supervision next; the current outputs and original selections remain unchanged."
+    ], top=382, size=12.5, gap=11)
 
-    figure_page(slides,"Sampling changes distributions, not just one mean",p['figures']['sampling'],
-                "All 20 pieces per setting are shown. The real reference uses the same event grid. These are metric distributions, not listener scores.","BASIC A | DISTRIBUTIONS")
-    # The original first-seed similarity figure remains in the public evidence;
-    # use this report space for the more specific register failure cases.
-    register_case_pages(slides, p)
-
-    slides.start("Basic b: all 9 continuations and chosen versions", "RESULTS | SAME BASIC CHECKPOINT", "Supply 8 original bars, sample 24 new bars, then restore every original prefix note. All nine retain the 8-bar note identity and contain new notes.")
-    boundary = experiment(p,"Continuation boundary")
-    entries=p.get('boundary_details',[])
-    # Evidence is loaded by the gatherer; no boundary values are inferred from prose.
-    rows=[]
-    for r in sorted(b['results'],key=lambda row:(row['prompt_id'],row['configuration_id'])):
-        d=r.get('boundary_diagnostics',{})
-        rows.append([r['prompt_id'],r['configuration_id'],f"T={r['parameters']['temperature']:g}; p=.95",mean_text(d.get('boundary_selection_score'),4),mean_text(d.get('note_density_ratio'),3),mean_text(d.get('pitch_mean_jump'),3),'BEST' if r['is_best'] else ''])
-    slides.table(["Prompt","Set","Sampling","Boundary score","Density ratio","Pitch jump","Choice"],rows,[85,80,155,150,145,150,115],top=155,height=29,size=11)
-    slides.text("Selection compares the two bars before/after the boundary: |log density ratio| + |mean pitch jump|/12 + (1 - pitch-class Jaccard). Lower wins within each prompt. All use the same basic checkpoint and CPU; only T=0.8/1.0/1.2 changes. Best labels are local continuity preferences, not listener judgments.",40,459,880,42,size=11.5)
-
-    # Replace the earlier seam-only prose page with full-sequence comparisons.
-    continuation_case_pages(slides, p)
-    audio_review_page(slides, p)
-
-    slides.start("Bonus: melody-conditioned piano generation", "METHOD | BAR-INTERLEAVED ROLES")
-    bonus_q=bonus.get('parameters',{})
+    # 11. State findings, honest limits, secondary tuning and exact artifact coverage.
+    slides.start("Discussion and reproduction", "CONCLUSION | WHAT THE RESULTS SUPPORT")
     slides.bullets([
-        "Start from our own refined basic checkpoint, then learn MELODY/PIANO bar interleaving on 851 songs; refit on all 896. This is an own-weight transfer stage, not use of a pretrained external model.",
-        "For each of 16 bars, insert that bar's melody tokens and sample its piano events. The model sees past bars and the current melody bar, not the full future melody. BRIDGE is excluded from role training.",
-        "Generation reads only melody.mid and beat_midi.txt. Ground-truth piano and chord annotations are evaluation-only, so generated piano is not given the reference accompaniment or the target chords.",
-        f"Formal bonus configuration: {format_value(bonus_q)}. The original melody pitch/velocity is retained, with sub-millisecond export rounding checked independently. Exactly MELODY + PIANO tracks and all 16 bars are validated.",
-        "The source melody is restored after token generation, including mixed-meter prompts and the long ending of prompt 007. Generated piano uses bounded durations and no active same-pitch overlap."
-    ],size=14,gap=17)
+        "Training: at this warm start/budget, 2048 context gives lower validation CE than 4096. It costs less here, but batch size and the 2048-trained parent confound a general context-length claim.",
+        "Generation: warmer sampling reduces dense, nearly fixed onsets; H4/GS still hide register drift. Melody conditioning improves CA/velocity/duration descriptors, yet only 18/160 bonus chord labels match. A chord/phrase objective and better long-range memory are useful next experiments.",
+        "Secondary temperature check: the custom equal-weight mean of 5 bonus metrics selects T1 (.5771) over T1.2 (.5726). Paired 95% CI [-.0216, .0295] includes zero; this is in-sample tuning, not proven better music or a course-grade formula.",
+        "Audio limit: all nine WAVs (15 min 25 s) reached an evaluation-only Qwen critic, but it invented music on silence. Its prose is not used as listening evidence. No human listening ratings or official SI experiment are claimed.",
+        "Reproduce: pip install -r requirements.txt, then src/infer.py; exact seeds/settings, output paths and WAV commands are in README. Package: 39 MIDI/WAV pairs + 2 own checkpoints, vocabulary, code, figures and full experiment JSON/CSV. Training data, external critic weights and caches are excluded."
+    ], top=145, size=13.5, gap=12)
 
-    slides.start("Bonus: all 10 prompt results", "RESULTS | OFFICIAL CA AND OA", "Each row evaluates all 16 bars. OA_P is the supplied pitch-class overlap measure; higher overlap alone does not establish harmonic correctness.")
-    rows=[[r['prompt_id']]+[mean_text(r['metrics'][m],4) for m in BONUS_METRICS] for r in sorted(bonus['results'],key=lambda r:r['prompt_id'])]
-    slides.table(["Prompt"]+list(BONUS_METRICS),rows,[100,156,156,156,156,156],top=152,height=27,size=12)
-    pooled=bonus.get('aggregate',{}).get('pooled',{})
-    slides.text("Means over all ten prompts: CA "+mean_text(pooled.get('CA'))+"; OA_P "+mean_text(pooled.get('DP (Pitch-class OA)'))+"; OA_V "+mean_text(pooled.get('DV (Velocity OA)'))+"; OA_D "+mean_text(pooled.get('DD (Duration OA)'))+"; OA_IOI "+mean_text(pooled.get('DIOI (Inter-Onset OA)'))+". Zero skipped files. CA-ceiling "+mean_text(pooled.get('CA-ceiling'))+" is the same chord estimator on ground truth, not a strict upper bound.",40,467,880,36,size=11.5)
-    harmony_case_page(slides, p)
-
-    tuning=experiment(p,'Bonus sampling temperature')
-    if tuning:
-        slides.start("Bonus: select the inference setting", "ADDITIONAL EXPERIMENT | SAMPLING")
-        slides.text(tuning['method'],40,145,880,75,size=13)
-        slides.table(tuning['headers'],[[format_value(v,4) for v in row] for row in tuning['rows']],[880/len(tuning['headers'])]*len(tuning['headers']),top=230,height=34,size=12)
-        slides.text("The predeclared equal-weight composite selects T=1.0 (0.57708), narrowly above T=1.2 (0.57258). T=1.2 has higher CA and IOI overlap, but lower velocity/duration overlap. We retain T=1.0 for the formal files and conditioning ablation; no setting dominates every descriptor.",40,387,880,62,size=13)
-        slides.text("All three settings use the same ten prompts and evaluation ground truth: this is in-sample tuning, with no independent test. The custom composite is not the course grading formula and does not establish listener preference. All per-prompt scores and paired bootstrap differences are retained.",40,458,880,41,size=11.5)
-
-    ablation=experiment(p,'Bonus melody-conditioning')
-    slides.start("Extra experiment: remove melody conditioning", "BONUS | PAIRED ABLATION AT T=1.0")
-    slides.text("Same roles checkpoint, ten prompts, seed schedule and T=1.0 / top-p=0.95. Remove melody-note tokens while keeping bar, meter, tempo and track headers; restore the original melody in both exported versions. Evaluate official CA/OA and bootstrap 5000 paired whole-prompt resamples.",40,143,880,72,size=13)
-    slides.table(ablation['headers'],[[format_value(v,4) for v in row] for row in ablation['rows']],[120,150,155,155,150,150],top=230,height=32,size=12)
-    slides.text("Normal melody improves CA by 0.0750 (95% CI [0.0250, 0.1313]), velocity overlap by 0.2352 and duration overlap by 0.1356. Pitch-class and IOI intervals include zero. This provides evidence of a conditioning effect on measured descriptors, with weak evidence for some metrics.",40,435,880,42,size=11.5)
-    slides.text("Caution: deleting all melody is out of distribution and changes context length/sampled histories. Both exports restore the full melody; the empty condition is not submitted. This does not isolate an effect on perceived musical quality.",40,479,880,26,size=10)
-
-    slides.start("Discussion, limits and reproduction", "CONCLUSION")
-    slides.bullets([
-        "Useful changes: more training improves note-content prediction; the controlled 2048-token branch predicts better at this budget; warmer sampling reduces the dense, nearly fixed onset behavior of low temperature.",
-        "Specific weaknesses: mean piece-p95 pitch is 92.39 versus real 78.36; bonus chord agreement is 18/160 bars. Prompt 003/t12 also drifts upward and becomes sparse in bars 25-32. H4/GS and distribution overlap miss these details; high OA_P does not establish correct harmony.",
-        "Long-range form is unverified. Absolute-position resets, finite recent-bar context and grammar constraints can limit phrasing. No human listening study, architecture sweep or official SI experiment is claimed.",
-        "Reproduce inference with pip install -r requirements.txt, then src/infer.py; README gives exact checkpoint, seed, settings, output-path and WAV-rendering commands. All 39 submitted MIDI/WAV pairs are synthesized from matching MIDI and checked for duration, finite audio and non-silence.",
-        "The public package includes two own checkpoints, vocabulary, code, licenses, measured tables/manifests, figures and hashes. It excludes training MIDI, preprocessed training arrays, external weights and caches. See the appendix for audit experiments and references."
-    ],size=14,gap=15)
-
-    slides.start("Appendix A: quantization and export error", "EXTRA EXPERIMENT | REPRESENTATION")
-    quant=experiment(p,'Quantization resolution')
-    slides.text(quant['method'],40,143,880,63,size=13)
-    slides.table(quant['headers'],[[format_value(v,3) for v in row] for row in quant['rows']],[140,160,190,190,200],top=209,height=32,size=12)
-    slides.bullets([
-        "Across 1,508,536 notes, 16 subdivisions lowers onset/offset MAE but increases vocabulary from 683 to 1067 tokens. We implement 8; this is a reconstruction audit, not a comparison of models retrained at each grid.",
-        "Six codec round-trip cases preserve all represented notes and have maximum MIDI export timing error below 0.317 ms. This small export error is separate from source-to-grid quantization error.",
-        "The duration cap clips two long source notes (worst offset error 8.732 s); 196 early notes are clamped before the first annotation (worst onset error 0.709 s). The representation is therefore not lossless. Full per-case audits and reproduction code are provided."
-    ],top=354,size=12,gap=12)
-
-    slides.start("Appendix B: checkpoint progress and GS sensitivity", "EXTRA EXPERIMENT | METRIC INTERPRETATION")
-    learned=experiment(p,'Checkpoint learning')
-    rows=[[row[0],row[2],row[3],row[4],row[5],row[6]] for row in learned['rows']]
-    slides.table(['Checkpoint','H4','GS','GS active','Notes/bar','Empty fraction'],[[format_value(v,4) for v in row] for row in rows],[200,135,135,135,140,135],top=147,height=40,size=12)
-    slides.bullets([
-        "At step 500, GS 0.97074 already resembles the real reference 0.97083, but density is only 11.559 notes/bar versus 22.953 and 3.28% of bars are empty. At step 2000, density rises to 28.164 while H4/GS move away from the real means. Lower prediction loss alone does not optimize these descriptors.",
-        "The required official GS uses 128 binary positions. Mapping our 8 subdivisions to the official 16-subdivision IDs leaves odd slots zero. GS active separately normalizes onset XOR by max(bar beats) x 8; it does not replace official GS.",
-        "For the real reference GS/GS active are 0.97083/0.88679; selected t12 gives 0.97017/0.88066. Shared grids make the comparison fair, but onset-only similarity ignores pitches, durations, velocities and the number of simultaneous notes.",
-        "Checkpoint generation uses completed 20-piece sets. These pre-refit checkpoints are diagnostics; context/learning stage effects are not an isolated controlled quality comparison."
-    ],top=295,size=13,gap=16)
-
-    slides.start("Appendix C: reference sensitivity and local matches", "EXTRA EXPERIMENT | ROBUSTNESS")
-    ref=experiment(p,'Real-data reference sensitivity')
-    slides.text("Take one deterministic center-nearest eligible 32-bar crop per song using the same official metric adapter. Consider all 896 training songs; list individually the five with no eligible crop. Keep the original 45-song reference and configuration-selection rule fixed.",40,145,880,65,size=13)
-    slides.table(ref['headers'],[[format_value(v,4) for v in row] for row in ref['rows']],[195,105,105,145,145,185],top=226,height=32,size=12)
-    slides.bullets([
-        "The all-eligible reference includes 891/896 songs; five songs have no eligible 32-bar crop. Its H4/GS/density means fall inside the 45-song primary-reference bootstrap intervals. The original reference and t12 choice are retained; the two reference sets overlap and are not independent tests.",
-        "No duplicate full pieces and no exact non-empty 1/2/4/8-bar training-window matches are found in any final basic-a setting. Windows match position, pitch and duration while ignoring tempo/velocity/track names. Shared fully silent windows are reported separately.",
-        "This narrow exact-match check cannot rule out transposition, approximation, partial copying or memorization. Zero exact matches is not proof of originality. Selection and uncertainty estimates use reported output sets, not a new hidden test."
-    ],top=340,size=12.5,gap=13)
-
-    ref_pages = list(chunks(p.get('references', []), 5)) or [[]]
-    for i, refs in enumerate(ref_pages, 1):
-        title = "References, source evidence and AI disclosure"
-        if len(ref_pages) > 1:
-            title += f" ({i}/{len(ref_pages)})"
-        slides.start(title, "APPENDIX D | ATTRIBUTION")
-        slides.bullets(refs, size=11.5, gap=13, top=143)
-        if i == len(ref_pages):
-            audio_note = (" The pretrained Qwen audio critic is evaluation-only; its failed silence control makes its prose unreliable."
-                          if p.get("audio_review", {}).get("completed") is True else "")
-            slides.text("AI assistance: Codex assisted implementation, execution, aggregation, analysis and English drafting, permitted by the HW2 slides (p.34). Scores come from saved outputs." + audio_note +
-                        " Full source hashes, checkpoint ancestry and per-piece tables are in results/report_data.json, FILE_SHA256.json and SUBMISSION_CHECKS.json.",
-                        40, 443, 880, 58, size=11)
+    # 12. References and assistance remain visible without an audit appendix.
+    slides.start("Sources and AI assistance", "ATTRIBUTION | FULL HASHES AND TABLES IN THE PACKAGE")
+    refs = [
+        "Course Homework 2 (Bo-Rui Chen, 2026): task pp.11-18,22-28; submission pp.29-32; grading p.33; AI permission p.34; rules p.35.",
+        "Wang et al. POP909: A Pop-Song Dataset for Music Arrangement Generation. ISMIR 2020. https://arxiv.org/abs/2008.07142",
+        "Huang & Yang. Pop Music Transformer: Beat-based Modeling and Generation of Expressive Pop Piano Compositions. ACM MM 2020. https://arxiv.org/abs/2002.00212",
+        "Ren et al. PopMAG: Pop Music Accompaniment Generation. ACM MM 2020. Inspiration for role-aware accompaniment; our weights are trained from scratch.",
+        "Course HW2_scripts/tokenization.py, eval_basic.py, eval_bonus.py; MusDr side_utils.py: https://github.com/slSeanWU/MusDr/blob/master/musdr/side_utils.py",
+        "Chu et al. Qwen2-Audio Technical Report (2024). https://arxiv.org/abs/2407.10759 ; evaluation-only model: https://huggingface.co/mlx-community/Qwen2-Audio-7B-Instruct-4bit (Apache-2.0).",
+        "Blaizzy/mlx-audio v0.6.1 (MIT): https://github.com/Blaizzy/mlx-audio . Official HF audio frontend substituted after numerical comparison; full model revision/provenance is saved."
+    ]
+    slides.bullets(refs, top=145, size=12, gap=10)
+    slides.text("AI assistance: Codex assisted implementation, execution, result aggregation, analysis and English drafting. All numerical results come from saved runs. The external Qwen critic is evaluation-only, failed calibration, and is not either submitted composition model. Full source hashes, checkpoint ancestry, per-piece results and package checks remain in results/report_data.json, FILE_SHA256.json and SUBMISSION_CHECKS.json.",
+                40, 455, 880, 50, size=11.5)
 
 
 def render(slides, payload, reasons):
