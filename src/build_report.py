@@ -725,7 +725,7 @@ def render_complete(slides, p, reasons):
     slides.text(f"{arch['layers']} layers, width {arch['width']}, {arch['heads']} heads; {p['model']['parameter_count']:,} parameters. Pre-LN, GELU, dropout 0.1, tied embeddings, learned absolute positions (capacity 4096; effective context 2048).\n\nRandom initialization; predict the next token with cross-entropy, ignoring padding. Bonus continues our own refined basic weights.",
                 500, 181, 420, 148, size=13.5)
     slides.text("Optimization and decoding", 500, 344, 420, 27, size=18, bold=True)
-    slides.text("AdamW (betas .9/.95, weight decay .1), norm clip 1; warmup + cosine LR; legal transposition -5..+5. Decode with grammar masks, pitch 21..108, at most 64 notes/bar. Overflow retains recent complete bars and resets positions/KV cache.",
+    slides.text("AdamW (betas .9/.95, weight decay .1), norm clip 1; warmup + cosine LR; legal transposition -5..+5. Decode with grammar masks, pitch 21..108, at most 64 generated notes/bar. Overflow retains recent complete bars and resets positions/KV cache.",
                 500, 381, 420, 104, size=13.5)
 
     # 3. Training progress and the strongest controlled training experiment share a page.
@@ -742,7 +742,7 @@ def render_complete(slides, p, reasons):
         rows.append([stage_labels[name], str(d["steps"]), f"{d['nonpad_target_tokens']/1e6:.3f}M",
                      str(d["context"]), str(d["seen_songs"]), "2" if name == "context_4096" else "4",
                      lrs[i], mean_text(d["validation_CE"], 5) if d["validation_CE"] is not None else "not held out"])
-    slides.table(["Stage", "Steps", "New targets", "Context", "Songs", "Batch", "LR", "Val CE"], rows,
+    slides.table(["Stage", "Steps", "New targets", "Context", "Songs", "Batch", "Base LR", "Val CE"], rows,
                  [185, 70, 110, 85, 65, 65, 95, 205], top=148, height=26, size=11)
     slides.text("Basic: diagnostic -> refined -> context 2048 -> final. Roles: refined -> roles diagnostic -> roles final. Validation CE falls from 2.36666 (step 500) to 1.71925 (refined).", 
                 40, 365, 880, 34, size=11.5)
@@ -776,7 +776,7 @@ def render_complete(slides, p, reasons):
         diag_rows.append([label, mean_text(metrics["notes_per_bar"], 3), mean_text(metrics["GS_active"], 5)])
     slides.table(["Set", "Notes/bar", "GS active"], diag_rows,
                  [125, 140, 145], top=150, height=28, size=12)
-    slides.text(f"GS active is native-grid onset similarity, not official GS. t08 is dense with nearly fixed onsets; t12 reduces both (real density: 22.953 notes/bar). Mean piece-p95 pitch is {register['generated_piece_mean_p95_pitch']:.3f} vs real {register['reference_piece_mean_p95_pitch']:.3f} (+14.022 semitones). H4 discards octave; GS ignores pitch.\n\n004 has the largest piece-p95 (100). Bar 26, 50-52 s: 7 of 9 onsets reach >=96 (C7). This is a descriptive warning, not proof of poor sound.",
+    slides.text(f"GS active is native-grid onset similarity, not official GS. t08 is dense with nearly fixed onsets; t12 reduces both (real density: 22.953 notes/bar). Mean per-piece 95th-percentile pitch: {register['generated_piece_mean_p95_pitch']:.3f} vs real {register['reference_piece_mean_p95_pitch']:.3f} (+14.022 semitones). H4 discards octave; GS ignores pitch.\n\n004 has the largest piece-p95 (100). Bar 26, 50-52 s: 7 of 9 notes reach >=96 (C7). This is a descriptive warning, not proof of poor sound.",
                 490, 148, 430, 130, size=12.5)
     slides.text("Selected sample 004 | whole-piece piano roll; dotted C7 line is a register marker, not a correctness cutoff.",
                 40, 284, 880, 22, size=11.5)
@@ -824,7 +824,7 @@ def render_complete(slides, p, reasons):
         baselines.append(f"{prompt}: {seg[0]['notes_per_bar']:.2f} notes/bar, pitch {seg[0]['mean_pitch']:.2f}")
     slides.text("Window time boundaries: " + "; ".join(clocks) + ". Prompt bars 1-8: " + "; ".join(baselines) + ".",
                 40, 428, 880, 33, size=10.5)
-    slides.text("003/t12: late density falls 72.7% and pitch rises 16.19 semitones relative to bars 9-16; selected t10 stays much closer (30.625 -> 27.250 notes/bar, pitch 63.58 -> 64.33). A smooth seam does not establish later stability. Full per-bar CSV/JSON is included.",
+    slides.text("003/t12: late density falls 72.7% and pitch rises 16.19 semitones relative to bars 9-16; selected t10 stays much closer (30.625 -> 27.250 notes/bar, pitch 63.58 -> 64.33). A smooth seam does not establish later stability. Full per-bar JSON and segment CSV are included.",
                 40, 465, 880, 38, size=11.5)
 
     # 8. Melody conditioning and all ten official result rows fit together.
